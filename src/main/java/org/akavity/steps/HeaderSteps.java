@@ -16,4 +16,8 @@ public class HeaderSteps {
     public void clickPromoItem(String title) {
         headerPage.getPromoItem(title).click();
     }
+
+    public void clickHeaderCart() {
+        headerPage.getHeaderCartButton().click();
+    }
 }

@@ -10,6 +10,8 @@ public class HeaderPage {
 
     private final SelenideElement loginButton = $(By.cssSelector("button[data-testid='loginButton']"));
 
+    private final SelenideElement headerCartButton = $(By.cssSelector("div[class='headerCart']"));
+
     public SelenideElement getPromoItem(String title) {
         return $(By.xpath("//div[contains(@class,'promo')]//li[contains(text(),'" + title + "')]"));
     }
@@ -20,5 +22,9 @@ public class HeaderPage {
 
     public SelenideElement getLoginButton() {
         return loginButton;
+    }
+
+    public SelenideElement getHeaderCartButton() {
+        return headerCartButton;
     }
 }
