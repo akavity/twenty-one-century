@@ -20,4 +20,22 @@ public class HeaderSteps {
     public void clickHeaderCart() {
         headerPage.getHeaderCartButton().click();
     }
+
+    public void enterEmail(String email) {
+        headerPage.getEmailField().click();
+        headerPage.getEmailField().sendKeys(email);
+    }
+
+    public void enterPassword(String password) {
+        headerPage.getPasswordField().click();
+        headerPage.getPasswordField().sendKeys(password);
+    }
+
+    public void clickSubmitButton() {
+        headerPage.getSubmitButton().click();
+    }
+
+    public String extractTextFromSubTitle() {
+        return headerPage.getSubTitleField().getText();
+    }
 }

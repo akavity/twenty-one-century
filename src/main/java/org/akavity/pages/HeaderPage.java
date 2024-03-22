@@ -13,8 +13,15 @@ public class HeaderPage {
     private final SelenideElement headerCartButton = $(By.cssSelector("div[class='headerCart']"));
 
     public SelenideElement getPromoItem(String title) {
-        return $(By.xpath("//div[contains(@class,'promo')]//li[contains(text(),'" + title + "')]"));
+        return $(By.xpath("//div[contains(@class,'promo')]//a[contains(text(),'" + title + "')]"));
     }
+
+    // UserTools
+    private final SelenideElement emailField = $(By.cssSelector("input[id='login-email']"));
+    private final SelenideElement passwordField = $(By.cssSelector("input[id='login-password']"));
+    private final SelenideElement submitButton = $(By.cssSelector("div[data-testid='loginForm'] button[type='submit']"));
+    private final SelenideElement subTitleField = $(By.cssSelector("span[class='userToolsSubtitle']"));
+
 
     public SelenideElement getAccountButton() {
         return accountButton;
@@ -26,5 +33,21 @@ public class HeaderPage {
 
     public SelenideElement getHeaderCartButton() {
         return headerCartButton;
+    }
+
+    public SelenideElement getEmailField() {
+        return emailField;
+    }
+
+    public SelenideElement getPasswordField() {
+        return passwordField;
+    }
+
+    public SelenideElement getSubmitButton() {
+        return submitButton;
+    }
+
+    public SelenideElement getSubTitleField() {
+        return subTitleField;
     }
 }
