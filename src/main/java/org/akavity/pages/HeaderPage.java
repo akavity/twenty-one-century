@@ -17,11 +17,16 @@ public class HeaderPage {
     }
 
     // UserTools
+
     private final SelenideElement emailField = $(By.cssSelector("input[id='login-email']"));
     private final SelenideElement passwordField = $(By.cssSelector("input[id='login-password']"));
     private final SelenideElement submitButton = $(By.cssSelector("div[data-testid='loginForm'] button[type='submit']"));
     private final SelenideElement subTitleField = $(By.cssSelector("span[class='userToolsSubtitle']"));
+    private final SelenideElement logoutButton = $(By.cssSelector("a[href='/logout/'] div"));
 
+    public SelenideElement getProfileItem(String text) {
+        return $(By.xpath("//div[contains(@class,'itemText') and contains(text(), '" + text + "')]"));
+    }
 
     public SelenideElement getAccountButton() {
         return accountButton;
@@ -49,5 +54,9 @@ public class HeaderPage {
 
     public SelenideElement getSubTitleField() {
         return subTitleField;
+    }
+
+    public SelenideElement getLogoutButton() {
+        return logoutButton;
     }
 }

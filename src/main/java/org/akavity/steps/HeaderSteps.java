@@ -9,6 +9,10 @@ public class HeaderSteps {
         headerPage.getAccountButton().click();
     }
 
+    public boolean isLoginButtonDisplayed() {
+        return headerPage.getLoginButton().isDisplayed();
+    }
+
     public void clickLoginButton() {
         headerPage.getLoginButton().click();
     }
@@ -37,5 +41,13 @@ public class HeaderSteps {
 
     public String extractTextFromSubTitle() {
         return headerPage.getSubTitleField().getText();
+    }
+
+    public void clickLogoutButton() {
+        headerPage.getLogoutButton().click();
+    }
+
+    public void clickProfileItem(String text) {
+        headerPage.getProfileItem(text).click();
     }
 }
