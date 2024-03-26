@@ -7,6 +7,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ProfileContentPage {
     /**
+     * @param data Имя, Пол, Год рождения, Почта
+     */
+    public SelenideElement getPersonalDataField(String data) {
+        return $(By.xpath("//p[contains(text(),'" + data + "')]/../p[contains(@class,'data')]"));
+    }
+
+    /**
      * @param id editData, changeEmail, changePassword
      */
     public SelenideElement getEditPersonalDataButton(String id) {
@@ -53,5 +60,4 @@ public class ProfileContentPage {
         return $(By.xpath("//p[contains(@data-testid,'addres') and contains(text(),'" + street + "')]" +
                 "/ancestor::div[contains(@class,'dataWrapper')]//div[contains(@class,'delete')]"));
     }
-
 }

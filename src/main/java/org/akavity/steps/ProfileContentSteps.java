@@ -2,8 +2,10 @@ package org.akavity.steps;
 
 import io.qameta.allure.Step;
 import org.akavity.pages.ProfileContentPage;
+import org.akavity.utils.Utils;
 
 public class ProfileContentSteps {
+    Utils utils = new Utils();
     String PARAMETER = "{behavior: \"instant\", block: \"center\", inline: \"center\"}";
     ProfileContentPage profileContentPage = new ProfileContentPage();
 
@@ -21,6 +23,12 @@ public class ProfileContentSteps {
     public void clickEditAddressButton(String street) {
         profileContentPage.getAddressField(street).scrollIntoView(PARAMETER);
         profileContentPage.getEditAddressButton(street).click();
+    }
+
+    @Step
+    public String extractTextFromPersonalDataField(String data) {
+        utils.sleep();
+        return profileContentPage.getPersonalDataField(data).getText();
     }
 
     @Step
