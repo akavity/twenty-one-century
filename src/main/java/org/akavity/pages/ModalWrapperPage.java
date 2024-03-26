@@ -10,6 +10,13 @@ public class ModalWrapperPage {
             "/button[@type='submit']"));
 
     /**
+     * @param gender male, female
+     */
+    public SelenideElement getGenderButton(String gender) {
+        return  $(By.xpath("//input[@name='gender' and @value='" + gender + "']/parent::label"));
+    }
+
+    /**
      * @param name email, password, name, birth, oldPassword, newPassword
      */
     public SelenideElement getModalField(String name) {
