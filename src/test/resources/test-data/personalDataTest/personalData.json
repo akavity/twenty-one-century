@@ -1,0 +1,36 @@
+[
+  {
+    "titleEmail": "email",
+    "email": "aprlvni413@1secmail.ru",
+    "titlePassword": "password",
+    "password": "0e6aaa60",
+    "itemPersonalData": "Личные данные",
+    "dataType": "Data",
+    "titleName": "name",
+    "name": "Andrew Bregovitch",
+    "gender": "male",
+    "titleBirth": "birth",
+    "birth": "15.02.1982",
+    "textName": "Имя",
+    "textGender": "Пол",
+    "textBirth": "Дата",
+    "textMale": "Мужской"
+  },
+  {
+    "titleEmail": "email",
+    "email": "aprlvni413@1secmail.ru",
+    "titlePassword": "password",
+    "password": "0e6aaa60",
+    "itemPersonalData": "Личные данные",
+    "dataType": "Data",
+    "titleName": "name",
+    "name": "Andrew Goran",
+    "gender": "male",
+    "titleBirth": "birth",
+    "birth": "10.09.1986",
+    "textName": "Имя",
+    "textGender": "Пол",
+    "textBirth": "Дата",
+    "textMale": "Мужской"
+  }
+]

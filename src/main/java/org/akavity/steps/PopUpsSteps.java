@@ -9,7 +9,7 @@ public class PopUpsSteps {
         popUpsPage.getCookiesRefuseButton().click();
     }
 
-    public void clickCookiesAcceptButton() {
+    public void clickAcceptCookiesButton() {
         popUpsPage.getCookiesAcceptButton().click();
     }
 }

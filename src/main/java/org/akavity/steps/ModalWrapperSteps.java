@@ -9,11 +9,11 @@ public class ModalWrapperSteps {
     ModalWrapperPage modalWrapperPage = new ModalWrapperPage();
 
     @Step
-    public void enterDataIntoModalField(String name, String data) {
-        SelenideElement element = modalWrapperPage.getModalField(name);
+    public void enterDataIntoModalField(String title, String data) {
+        SelenideElement element = modalWrapperPage.getModalField(title);
         element.sendKeys(Keys.CONTROL + "A");         // clear input field
         element.sendKeys(Keys.BACK_SPACE);                       //
-        modalWrapperPage.getModalField(name).sendKeys(data);
+        modalWrapperPage.getModalField(title).sendKeys(data);
     }
 
     @Step

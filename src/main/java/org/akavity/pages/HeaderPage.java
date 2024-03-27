@@ -7,9 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class HeaderPage {
     private final SelenideElement accountButton = $(By.cssSelector("button[class*='userToolsToggler']"));
-
     private final SelenideElement loginButton = $(By.cssSelector("button[data-testid='loginButton']"));
-
     private final SelenideElement headerCartButton = $(By.cssSelector("div[class='headerCart']"));
 
     public SelenideElement getPromoItem(String title) {
@@ -18,9 +16,9 @@ public class HeaderPage {
 
     // UserTools
 
-    private final SelenideElement emailField = $(By.cssSelector("input[id='login-email']"));
-    private final SelenideElement passwordField = $(By.cssSelector("input[id='login-password']"));
-    private final SelenideElement submitButton = $(By.cssSelector("div[data-testid='loginForm'] button[type='submit']"));
+    private final SelenideElement emailField = $(By.cssSelector("input[id='login-email']"));   // modalWrapperPage
+    private final SelenideElement passwordField = $(By.cssSelector("input[id='login-password']")); // modalWrapperPage
+    private final SelenideElement submitButton = $(By.cssSelector("div[data-testid='loginForm'] button[type='submit']")); // modalWrapperPage
     private final SelenideElement subTitleField = $(By.cssSelector("span[class='userToolsSubtitle']"));
     private final SelenideElement logoutButton = $(By.cssSelector("a[href='/logout/'] div"));
 

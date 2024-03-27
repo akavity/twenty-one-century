@@ -13,14 +13,14 @@ public class ModalWrapperPage {
      * @param gender male, female
      */
     public SelenideElement getGenderButton(String gender) {
-        return  $(By.xpath("//input[@name='gender' and @value='" + gender + "']/parent::label"));
+        return $(By.xpath("//input[@name='gender' and @value='" + gender + "']/parent::label"));
     }
 
     /**
-     * @param name email, password, name, birth, oldPassword, newPassword
+     * @param title email, password, name, birth, oldPassword, newPassword
      */
-    public SelenideElement getModalField(String name) {
-        return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + name + "']"));
+    public SelenideElement getModalField(String title) {
+        return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + title + "']"));
     }
 
     public SelenideElement getSubmitButton() {
