@@ -1,8 +1,11 @@
 package org.akavity;
 
 import org.akavity.annotations.TestData;
-import org.akavity.models.personalDataTest.PersonalData;
-import org.akavity.steps.*;
+import org.akavity.models.personalTest.PersonalData;
+import org.akavity.steps.HeaderSteps;
+import org.akavity.steps.ModalWrapperSteps;
+import org.akavity.steps.PopUpsSteps;
+import org.akavity.steps.ProfileContentSteps;
 import org.akavity.utils.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -13,7 +16,7 @@ public class PersonalDataTest extends BaseTest {
     ProfileContentSteps profileContentSteps = new ProfileContentSteps();
     ModalWrapperSteps modalWrapperSteps = new ModalWrapperSteps();
 
-    @TestData(jsonFile = "personalData", model = "PersonalData", folder = "personalDataTest")
+    @TestData(jsonFile = "personalData", model = "PersonalData", folder = "personalTest")
     @Test(description = "",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void changeNameGenderBirth(PersonalData data) {
@@ -28,7 +31,7 @@ public class PersonalDataTest extends BaseTest {
         profileContentSteps.clickEditData(data.getDataType());
         modalWrapperSteps.enterDataIntoModalField(data.getTitleName(), data.getName());
         modalWrapperSteps.clickGenderButton(data.getGender());
-        modalWrapperSteps.enterDataIntoModalField(data.getTitleBirth(), data.getBirth());
+        modalWrapperSteps.enterDataIntoModalField(data.getTitleBirth(), data.getBirth()); // use random birth
         modalWrapperSteps.clickSubmitButton();
 
         String actualName = profileContentSteps.extractTextFromPersonalDataField(data.getTextName());

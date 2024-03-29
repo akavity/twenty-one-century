@@ -17,7 +17,8 @@ public class ModalWrapperPage {
     }
 
     /**
-     * @param title email, password, name, birth, oldPassword, newPassword
+     * @param title email, password, name, birth, oldPassword, newPassword,
+     *              phone
      */
     public SelenideElement getModalField(String title) {
         return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + title + "']"));

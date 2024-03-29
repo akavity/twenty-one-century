@@ -16,4 +16,9 @@ public class Utils {
             throw new RuntimeException(e);
         }
     }
+
+    public int rnd(int min, int max) {
+        max -= min;
+        return (int) (Math.random() * ++max) + min;
+    }
 }

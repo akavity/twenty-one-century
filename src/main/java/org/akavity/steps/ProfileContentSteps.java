@@ -35,4 +35,9 @@ public class ProfileContentSteps {
     public void clickEditData(String id) {
         profileContentPage.getEditPersonalDataButton(id).click();
     }
+
+    @Step
+    public boolean isNumberDisplayed(String number) {
+        return true;
+    }
 }

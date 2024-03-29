@@ -1,4 +1,4 @@
-package org.akavity.models.personalDataTest;
+package org.akavity.models.personalTest;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
