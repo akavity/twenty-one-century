@@ -7,6 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class HeaderPage {
     private final SelenideElement logoButton = $(By.cssSelector("a[class='logotypeImg']"));
+    private final SelenideElement catalogButton = $(By.cssSelector("button[class*='catalogButton']"));
     private final SelenideElement accountButton = $(By.cssSelector("button[class*='userToolsToggler']"));
     private final SelenideElement headerCartButton = $(By.cssSelector("div[class='headerCart']"));
     private final SelenideElement catalogSearchFiled = $(By.cssSelector("#catalogSearch"));
@@ -33,6 +34,7 @@ public class HeaderPage {
     private final SelenideElement forgottenPasswordButton = $(By.xpath("//button[contains(@class,'reset')]"));
     private final SelenideElement registrationEmailField = $(By.cssSelector("div[class*='BaseInput'] input"));
     private final SelenideElement registrationSubmitButton = $(By.xpath("//div[contains(@class,'submit')]/button"));
+
     public SelenideElement getErrorField(String errorText) {
         return $(By.xpath("//div[contains(@class,'ErrorMessage')]//span[contains(text(),'" + errorText + "')]"));
     }
@@ -87,6 +89,10 @@ public class HeaderPage {
 
     public SelenideElement getRegistrationSubmitButton() {
         return registrationSubmitButton;
+    }
+
+    public SelenideElement getCatalogButton() {
+        return catalogButton;
     }
 
 //    public SelenideElement getLogoutButton() {
