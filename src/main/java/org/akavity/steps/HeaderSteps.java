@@ -2,12 +2,17 @@ package org.akavity.steps;
 
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.HeaderPage;
+
 @Log4j2
 public class HeaderSteps {
     HeaderPage headerPage = new HeaderPage();
 
     public void clickAccountButton() {
         headerPage.getAccountButton().click();
+    }
+
+    public void clickCatalogButton() {
+        headerPage.getCatalogButton().click();
     }
 
     public boolean isLoginButtonDisplayed() {

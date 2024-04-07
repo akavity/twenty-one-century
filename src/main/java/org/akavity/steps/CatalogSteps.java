@@ -1,11 +1,13 @@
 package org.akavity.steps;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.CatalogPage;
 
 @Log4j2
 public class CatalogSteps {
+    String PARAMETER = "{behavior: \"instant\", block: \"center\", inline: \"center\"}";
     CatalogPage catalogPage = new CatalogPage();
 
     @Step
@@ -36,6 +38,15 @@ public class CatalogSteps {
     @Step
     public void clickShowAllButton(String categoryName) {
         log.info("Click show all button in category: " + categoryName);
+        catalogPage.getShowAllButton(categoryName).scrollIntoView(PARAMETER);
         catalogPage.getShowAllButton(categoryName).click();
+    }
+
+    @Step
+    public void hoverTheMouseOverChapterItem(String title) {
+        log.info("Move the cursor over chapter item: " + title);
+        SelenideElement chapterItem = catalogPage.getChapterItem(title);
+        chapterItem.scrollIntoView(PARAMETER);
+        chapterItem.hover();                                                 // mouse hover
     }
 }
