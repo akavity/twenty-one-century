@@ -32,4 +32,10 @@ public class CatalogSteps {
         log.info("Click " + brand + " button");
         catalogPage.getBrandButton(brand).click();
     }
+
+    @Step
+    public void clickShowAllButton(String categoryName) {
+        log.info("Click show all button in category: " + categoryName);
+        catalogPage.getShowAllButton(categoryName).click();
+    }
 }

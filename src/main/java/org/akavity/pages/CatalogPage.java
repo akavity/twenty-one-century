@@ -18,6 +18,11 @@ public class CatalogPage {
                 "//span[contains(@class,'categoryName') and contains(text(),'" + name + "')]"));
     }
 
+    public SelenideElement getShowAllButton(String categoryName) {
+        return $(By.xpath("//a[contains(@class,'categoryButton')]" +
+                "/span[contains(text(),'" + categoryName + "')]/../../button"));
+    }
+
     public SelenideElement getBrandButton(String brand) {
         return $(By.xpath("//a[contains(@class,'randCrisps') and contains(text(),'" + brand + "')]"));
     }
