@@ -10,11 +10,22 @@ public class PopUpsPage {
 
     private final SelenideElement cookiesAcceptButton = $(By.cssSelector("div[class*='Cookie'] button[class*='blue-primary']"));
 
+    private final SelenideElement popmechanicDesktop = $(By.cssSelector("div[class*='popmechanic-main']"));
+    private final SelenideElement popmechanicCloseButton = $(By.cssSelector("div[class='popmechanic-close']"));
+
     public SelenideElement getCookiesRefuseButton() {
         return cookiesRefuseButton;
     }
 
     public SelenideElement getCookiesAcceptButton() {
         return cookiesAcceptButton;
+    }
+
+    public SelenideElement getPopmechanicDesktop() {
+        return popmechanicDesktop;
+    }
+
+    public SelenideElement getPopmechanicCloseButton() {
+        return popmechanicCloseButton;
     }
 }
