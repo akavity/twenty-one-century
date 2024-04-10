@@ -1,7 +1,9 @@
 package org.akavity.steps;
 
+import com.codeborne.selenide.SelenideElement;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.HeaderPage;
+import org.openqa.selenium.Keys;
 
 @Log4j2
 public class HeaderSteps {
@@ -49,10 +51,6 @@ public class HeaderSteps {
         return headerPage.getSubTitleField().getText();
     }
 
-//    public void clickLogoutButton() {
-//        headerPage.getLogoutButton().click();
-//    }
-
     public void clickProfileItem(String text) {
         headerPage.getProfileItem(text).click();
     }
@@ -73,6 +71,17 @@ public class HeaderSteps {
     public void enterRegistrationEmail(String email) {
         headerPage.getRegistrationEmailField().click();
         headerPage.getRegistrationEmailField().sendKeys(email);
+    }
+
+    public void clingSearchField() {
+        SelenideElement element = headerPage.getCatalogSearchFiled();
+        element.sendKeys(Keys.CONTROL + "A");         // clear input field
+        element.sendKeys(Keys.BACK_SPACE);
+    }
+
+    public void lookForProductUsingCatalogSearch(String product) {
+        headerPage.getCatalogSearchFiled().sendKeys(product);
+        headerPage.getCatalogSearchFiled().pressEnter();
     }
 
     public void clickRegistrationSubmitButton() {
