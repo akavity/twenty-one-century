@@ -89,7 +89,7 @@ public class HeaderSteps {
         headerPage.getRegistrationEmailField().sendKeys(email);
     }
 
-    public void clingSearchField() {
+    public void cleanSearchField() {
         log.info("Clean the catalog search field");
         SelenideElement element = headerPage.getCatalogSearchFiled();
         element.sendKeys(Keys.CONTROL + "A");         // clear input field
@@ -105,5 +105,11 @@ public class HeaderSteps {
     public void clickRegistrationSubmitButton() {
         log.info("Click registration submit button");
         headerPage.getRegistrationSubmitButton().click();
+    }
+
+    public String extractEmailFromAccount() {
+        String email = headerPage.getSubTitleField().getText();
+        log.info("Account email: " + email);
+        return email;
     }
 }

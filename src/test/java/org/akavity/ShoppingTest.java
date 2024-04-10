@@ -31,7 +31,7 @@ public class ShoppingTest extends BaseTest {
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void findProductUsingTheSearch(SearchData searchData) {
         popUpsSteps.clickAcceptCookiesButton();
-        headerSteps.clingSearchField();
+        headerSteps.cleanSearchField();
         headerSteps.lookForProductUsingCatalogSearch(searchData.getProductName());
         popUpsSteps.closePromoCode();
 
