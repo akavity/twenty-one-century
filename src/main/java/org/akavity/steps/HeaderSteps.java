@@ -10,56 +10,71 @@ public class HeaderSteps {
     HeaderPage headerPage = new HeaderPage();
 
     public void clickAccountButton() {
+        log.info("Click account button");
         headerPage.getAccountButton().click();
     }
 
     public void clickCatalogButton() {
+        log.info("Click catalog button");
         headerPage.getCatalogButton().click();
     }
 
     public boolean isLoginButtonDisplayed() {
-        return headerPage.getLoginButton().isDisplayed();
+        boolean result = headerPage.getLoginButton().isDisplayed();
+        log.info("Is login button displayed: " + result);
+        return result;
     }
 
     public void clickLoginButton() {
+        log.info("Click login button");
         headerPage.getLoginButton().click();
     }
 
     public void clickPromoItem(String title) {
+        log.info("Click promo item: " + title);
         headerPage.getPromoItem(title).click();
     }
 
     public void clickHeaderCart() {
+        log.info("Click header cart");
         headerPage.getHeaderCartButton().click();
     }
 
     public void enterEmail(String email) {
+        log.info("Enter email: " + email);
         headerPage.getEmailField().click();
         headerPage.getEmailField().sendKeys(email);
     }
 
     public void enterPassword(String password) {
+        log.info("Enter password: " + password);
         headerPage.getPasswordField().click();
         headerPage.getPasswordField().sendKeys(password);
     }
 
     public void clickSubmitButton() {
+        log.info("Click submit button");
         headerPage.getSubmitButton().click();
     }
 
     public String extractTextFromSubTitle() {
-        return headerPage.getSubTitleField().getText();
+        String text = headerPage.getSubTitleField().getText();
+        log.info("Get title text: " + text);
+        return text;
     }
 
     public void clickProfileItem(String text) {
+        log.info("Click profile item");
         headerPage.getProfileItem(text).click();
     }
 
     public void clickRegistrationButton() {
+        log.info("Click registration button");
         headerPage.getRegistrationButton().click();
     }
 
     public void clickForgottenPasswordButton() {
+        log.info("Click forgotten password button");
         headerPage.getForgottenPasswordButton().click();
     }
 
@@ -69,22 +84,26 @@ public class HeaderSteps {
     }
 
     public void enterRegistrationEmail(String email) {
+        log.info("Enter registration email: " + email);
         headerPage.getRegistrationEmailField().click();
         headerPage.getRegistrationEmailField().sendKeys(email);
     }
 
     public void clingSearchField() {
+        log.info("Clean the catalog search field");
         SelenideElement element = headerPage.getCatalogSearchFiled();
         element.sendKeys(Keys.CONTROL + "A");         // clear input field
         element.sendKeys(Keys.BACK_SPACE);
     }
 
     public void lookForProductUsingCatalogSearch(String product) {
+        log.info("Look for product using catalog search");
         headerPage.getCatalogSearchFiled().sendKeys(product);
         headerPage.getCatalogSearchFiled().pressEnter();
     }
 
     public void clickRegistrationSubmitButton() {
+        log.info("Click registration submit button");
         headerPage.getRegistrationSubmitButton().click();
     }
 }

@@ -9,11 +9,13 @@ public class PopUpsSteps {
     PopUpsPage popUpsPage = new PopUpsPage();
     Utils utils = new Utils();
 
-    public void clickCookiesRefuseButton() {
+    public void clickRefuseCookiesButton() {
+        log.info("Click refuse cookies button");
         popUpsPage.getCookiesRefuseButton().click();
     }
 
     public void clickAcceptCookiesButton() {
+        log.info("Click accept cookies button");
         popUpsPage.getCookiesAcceptButton().click();
     }
 
