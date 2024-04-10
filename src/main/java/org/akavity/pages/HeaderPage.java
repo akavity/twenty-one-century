@@ -24,7 +24,7 @@ public class HeaderPage {
     }
 
     private final SelenideElement subTitleField = $(By.cssSelector("span[class='userToolsSubtitle']"));
-//    private final SelenideElement logoutButton = $(By.cssSelector("a[href='/logout/'] div")); // getProfileItem
+
 
     //    modalWrapperPage
     private final SelenideElement emailField = $(By.cssSelector("#login-email"));   // modalWrapperPage
@@ -94,8 +94,4 @@ public class HeaderPage {
     public SelenideElement getCatalogButton() {
         return catalogButton;
     }
-
-//    public SelenideElement getLogoutButton() {
-//        return logoutButton;
-//    }
 }

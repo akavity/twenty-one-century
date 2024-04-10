@@ -19,16 +19,6 @@ public class ContentWrapperSteps {
         return title;
     }
 
-//    @Step
-//    public ElementsCollection getDescriptionFields() {
-//        return contentWrapperPage.getDescriptionFields();
-//    }
-
-    @Step
-    public ElementsCollection getFoundProducts() {
-        return contentWrapperPage.getFoundProducts();
-    }
-
     @Step
     public boolean doDescriptionsContainText(String text, int numberOfElements) {
         ElementsCollection collection = contentWrapperPage.getDescriptionFields();
