@@ -37,6 +37,7 @@ public class HeaderSteps {
 
     public void clickHeaderCart() {
         log.info("Click header cart");
+        headerPage.getHeaderCartButton().scrollTo();
         headerPage.getHeaderCartButton().click();
     }
 

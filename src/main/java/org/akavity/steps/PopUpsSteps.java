@@ -14,6 +14,11 @@ public class PopUpsSteps {
         popUpsPage.getCookiesRefuseButton().click();
     }
 
+    public void clickSecondCookiesRefuseButton() {
+        log.info("Click second time refuse  cookies button ");
+        popUpsPage.getCookiesSecondRefuseButton().click();
+    }
+
     public void clickAcceptCookiesButton() {
         log.info("Click accept cookies button");
         popUpsPage.getCookiesAcceptButton().click();

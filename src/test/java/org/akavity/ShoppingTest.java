@@ -2,7 +2,9 @@ package org.akavity;
 
 import org.akavity.annotations.TestData;
 import org.akavity.models.shoppingTest.CatalogData;
+import org.akavity.models.shoppingTest.SearchCartData;
 import org.akavity.models.shoppingTest.SearchData;
+import org.akavity.steps.CartSteps;
 import org.akavity.steps.ContentWrapperSteps;
 import org.akavity.steps.HeaderSteps;
 import org.akavity.steps.PopUpsSteps;
@@ -15,12 +17,14 @@ public class ShoppingTest extends BaseTest {
     PopUpsSteps popUpsSteps = new PopUpsSteps();
     HeaderSteps headerSteps = new HeaderSteps();
     ContentWrapperSteps contentWrapperSteps = new ContentWrapperSteps();
+    CartSteps cartSteps = new CartSteps();
 
     @TestData(jsonFile = "catalogData", model = "CatalogData", folder = "shoppingTest")
     @Test(description = "",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void moveAroundTheCatalog(CatalogData catalog) {
-        popUpsSteps.clickAcceptCookiesButton();
+        popUpsSteps.clickRefuseCookiesButton();
+        popUpsSteps.clickSecondCookiesRefuseButton();
         headerSteps.clickPromoItem(catalog.getPromoItem());
 
         Assert.assertEquals(contentWrapperSteps.getTitle(), catalog.getTitle());
@@ -30,7 +34,8 @@ public class ShoppingTest extends BaseTest {
     @Test(description = "",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void findProductUsingTheSearch(SearchData searchData) {
-        popUpsSteps.clickAcceptCookiesButton();
+        popUpsSteps.clickRefuseCookiesButton();
+        popUpsSteps.clickSecondCookiesRefuseButton();
         headerSteps.cleanSearchField();
         headerSteps.lookForProductUsingCatalogSearch(searchData.getProductName());
         popUpsSteps.closePromoCode();
@@ -38,5 +43,20 @@ public class ShoppingTest extends BaseTest {
         boolean result = contentWrapperSteps
                 .doDescriptionsContainText(searchData.getProductName(), searchData.getNumberOfProducts());
         Assert.assertTrue(result);
+    }
+
+
+    @TestData(jsonFile = "searchCartData", model = "SearchCartData", folder = "shoppingTest")
+    @Test(description = "",
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void findProductUsingSearchAndAddToCart(SearchCartData search) {
+        popUpsSteps.clickRefuseCookiesButton();
+        popUpsSteps.clickSecondCookiesRefuseButton();
+        headerSteps.cleanSearchField();
+        headerSteps.lookForProductUsingCatalogSearch(search.getProduct());
+        contentWrapperSteps.clickRandomPinkButton(search.getNumberOfElements());
+        headerSteps.clickHeaderCart();
+
+        Assert.assertTrue(cartSteps.extractBasketTitleItem().contains(search.getCartProduct()));
     }
 }

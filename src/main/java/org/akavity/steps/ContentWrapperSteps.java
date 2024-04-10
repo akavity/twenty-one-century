@@ -1,16 +1,20 @@
 package org.akavity.steps;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.ContentWrapperPage;
+import org.akavity.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
 public class ContentWrapperSteps {
+    String PARAMETER = "{behavior: \"instant\", block: \"center\", inline: \"center\"}";
     ContentWrapperPage contentWrapperPage = new ContentWrapperPage();
+    Utils utils = new Utils();
 
     @Step
     public String getTitle() {
@@ -39,5 +43,15 @@ public class ContentWrapperSteps {
             }
         }
         return result;
+    }
+
+    @Step
+    public void clickRandomPinkButton(int elements) {
+        log.info("Click random pink button");
+        utils.sleep(2000);
+        ElementsCollection collection = contentWrapperPage.getPinkButtons().first(elements);
+        SelenideElement randomElement = collection.get(utils.rnd(1, collection.size()));
+        randomElement.scrollIntoView(PARAMETER);
+        randomElement.click();
     }
 }
