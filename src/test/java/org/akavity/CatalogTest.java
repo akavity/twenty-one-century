@@ -9,7 +9,6 @@ import org.akavity.steps.ContentWrapperSteps;
 import org.akavity.steps.HeaderSteps;
 import org.akavity.steps.PopUpsSteps;
 import org.akavity.utils.JsonReader;
-import org.akavity.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,7 +17,6 @@ public class CatalogTest extends BaseTest {
     HeaderSteps headerSteps = new HeaderSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
     ContentWrapperSteps contentWrapperSteps = new ContentWrapperSteps();
-    Utils utils = new Utils();
 
     @TestData(jsonFile = "hiddenItemData", model = "HiddenItemData", folder = "catalogTest")
     @Test(description = "Select hidden an element in the catalog",
