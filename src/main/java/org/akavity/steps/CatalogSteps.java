@@ -24,9 +24,15 @@ public class CatalogSteps {
     }
 
     @Step
-    public void clickCategoryItem(String title) {  // Right Container
-        log.info("Click right container item: " + title);
-        catalogPage.getCategoryItem(title).click();
+    public void clickSubsectionItem(String name) {  // Right Container
+        log.info("Click subsection item: " + name);
+        catalogPage.getSubsectionItem(name).click();
+    }
+
+    @Step
+    public void clickSectionItem(String name) {
+        log.info("Click section item: " + name);
+        catalogPage.getSectionItem(name).click();
     }
 
     @Step

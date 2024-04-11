@@ -26,7 +26,7 @@ public class CatalogTest extends BaseTest {
         headerSteps.clickCatalogButton();
         catalogSteps.hoverTheMouseOverChapterItem(hiddenItem.getChapterItem());
         catalogSteps.clickShowAllButton(hiddenItem.getAllButton());
-        catalogSteps.clickCategoryItem(hiddenItem.getCategoryItem());
+        catalogSteps.clickSubsectionItem(hiddenItem.getCategoryItem());
 
         String actualTitle = contentWrapperSteps.getTitle();
         String expectedTitle = hiddenItem.getExpectedTitle();
@@ -40,7 +40,7 @@ public class CatalogTest extends BaseTest {
         popUpsSteps.clickAcceptCookiesButton();
         headerSteps.clickCatalogButton();
         catalogSteps.hoverTheMouseOverChapterItem(catalog.getChapterItem());
-        catalogSteps.clickCategoryItem(catalog.getCategoryItem());
+        catalogSteps.clickSubsectionItem(catalog.getCategoryItem());
 
         String actualTitle = contentWrapperSteps.getTitle();
         String expectedTitle = catalog.getExpectedTitle();

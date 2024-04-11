@@ -13,9 +13,14 @@ public class CatalogPage {
         return $(By.xpath("//div[contains(@class,'leftContainer')]//span[contains(text(),'" + title + "')]"));
     }
 
-    public SelenideElement getCategoryItem(String name) {
+    public SelenideElement getSectionItem(String name) {
+        return $(By.xpath(" //div[contains(@class,'rightContainer')]" +
+                "//a[contains(@class,'categoryButton')]/span[contains(text(),'" + name + "')]"));
+    }
+
+    public SelenideElement getSubsectionItem(String name) {
         return $(By.xpath("//div[contains(@class,'rightContainer')]" +
-                "//span[contains(@class,'categoryName') and contains(text(),'" + name + "')]"));
+                "//a[contains(@class,'itemContainer')]/span[contains(text(),'" + name + "')]"));
     }
 
     public SelenideElement getShowAllButton(String categoryName) {
