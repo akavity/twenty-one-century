@@ -2,13 +2,12 @@ package org.akavity;
 
 import org.akavity.annotations.TestData;
 import org.akavity.models.shoppingTest.CatalogData;
+import org.akavity.models.shoppingTest.PhoneData;
 import org.akavity.models.shoppingTest.SearchCartData;
 import org.akavity.models.shoppingTest.SearchData;
-import org.akavity.steps.CartSteps;
-import org.akavity.steps.ContentWrapperSteps;
-import org.akavity.steps.HeaderSteps;
-import org.akavity.steps.PopUpsSteps;
+import org.akavity.steps.*;
 import org.akavity.utils.JsonReader;
+import org.akavity.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -18,6 +17,9 @@ public class ShoppingTest extends BaseTest {
     HeaderSteps headerSteps = new HeaderSteps();
     ContentWrapperSteps contentWrapperSteps = new ContentWrapperSteps();
     CartSteps cartSteps = new CartSteps();
+    CatalogSteps catalogSteps = new CatalogSteps();
+    FilterSteps filterSteps = new FilterSteps();
+    Utils utils = new Utils();
 
     @TestData(jsonFile = "catalogData", model = "CatalogData", folder = "shoppingTest")
     @Test(description = "",
@@ -58,5 +60,22 @@ public class ShoppingTest extends BaseTest {
         headerSteps.clickHeaderCart();
 
         Assert.assertTrue(cartSteps.extractBasketTitleItem().contains(search.getCartProduct()));
+    }
+
+    @TestData(jsonFile = "phoneData", model = "PhoneData", folder = "shoppingTest")
+    @Test(description = "Check that product prices are within the specified limit",
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void selectPhone(PhoneData phone) {
+        popUpsSteps.clickRefuseCookiesButton();
+        popUpsSteps.clickSecondCookiesRefuseButton();
+        headerSteps.clickCatalogButton();
+        catalogSteps.hoverTheMouseOverChapterItem(phone.getChapterItem());
+        catalogSteps.clickSubsectionItem(phone.getSubsectionItem());
+        filterSteps.enterPrice(phone.getMinPrice(), phone.getMaxPrice());
+        filterSteps.selectCheckbox(phone.getTitleManufacturer(), phone.getManufacturer());
+        filterSteps.selectCheckbox(phone.getTitleInternalMemory(), phone.getInternalMemory());
+        filterSteps.applyFiltersButton();
+
+        Assert.assertTrue(contentWrapperSteps.areProductPricesWithinLimit(phone.getMinPrice(), phone.getMaxPrice()));
     }
 }

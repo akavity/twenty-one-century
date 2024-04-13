@@ -54,4 +54,27 @@ public class ContentWrapperSteps {
         randomElement.scrollIntoView(PARAMETER);
         randomElement.click();
     }
+
+    @Step
+    public boolean areProductPricesWithinLimit(String min, String max) {
+        log.info("Check product prices \n min price: " + min + "\n max price: " + max);
+        ElementsCollection collection = contentWrapperPage.getPriceFields();
+        boolean result = true;
+        if (collection.isEmpty()) {
+            log.info("Collection is empty");
+            result = false;
+        } else {
+            for (SelenideElement el : collection) {
+                String text = el.getText();
+                double price = utils.extractDoubleFromText(text, "\\d+[,]\\d{2}");
+                log.info("Product price: " + price);
+                if (price > Double.parseDouble(max) && price < Double.parseDouble(min)) {
+                    log.info("The product price isn't in the limit");
+                    result = false;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
 }
