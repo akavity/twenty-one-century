@@ -3,5 +3,10 @@
     "product": "iPhone 12",
     "numberOfElements": 5,
     "cartProduct": "iPhone 12"
+  },
+  {
+    "product": "Xiaomi Redmi Note 13",
+    "numberOfElements": 5,
+    "cartProduct": "Xiaomi Redmi Note 13"
   }
 ]

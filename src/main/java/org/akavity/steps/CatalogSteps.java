@@ -4,11 +4,13 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.CatalogPage;
+import org.akavity.utils.Utils;
 
 @Log4j2
 public class CatalogSteps {
     String PARAMETER = "{behavior: \"instant\", block: \"center\", inline: \"center\"}";
     CatalogPage catalogPage = new CatalogPage();
+    Utils utils = new Utils();
 
     @Step
     public String extractTextFromTitle() {
@@ -25,8 +27,10 @@ public class CatalogSteps {
 
     @Step
     public void clickSubsectionItem(String name) {  // Right Container
+        utils.sleep(1500);
         log.info("Click subsection item: " + name);
         catalogPage.getSubsectionItem(name).click();
+
     }
 
     @Step

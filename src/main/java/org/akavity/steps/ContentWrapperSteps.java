@@ -46,11 +46,35 @@ public class ContentWrapperSteps {
     }
 
     @Step
+    public boolean doDescriptionsContainText(String text) {
+        ElementsCollection collection = contentWrapperPage.getDescriptionFiltersField();
+        log.info("Description collection size: " + collection.size());
+        boolean result = true;
+        if (collection.isEmpty()) {
+            log.info("Description collection is empty");
+            result = false;
+        } else {
+            List<String> names = new ArrayList<>(collection.texts());
+            for (String name : names) {
+                log.info("Description collection contains : " + name);
+                if (!name.contains(text)) {
+                    log.info("/// Object name dose not contain text: " + text);
+                    log.info("Description: " + name);
+                    result = false;
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+
+    @Step
     public void clickRandomPinkButton(int elements) {
         log.info("Click random pink button");
         utils.sleep(2000);
         ElementsCollection collection = contentWrapperPage.getPinkButtons().first(elements);
-        SelenideElement randomElement = collection.get(utils.rnd(1, collection.size()));
+        SelenideElement randomElement = collection.get(utils.rnd(0, collection.size() - 1));
         randomElement.scrollIntoView(PARAMETER);
         randomElement.click();
     }
