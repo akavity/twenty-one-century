@@ -38,7 +38,7 @@ public class ShoppingTest extends BaseTest {
     public void findProductUsingTheSearch(SearchData searchData) {
         popUpsSteps.clickRefuseCookiesButton();
         popUpsSteps.clickSecondCookiesRefuseButton();
-        headerSteps.cleanSearchField();
+     //   headerSteps.cleanSearchField();
         headerSteps.lookForProductUsingCatalogSearch(searchData.getProductName());
         popUpsSteps.closePromoCode();
 
@@ -54,7 +54,7 @@ public class ShoppingTest extends BaseTest {
     public void findProductUsingSearchAndAddToCart(SearchCartData search) {
         popUpsSteps.clickRefuseCookiesButton();
         popUpsSteps.clickSecondCookiesRefuseButton();
-        headerSteps.cleanSearchField();
+      //  headerSteps.cleanSearchField();
         headerSteps.lookForProductUsingCatalogSearch(search.getProduct());
         contentWrapperSteps.clickRandomPinkButton(search.getNumberOfElements());
         headerSteps.clickHeaderCart();
@@ -77,5 +77,7 @@ public class ShoppingTest extends BaseTest {
         filterSteps.applyFiltersButton();
 
         Assert.assertTrue(contentWrapperSteps.areProductPricesWithinLimit(phone.getMinPrice(), phone.getMaxPrice()));
+        Assert.assertTrue(contentWrapperSteps.doDescriptionsContainText(phone.getManufacturer()));
+        Assert.assertTrue(contentWrapperSteps.doDescriptionsContainText(phone.getInternalMemory()));
     }
 }

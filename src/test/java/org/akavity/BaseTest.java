@@ -38,5 +38,6 @@ public class BaseTest {
     public void clearData() {
         clearBrowserLocalStorage();
         clearBrowserCookies();
+        closeWebDriver();
     }
 }
