@@ -22,9 +22,9 @@ public class ShoppingTest extends BaseTest {
     Utils utils = new Utils();
 
     @TestData(jsonFile = "catalogData", model = "CatalogData", folder = "shoppingTest")
-    @Test(description = "",
+    @Test(description = "Headers Navigation",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
-    public void moveAroundTheCatalog(CatalogData catalog) {
+    public void moveAroundTheHeader(CatalogData catalog) {
         popUpsSteps.clickRefuseCookiesButton();
         popUpsSteps.clickSecondCookiesRefuseButton();
         headerSteps.clickPromoItem(catalog.getPromoItem());
@@ -33,7 +33,7 @@ public class ShoppingTest extends BaseTest {
     }
 
     @TestData(jsonFile = "searchData", model = "SearchData", folder = "shoppingTest")
-    @Test(description = "",
+    @Test(description = "Find a product using search",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void findProductUsingTheSearch(SearchData searchData) {
         popUpsSteps.clickRefuseCookiesButton();
@@ -49,7 +49,7 @@ public class ShoppingTest extends BaseTest {
 
 
     @TestData(jsonFile = "searchCartData", model = "SearchCartData", folder = "shoppingTest")
-    @Test(description = "",
+    @Test(description = "Find the product using the search and add it to the cart",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void findProductUsingSearchAndAddToCart(SearchCartData search) {
         popUpsSteps.clickRefuseCookiesButton();
@@ -63,7 +63,7 @@ public class ShoppingTest extends BaseTest {
     }
 
     @TestData(jsonFile = "phoneData", model = "PhoneData", folder = "shoppingTest")
-    @Test(description = "Check that product prices are within the specified limit",
+    @Test(description = "Make sure that product prices are within the specified limit",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void selectPhone(PhoneData phone) {
         popUpsSteps.clickRefuseCookiesButton();

@@ -1,6 +1,8 @@
 package org.akavity;
 
 import org.akavity.annotations.TestData;
+import org.akavity.models.personalTest.AddressData;
+import org.akavity.models.personalTest.NewAddressData;
 import org.akavity.models.personalTest.PersonalData;
 import org.akavity.steps.HeaderSteps;
 import org.akavity.steps.ModalWrapperSteps;
@@ -19,7 +21,7 @@ public class PersonalDataTest extends BaseTest {
     Utils utils = new Utils();
 
     @TestData(jsonFile = "personalData", model = "PersonalData", folder = "personalTest")
-    @Test(description = "Change personal data using a fake name, random date",
+    @Test(description = "Change personal data using a fake name, random birth",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void changeNameGenderBirth(PersonalData data) {
         String fakeName = utils.getFakeFullName();
@@ -45,5 +47,70 @@ public class PersonalDataTest extends BaseTest {
         Assert.assertEquals(actualName, fakeName);
         Assert.assertEquals(actualGender, data.getTextMale());
         Assert.assertEquals(actualBirth, randomBirth);
+    }
+
+    @TestData(jsonFile = "addressData", model = "AddressData", folder = "personalTest")
+    @Test(description = "Add an address to personal data",
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void addAddress(AddressData address) {
+        popUpsSteps.clickAcceptCookiesButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickLoginButton();
+        modalWrapperSteps.enterDataIntoModalField(address.getTitleEmail(), address.getEmail());
+        modalWrapperSteps.enterDataIntoModalField(address.getTitlePassword(), address.getPassword());
+        modalWrapperSteps.clickSubmitButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickProfileItem(address.getItemPersonalData());
+        profileContentSteps.clickAddButton(address.getAddButtonTitle());
+        modalWrapperSteps.enterCity(address.getCity());
+        modalWrapperSteps.enterStreet(address.getStreet());
+        modalWrapperSteps.enterDataIntoModalField(address.getTitleEntrance(), address.getNumberOfEntrance());
+        modalWrapperSteps.enterDataIntoModalField(address.getTitleFloor(), address.getNumberOfFloor());
+        modalWrapperSteps.enterDataIntoModalField(address.getTitleFlat(), address.getNumberOfFlat());
+        modalWrapperSteps.clickSubmitButton();
+
+        Assert.assertTrue(profileContentSteps.isAddressVisible(address.getStreet()));
+    }
+
+    @TestData(jsonFile = "newAddressData", model = "NewAddressData", folder = "personalTest")
+    @Test(dependsOnMethods = "addAddress", description = "Change the address in personal data",  // dependsOnMethods = "addAddress", alwaysRun = true нежесткая зависимость
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void editAddress(NewAddressData address) {
+        popUpsSteps.clickAcceptCookiesButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickLoginButton();
+        modalWrapperSteps.enterDataIntoModalField(address.getTitleEmail(), address.getEmail());
+        modalWrapperSteps.enterDataIntoModalField(address.getTitlePassword(), address.getPassword());
+        modalWrapperSteps.clickSubmitButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickProfileItem(address.getItemPersonalData());
+        profileContentSteps.clickEditAddressButton(address.getOldStreet());
+
+        modalWrapperSteps.enterStreet(address.getNewStreet());
+        modalWrapperSteps.enterDataIntoModalField(address.getTitleEntrance(), address.getNumberOfEntrance());
+        modalWrapperSteps.enterDataIntoModalField(address.getTitleFloor(), address.getNumberOfFloor());
+        modalWrapperSteps.enterDataIntoModalField(address.getTitleFlat(), address.getNumberOfFlat());
+        modalWrapperSteps.clickSubmitButton();
+
+        Assert.assertTrue(profileContentSteps.isAddressVisible(address.getNewStreet()));
+    }
+
+    @TestData(jsonFile = "newAddressData", model = "NewAddressData", folder = "personalTest")
+    @Test(dependsOnMethods = "editAddress", description = "Delete the address in personal data",    // dependsOnMethods = "addAddress", alwaysRun = true нежесткая зависимость
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void deleteAddress(NewAddressData address) {
+        popUpsSteps.clickAcceptCookiesButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickLoginButton();
+        modalWrapperSteps.enterDataIntoModalField(address.getTitleEmail(), address.getEmail());
+        modalWrapperSteps.enterDataIntoModalField(address.getTitlePassword(), address.getPassword());
+        modalWrapperSteps.clickSubmitButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickProfileItem(address.getItemPersonalData());
+        profileContentSteps.deleteAddress(address.getNewStreet());
+        modalWrapperSteps.clickPinkDeleteButton();
+
+        Assert.assertFalse(profileContentSteps.isAddressVisible(address.getNewStreet()));
+        Assert.assertFalse(profileContentSteps.isAddressVisible(address.getOldStreet()));
     }
 }

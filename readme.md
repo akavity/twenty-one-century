@@ -7,7 +7,7 @@
 * Test 4. Delete the address in personal data.
 * Test 5. Move around the catalog.
 * Test 6. Select hidden an element in the catalog.
-* Test 7. Select brand in the catalog
+* Test 7. Select brand in the catalog.
 * Test 8. Enter incorrect data when logging into your account.
 * Test 9. Login to registered user account.
 * Test 10. Find a product using search.

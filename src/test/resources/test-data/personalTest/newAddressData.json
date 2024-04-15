@@ -1,0 +1,19 @@
+[
+  {
+    "titleEmail": "email",
+    "email": "aprlvni413@1secmail.ru",
+    "titlePassword": "password",
+    "password": "0e6aaa60",
+    "itemPersonalData": "Личные данные",
+    "addButtonTitle": "Адреса",
+    "city": "г. Минск",
+    "oldStreet":"ул. Воропаевская, д. 6",
+    "newStreet": "ул. Ульяновская, д. 27",
+    "titleEntrance": "entrance",
+    "numberOfEntrance": "3",
+    "titleFloor": "floor",
+    "numberOfFloor": "5",
+    "titleFlat": "flat",
+    "numberOfFlat": "24"
+  }
+]
