@@ -26,14 +26,20 @@ public class ProfileContentSteps {
     @Step
     public void clickEditAddressButton(String street) {
         log.info("Edit address button");
-        SelenideElement element = profileContentPage.getAddressField(street);
+        SelenideElement element = profileContentPage.getEditAddressButton(street);
         element.scrollIntoView(PARAMETER);
         element.click();
     }
 
     @Step
+    public boolean isAddressVisible(String address) {
+        utils.sleep();
+        return profileContentPage.getAddressField(address).isDisplayed();
+    }
+
+    @Step
     public String extractTextFromPersonalDataField(String data) {
-        utils.sleep(1000);
+        utils.sleep();
         String text = profileContentPage.getPersonalDataField(data).getText();
         log.info("Personal data field contains text: " + text);
         return text;
@@ -43,5 +49,11 @@ public class ProfileContentSteps {
     public void clickEditData(String id) {
         log.info("Click edit data");
         profileContentPage.getEditPersonalDataButton(id).click();
+    }
+
+    @Step
+    public void deleteAddress(String address) {
+        log.info("Delete adress: " + address);
+        profileContentPage.getDeleteAddressButton(address).click();
     }
 }

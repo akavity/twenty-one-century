@@ -68,7 +68,6 @@ public class ContentWrapperSteps {
         return result;
     }
 
-
     @Step
     public void clickRandomPinkButton(int elements) {
         log.info("Click random pink button");

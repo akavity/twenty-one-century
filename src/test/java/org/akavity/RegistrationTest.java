@@ -14,7 +14,7 @@ public class RegistrationTest extends BaseTest {
     HeaderSteps headerSteps = new HeaderSteps();
 
     @TestData(jsonFile = "errorData", model = "ErrorData", folder = "registrationTest")
-    @Test(description = "Entering incorrect data when logging into your account",
+    @Test(description = "Enter incorrect data when logging into your account",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void isErrorMessageDisplayed(ErrorData error) {
         popUpsSteps.clickAcceptCookiesButton();

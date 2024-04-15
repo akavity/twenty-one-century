@@ -42,13 +42,13 @@ public class Utils {
 
     public String getRandomBirthDate() {
         Random random = new Random();
-        int minDay = (int) LocalDate.of(1970, 1, 1).toEpochDay();
-        int maxDay = (int) LocalDate.of(2015, 12, 31).toEpochDay();
+        int minDay = (int) LocalDate.of(1960, 1, 1).toEpochDay();
+        int maxDay = (int) LocalDate.of(2004, 12, 31).toEpochDay();
         long randomDay = minDay + random.nextInt(maxDay - minDay);
 
         LocalDate randomBirthDate = LocalDate.ofEpochDay(randomDay);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");   // применяем нужный паттерн датыStr
         // String textDate = randomBirthDate.format(formatter); вывести в нужном формате
         // LocalDate parsedDate = LocalDate.parse(text, formatter); перевести в LocalDate
         return randomBirthDate.format(formatter);
