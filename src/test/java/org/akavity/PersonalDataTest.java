@@ -130,4 +130,23 @@ public class PersonalDataTest extends BaseTest {
 
         Assert.assertTrue(profileContentSteps.isAddressDisplayed(phone.getPhoneNumber()));
     }
+
+    @TestData(jsonFile = "newPhoneNumberData", model = "NewPhoneNumberData", folder = "personalTest")
+    @Test(dependsOnMethods = "addPhoneNumber", description = "Change the phone number in personal data",  // dependsOnMethods = "addAddress", alwaysRun = true нежесткая зависимость
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void editPhoneNumber(NewPhoneNumberData phone) {
+        popUpsSteps.clickAcceptCookiesButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickLoginButton();
+        modalWrapperSteps.enterDataIntoModalField(phone.getTitleEmail(), phone.getEmail());
+        modalWrapperSteps.enterDataIntoModalField(phone.getTitlePassword(), phone.getPassword());
+        modalWrapperSteps.clickSubmitButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickProfileItem(phone.getItemPersonalData());
+        profileContentSteps.clickEditPhoneNumberButton(phone.getOldPhoneNumber());
+        modalWrapperSteps.enterDataIntoModalField(phone.getTitlePhone(), phone.getNewPhoneNumber());
+        modalWrapperSteps.clickSubmitButton();
+
+        Assert.assertTrue(profileContentSteps.isPhoneNumberDisplayed(phone.getNewPhoneNumber()));
+    }
 }

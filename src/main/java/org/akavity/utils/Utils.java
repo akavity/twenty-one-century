@@ -40,7 +40,7 @@ public class Utils {
         return result;
     }
 
-    public String getRandomBirthDate() {
+    public String getRandomBirthday() {
         Random random = new Random();
         int minDay = (int) LocalDate.of(1960, 1, 1).toEpochDay();
         int maxDay = (int) LocalDate.of(2004, 12, 31).toEpochDay();
