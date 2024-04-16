@@ -5,12 +5,15 @@ import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.HeaderPage;
 import org.openqa.selenium.Keys;
 
+import static com.codeborne.selenide.Condition.exist;
+
 @Log4j2
 public class HeaderSteps {
     HeaderPage headerPage = new HeaderPage();
 
     public void clickAccountButton() {
         log.info("Click account button");
+        headerPage.getAccountButton().shouldBe(exist);
         headerPage.getAccountButton().click();
     }
 

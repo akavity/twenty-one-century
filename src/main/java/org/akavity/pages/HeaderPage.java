@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class HeaderPage {
     private final SelenideElement logoButton = $(By.cssSelector("a[class='logotypeImg']"));
     private final SelenideElement catalogButton = $(By.cssSelector("button[class*='catalogButton']"));
-    private final SelenideElement accountButton = $(By.cssSelector("button[class*='userToolsToggler']"));
+    private final SelenideElement accountButton = $(By.xpath("//span[@class='userToolsText']"));
     private final SelenideElement headerCartButton = $(By.cssSelector("div[class='headerCart']"));
     private final SelenideElement catalogSearchFiled = $(By.cssSelector("#catalogSearch"));
 
@@ -24,7 +24,6 @@ public class HeaderPage {
     }
 
     private final SelenideElement subTitleField = $(By.cssSelector("span[class='userToolsSubtitle']"));
-
 
     //    modalWrapperPage
     private final SelenideElement emailField = $(By.cssSelector("#login-email"));   // modalWrapperPage
