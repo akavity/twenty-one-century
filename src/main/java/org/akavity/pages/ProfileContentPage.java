@@ -54,16 +54,16 @@ public class ProfileContentPage {
     }
 
     public SelenideElement getPhoneNumberField(String phoneNumber) {
-        return $(By.xpath("//div[contains(@class,'phone')]//p[contains(text(),'" + phoneNumber + "')]"));
+        return $(By.xpath("//div[contains(@class,'PhoneItem')]//span[contains(text(),'" + phoneNumber + "')]"));
     }
 
     public SelenideElement getEditPhoneNumberButton(String phoneNumber) {
-        return $(By.xpath("//p[contains(text(),'" + phoneNumber + "')]" +
-                "/ancestor::div[contains(@class,'phone')]//div[contains(@class,'edit')]"));
+        return $(By.xpath("//span[contains(text(),'" + phoneNumber + "')]" +
+                "/ancestor::div[contains(@class,'PhoneItem')]//div[contains(@class,'edit')]"));
     }
 
     public SelenideElement getDeletePhoneNumberButton(String phoneNumber) {
-        return $(By.xpath("//p[contains(text(),'" + phoneNumber + "')]" +
-                "/ancestor::div[contains(@class,'phone')]//div[contains(@class,'delete')]"));
+        return $(By.xpath("//span[contains(text(),'" + phoneNumber + "')]" +
+                "/ancestor::div[contains(@class,'PhoneItem')]//div[contains(@class,'delete')]"));
     }
 }

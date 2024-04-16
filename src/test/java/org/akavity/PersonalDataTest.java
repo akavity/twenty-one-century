@@ -1,9 +1,7 @@
 package org.akavity;
 
 import org.akavity.annotations.TestData;
-import org.akavity.models.personalTest.AddressData;
-import org.akavity.models.personalTest.NewAddressData;
-import org.akavity.models.personalTest.PersonalData;
+import org.akavity.models.personalTest.*;
 import org.akavity.steps.HeaderSteps;
 import org.akavity.steps.ModalWrapperSteps;
 import org.akavity.steps.PopUpsSteps;
@@ -25,7 +23,7 @@ public class PersonalDataTest extends BaseTest {
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void changeNameGenderBirth(PersonalData data) {
         String fakeName = utils.getFakeFullName();
-        String randomBirth = utils.getRandomBirthDate();
+        String randomBirth = utils.getRandomBirthday();
 
         popUpsSteps.clickAcceptCookiesButton();
         headerSteps.clickAccountButton();
@@ -69,7 +67,7 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.enterDataIntoModalField(address.getTitleFlat(), address.getNumberOfFlat());
         modalWrapperSteps.clickSubmitButton();
 
-        Assert.assertTrue(profileContentSteps.isAddressVisible(address.getStreet()));
+        Assert.assertTrue(profileContentSteps.isAddressDisplayed(address.getStreet()));
     }
 
     @TestData(jsonFile = "newAddressData", model = "NewAddressData", folder = "personalTest")
@@ -92,7 +90,7 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.enterDataIntoModalField(address.getTitleFlat(), address.getNumberOfFlat());
         modalWrapperSteps.clickSubmitButton();
 
-        Assert.assertTrue(profileContentSteps.isAddressVisible(address.getNewStreet()));
+        Assert.assertTrue(profileContentSteps.isAddressDisplayed(address.getNewStreet()));
     }
 
     @TestData(jsonFile = "newAddressData", model = "NewAddressData", folder = "personalTest")
@@ -110,7 +108,26 @@ public class PersonalDataTest extends BaseTest {
         profileContentSteps.deleteAddress(address.getNewStreet());
         modalWrapperSteps.clickPinkDeleteButton();
 
-        Assert.assertFalse(profileContentSteps.isAddressVisible(address.getNewStreet()));
-        Assert.assertFalse(profileContentSteps.isAddressVisible(address.getOldStreet()));
+        Assert.assertFalse(profileContentSteps.isAddressDisplayed(address.getNewStreet()));
+        Assert.assertFalse(profileContentSteps.isAddressDisplayed(address.getOldStreet()));
+    }
+
+    @TestData(jsonFile = "phoneNumberData", model = "PhoneNumberData", folder = "personalTest")
+    @Test(description = "Add a phone number to personal data",
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void addPhoneNumber(PhoneNumberData phone) {
+        popUpsSteps.clickAcceptCookiesButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickLoginButton();
+        modalWrapperSteps.enterDataIntoModalField(phone.getTitleEmail(), phone.getEmail());
+        modalWrapperSteps.enterDataIntoModalField(phone.getTitlePassword(), phone.getPassword());
+        modalWrapperSteps.clickSubmitButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickProfileItem(phone.getItemPersonalData());
+        profileContentSteps.clickAddButton(phone.getAddButtonTitle());
+        modalWrapperSteps.enterDataIntoModalField(phone.getTitlePhone(), phone.getPhoneNumber());
+        modalWrapperSteps.clickSubmitButton();
+
+        Assert.assertTrue(profileContentSteps.isAddressDisplayed(phone.getPhoneNumber()));
     }
 }

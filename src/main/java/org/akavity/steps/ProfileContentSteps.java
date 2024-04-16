@@ -32,9 +32,23 @@ public class ProfileContentSteps {
     }
 
     @Step
-    public boolean isAddressVisible(String address) {
+    public void clickEditPhoneNumberButton(String phoneNumber) {
+        log.info("Edit address button");
+        SelenideElement element = profileContentPage.getEditPhoneNumberButton(phoneNumber);
+        element.scrollIntoView(PARAMETER);
+        element.click();
+    }
+
+    @Step
+    public boolean isAddressDisplayed(String address) {
         utils.sleep();
         return profileContentPage.getAddressField(address).isDisplayed();
+    }
+
+    @Step
+    public boolean isPhoneNumberDisplayed(String telephoneNumber) {
+        utils.sleep();
+        return profileContentPage.getPhoneNumberField(telephoneNumber).isDisplayed();
     }
 
     @Step
@@ -53,7 +67,13 @@ public class ProfileContentSteps {
 
     @Step
     public void deleteAddress(String address) {
-        log.info("Delete adress: " + address);
+        log.info("Delete address: " + address);
         profileContentPage.getDeleteAddressButton(address).click();
+    }
+
+    @Step
+    public void deletePhoneNumber(String phoneNumber) {
+        log.info("Delete phone number: " + phoneNumber);
+        profileContentPage.getDeletePhoneNumberButton(phoneNumber).click();
     }
 }
