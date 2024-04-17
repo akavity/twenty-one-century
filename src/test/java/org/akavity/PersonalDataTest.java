@@ -224,4 +224,22 @@ public class PersonalDataTest extends BaseTest {
         Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleLegalAddress()), requisites.getDataLegalAddressNew());
         Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleRcbic()), requisites.getDataRcbicNew());
     }
+
+    @TestData(jsonFile = "requisitesData", model = "RequisitesData", folder = "personalTest")
+    @Test(dependsOnMethods = "editRequisites", description = "Delete the requisites in personal data",    // dependsOnMethods = "addAddress", alwaysRun = true нежесткая зависимость
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void deleteRequisites(RequisitesData requisites) {
+        popUpsSteps.clickAcceptCookiesButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickLoginButton();
+        modalWrapperSteps.enterDataIntoModalField(requisites.getTitleEmail(), requisites.getEmail());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getTitlePassword(), requisites.getPassword());
+        modalWrapperSteps.clickSubmitButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickProfileItem(requisites.getPersonalDataItem());
+        profileContentSteps.deleteRequisites();
+        modalWrapperSteps.clickPinkDeleteButton();
+
+        Assert.assertFalse(profileContentSteps.isRequisitesBockDisplayed());
+    }
 }

@@ -9,15 +9,18 @@
 * Test 5. Add a phone number to personal data.
 * Test 6. Change the phone number in personal data.
 * Test 7. Delete the phone number in personal data.
-* Test 8. Move around the catalog.
-* Test 9. Select a hidden element in the catalog.
-* Test 10. Select a brand in the catalog.
-* Test 11. Enter incorrect data when logging into your account.
-* Test 12. Login to registered user account.
-* Test 13. Find a product using search.
-* Test 14. Headers Navigation.
-* Test 15. Find the product using the search and add it to the cart.
-* Test 16. Make sure that product prices are within the specified limit.
+* test 8. Add requisites to personal data.
+* Test 9. Change the requisites in personal data.
+* Test 10. Delete the requisites in personal data.
+* Test 11. Move around the catalog.
+* Test 12. Select a hidden element in the catalog.
+* Test 13. Select a brand in the catalog.
+* Test 14. Enter incorrect data when logging into your account.
+* Test 15. Login to registered user account.
+* Test 16. Find a product using search.
+* Test 17. Headers Navigation.
+* Test 18. Find the product using the search and add it to the cart.
+* Test 19. Make sure that product prices are within the specified limit.
 
 ## Technologies:
 
@@ -27,5 +30,6 @@
 * Selenide 7.0.4
 * Allure 2.25.0
 * Apache Log4j 2.22.0
+* Gson 2.10
 * Project Lombok 1.18.30
 * Java Faker 1.0.2
