@@ -93,7 +93,7 @@ public class PersonalDataTest extends BaseTest {
     }
 
     @TestData(jsonFile = "newAddressData", model = "NewAddressData", folder = "personalTest")
-    @Test(dependsOnMethods = "editAddress", description = "Delete the address in personal data",    // dependsOnMethods = "addAddress", alwaysRun = true нежесткая зависимость
+    @Test(dependsOnMethods = "editAddress", description = "Delete the address in personal data",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void deleteAddress(NewAddressData address) {
         popUpsSteps.clickAcceptCookiesButton();
@@ -131,7 +131,7 @@ public class PersonalDataTest extends BaseTest {
     }
 
     @TestData(jsonFile = "newPhoneNumberData", model = "NewPhoneNumberData", folder = "personalTest")
-    @Test(dependsOnMethods = "addPhoneNumber", description = "Change the phone number in personal data",  // dependsOnMethods = "addAddress", alwaysRun = true нежесткая зависимость
+    @Test(dependsOnMethods = "addPhoneNumber", description = "Change the phone number in personal data",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void editPhoneNumber(NewPhoneNumberData phone) {
         popUpsSteps.clickAcceptCookiesButton();
@@ -150,7 +150,7 @@ public class PersonalDataTest extends BaseTest {
     }
 
     @TestData(jsonFile = "newPhoneNumberData", model = "NewPhoneNumberData", folder = "personalTest")
-    @Test(dependsOnMethods = "editPhoneNumber", description = "Delete the phone number in personal data",    // dependsOnMethods = "addAddress", alwaysRun = true нежесткая зависимость
+    @Test(dependsOnMethods = "editPhoneNumber", description = "Delete the phone number in personal data",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void deletePhoneNumber(NewPhoneNumberData phone) {
         popUpsSteps.clickAcceptCookiesButton();
@@ -197,7 +197,7 @@ public class PersonalDataTest extends BaseTest {
     }
 
     @TestData(jsonFile = "requisitesData", model = "RequisitesData", folder = "personalTest")
-    @Test(dependsOnMethods = "addRequisites", description = "Change the requisites in personal data",  // dependsOnMethods = "addAddress", alwaysRun = true нежесткая зависимость
+    @Test(dependsOnMethods = "addRequisites", description = "Change the requisites in personal data",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void editRequisites(RequisitesData requisites) {
         popUpsSteps.clickAcceptCookiesButton();
@@ -226,7 +226,7 @@ public class PersonalDataTest extends BaseTest {
     }
 
     @TestData(jsonFile = "requisitesData", model = "RequisitesData", folder = "personalTest")
-    @Test(dependsOnMethods = "editRequisites", description = "Delete the requisites in personal data",    // dependsOnMethods = "addAddress", alwaysRun = true нежесткая зависимость
+    @Test(dependsOnMethods = "editRequisites", description = "Delete the requisites in personal data",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void deleteRequisites(RequisitesData requisites) {
         popUpsSteps.clickAcceptCookiesButton();

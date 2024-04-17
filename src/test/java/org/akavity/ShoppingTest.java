@@ -7,10 +7,8 @@ import org.akavity.models.shoppingTest.SearchCartData;
 import org.akavity.models.shoppingTest.SearchData;
 import org.akavity.steps.*;
 import org.akavity.utils.JsonReader;
-import org.akavity.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 
 public class ShoppingTest extends BaseTest {
     PopUpsSteps popUpsSteps = new PopUpsSteps();
@@ -19,7 +17,6 @@ public class ShoppingTest extends BaseTest {
     CartSteps cartSteps = new CartSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
     FilterSteps filterSteps = new FilterSteps();
-    Utils utils = new Utils();
 
     @TestData(jsonFile = "catalogData", model = "CatalogData", folder = "shoppingTest")
     @Test(description = "Headers Navigation",
@@ -38,7 +35,6 @@ public class ShoppingTest extends BaseTest {
     public void findProductUsingTheSearch(SearchData searchData) {
         popUpsSteps.clickRefuseCookiesButton();
         popUpsSteps.clickSecondCookiesRefuseButton();
-     //   headerSteps.cleanSearchField();
         headerSteps.lookForProductUsingCatalogSearch(searchData.getProductName());
         popUpsSteps.closePromoCode();
 
@@ -47,14 +43,12 @@ public class ShoppingTest extends BaseTest {
         Assert.assertTrue(result);
     }
 
-
     @TestData(jsonFile = "searchCartData", model = "SearchCartData", folder = "shoppingTest")
     @Test(description = "Find the product using the search and add it to the cart",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void findProductUsingSearchAndAddToCart(SearchCartData search) {
         popUpsSteps.clickRefuseCookiesButton();
         popUpsSteps.clickSecondCookiesRefuseButton();
-      //  headerSteps.cleanSearchField();
         headerSteps.lookForProductUsingCatalogSearch(search.getProduct());
         contentWrapperSteps.clickRandomPinkButton(search.getNumberOfElements());
         headerSteps.clickHeaderCart();
