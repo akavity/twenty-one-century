@@ -45,21 +45,13 @@ public class Utils {
         int minDay = (int) LocalDate.of(1960, 1, 1).toEpochDay();
         int maxDay = (int) LocalDate.of(2004, 12, 31).toEpochDay();
         long randomDay = minDay + random.nextInt(maxDay - minDay);
-
         LocalDate randomBirthDate = LocalDate.ofEpochDay(randomDay);
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");   // применяем нужный паттерн датыStr
-        // String textDate = randomBirthDate.format(formatter); вывести в нужном формате
-        // LocalDate parsedDate = LocalDate.parse(text, formatter); перевести в LocalDate
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         return randomBirthDate.format(formatter);
     }
 
     public String getFakeFullName() {
         Faker faker = new Faker();
-        String name = faker.name().fullName();
-//        String firstName = faker.name().firstName();
-//        String lastName = faker.name().lastName();
-//        String streetAddress = faker.address().streetAddress();
-        return name;
+        return faker.name().fullName();
     }
 }
