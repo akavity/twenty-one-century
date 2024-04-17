@@ -1,13 +1,16 @@
 package org.akavity.steps;
 
+import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.ProfileContentPage;
 import org.akavity.utils.Utils;
 
+@Log4j2
 public class ProfileContentSteps {
-    Utils utils = new Utils();
     String PARAMETER = "{behavior: \"instant\", block: \"center\", inline: \"center\"}";
     ProfileContentPage profileContentPage = new ProfileContentPage();
+    Utils utils = new Utils();
 
     @Step
     public void clickEditPersonalDataButton(String id) {
@@ -16,24 +19,89 @@ public class ProfileContentSteps {
 
     @Step
     public void clickAddButton(String title) {
+        log.info("Click add button");
         profileContentPage.getAddButton(title).click();
     }
 
     @Step
-    public void clickEditAddressButton(String street) {
-        profileContentPage.getAddressField(street).scrollIntoView(PARAMETER);
-        profileContentPage.getEditAddressButton(street).click();
+    public void editAddress(String street) {
+        log.info("Edit address button");
+        SelenideElement element = profileContentPage.getEditAddressButton(street);
+        element.scrollIntoView(PARAMETER);
+        element.click();
+    }
+
+    @Step
+    public void editPhoneNumber(String phoneNumber) {
+        log.info("Edit address button");
+        SelenideElement element = profileContentPage.getEditPhoneNumberButton(phoneNumber);
+        element.scrollIntoView(PARAMETER);
+        element.click();
+    }
+
+    @Step
+    public void editRequisites() {
+        log.info("Edit requisites");
+        SelenideElement element = profileContentPage.getEditRequisitesButton();
+        element.scrollIntoView(PARAMETER);
+        element.click();
+    }
+
+    @Step
+    public boolean isAddressDisplayed(String address) {
+        utils.sleep();
+        return profileContentPage.getAddressField(address).isDisplayed();
+    }
+
+    @Step
+    public boolean isPhoneNumberDisplayed(String telephoneNumber) {
+        utils.sleep();
+        return profileContentPage.getPhoneNumberField(telephoneNumber).isDisplayed();
+    }
+
+    @Step
+    public boolean isRequisitesBockDisplayed() {
+        utils.sleep();
+        return profileContentPage.getRequisitesBlock().isDisplayed();
     }
 
     @Step
     public String extractTextFromPersonalDataField(String data) {
         utils.sleep();
-        return profileContentPage.getPersonalDataField(data).getText();
+        String text = profileContentPage.getPersonalDataField(data).getText();
+        log.info("Personal data field contains text: " + text);
+        return text;
+    }
+
+    @Step
+    public String extractTextFromRequisitesField(String title) {
+        utils.sleep();
+        String text = profileContentPage.getRequisitesField(title).getText();
+        log.info("Requisites field contains text: " + text);
+        return text;
     }
 
     @Step
     public void clickEditData(String id) {
+        log.info("Click edit data");
         profileContentPage.getEditPersonalDataButton(id).click();
     }
 
+    @Step
+    public void deleteAddress(String address) {
+        log.info("Delete address: " + address);
+        profileContentPage.getDeleteAddressButton(address).click();
+    }
+
+    @Step
+    public void deletePhoneNumber(String phoneNumber) {
+        log.info("Delete phone number: " + phoneNumber);
+        profileContentPage.getDeletePhoneNumberButton(phoneNumber).click();
+    }
+
+    @Step
+    public void deleteRequisites() {
+        log.info("Delete requisites");
+        profileContentPage.getDeleteRequisitesButton().click();
+    }
 }

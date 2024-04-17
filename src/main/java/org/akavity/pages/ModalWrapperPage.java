@@ -9,6 +9,14 @@ public class ModalWrapperPage {
     private final SelenideElement submitButton = $(By.xpath("//div[not(contains(@class,'Subscription'))]" +
             "/button[@type='submit']"));
 
+    private final SelenideElement addressField = $(By.cssSelector("div[data-testid='address'] input[class]"));
+
+    private final SelenideElement pinkDeleteButton = $(By.cssSelector("button[class*=pink-primary]"));
+
+    public SelenideElement getListItem(String text) {
+        return $(By.xpath("//li/div[contains(text(),'" + text + "')]"));
+    }
+
     /**
      * @param gender male, female
      */
@@ -17,14 +25,24 @@ public class ModalWrapperPage {
     }
 
     /**
-     * @param title email, password, name, birth, oldPassword, newPassword,
-     *              phone
+     * @param name email, password, name, birth, oldPassword, newPassword,
+     *             phone
+     *             city, entrance, floor, flat
+     *             unp, acc, legalName, bank, legalAddress, rcbic
      */
-    public SelenideElement getModalField(String title) {
-        return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + title + "']"));
+    public SelenideElement getModalField(String name) {
+        return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + name + "']"));
     }
 
     public SelenideElement getSubmitButton() {
         return submitButton;
+    }
+
+    public SelenideElement getAddressField() {
+        return addressField;
+    }
+
+    public SelenideElement getPinkDeleteButton() {
+        return pinkDeleteButton;
     }
 }

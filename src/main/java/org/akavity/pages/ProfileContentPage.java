@@ -43,20 +43,6 @@ public class ProfileContentPage {
         return $(By.xpath("//p[contains(@data-testid,'addres') and contains(text(),'" + street + "')]"));
     }
 
-    public SelenideElement getPhoneNumberField(String phoneNumber) {
-        return $(By.xpath("//div[contains(@class,'phone')]//p[contains(text(),'" + phoneNumber + "')]"));
-    }
-
-    public SelenideElement getEditPhoneNumberButton(String phoneNumber) {
-        return $(By.xpath("//p[contains(text(),'" + phoneNumber + "')]" +
-                "/ancestor::div[contains(@class,'phone')]//div[contains(@class,'edit')]"));
-    }
-
-    public SelenideElement getDeletePhoneNumberButton(String phoneNumber) {
-        return $(By.xpath("//p[contains(text(),'" + phoneNumber + "')]" +
-                "/ancestor::div[contains(@class,'phone')]//div[contains(@class,'delete')]"));
-    }
-
     public SelenideElement getEditAddressButton(String street) {
         return $(By.xpath("//p[contains(@data-testid,'addres') and contains(text(),'" + street + "')]" +
                 "/ancestor::div[contains(@class,'dataWrapper')]//div[contains(@class,'edit')]"));
@@ -65,5 +51,44 @@ public class ProfileContentPage {
     public SelenideElement getDeleteAddressButton(String street) {
         return $(By.xpath("//p[contains(@data-testid,'addres') and contains(text(),'" + street + "')]" +
                 "/ancestor::div[contains(@class,'dataWrapper')]//div[contains(@class,'delete')]"));
+    }
+
+    public SelenideElement getPhoneNumberField(String phoneNumber) {
+        return $(By.xpath("//div[contains(@class,'PhoneItem')]//span[contains(text(),'" + phoneNumber + "')]"));
+    }
+
+    public SelenideElement getEditPhoneNumberButton(String phoneNumber) {
+        return $(By.xpath("//span[contains(text(),'" + phoneNumber + "')]" +
+                "/ancestor::div[contains(@class,'PhoneItem')]//div[contains(@class,'edit')]"));
+    }
+
+    public SelenideElement getDeletePhoneNumberButton(String phoneNumber) {
+        return $(By.xpath("//span[contains(text(),'" + phoneNumber + "')]" +
+                "/ancestor::div[contains(@class,'PhoneItem')]//div[contains(@class,'delete')]"));
+    }
+
+    public SelenideElement getRequisitesField(String title) {
+        return $(By.xpath("//h6[contains(text(),'" + title + "')]/../p"));
+    }
+
+    private final SelenideElement requisitesBlock = $(By.xpath("//div[contains(@class,'dataEntities')]"));
+
+    private final SelenideElement editRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]" +
+            "/../../following-sibling::div//div[contains(@class,'edit')]"));
+
+    private final SelenideElement deleteRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]" +
+            "/../../following-sibling::div//div[contains(@class,'delete')]"));
+
+
+    public SelenideElement getEditRequisitesButton() {
+        return editRequisitesButton;
+    }
+
+    public SelenideElement getDeleteRequisitesButton() {
+        return deleteRequisitesButton;
+    }
+
+    public SelenideElement getRequisitesBlock() {
+        return requisitesBlock;
     }
 }
