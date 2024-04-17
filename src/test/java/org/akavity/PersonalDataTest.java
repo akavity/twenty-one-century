@@ -82,8 +82,7 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.clickSubmitButton();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(address.getItemPersonalData());
-        profileContentSteps.clickEditAddressButton(address.getOldStreet());
-
+        profileContentSteps.editAddress(address.getOldStreet());
         modalWrapperSteps.enterStreet(address.getNewStreet());
         modalWrapperSteps.enterDataIntoModalField(address.getTitleEntrance(), address.getNumberOfEntrance());
         modalWrapperSteps.enterDataIntoModalField(address.getTitleFloor(), address.getNumberOfFloor());
@@ -143,7 +142,7 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.clickSubmitButton();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(phone.getItemPersonalData());
-        profileContentSteps.clickEditPhoneNumberButton(phone.getOldPhoneNumber());
+        profileContentSteps.editPhoneNumber(phone.getOldPhoneNumber());
         modalWrapperSteps.enterDataIntoModalField(phone.getTitlePhone(), phone.getNewPhoneNumber());
         modalWrapperSteps.clickSubmitButton();
 
@@ -166,5 +165,34 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.clickPinkDeleteButton();
 
         Assert.assertFalse(profileContentSteps.isPhoneNumberDisplayed(phone.getNewPhoneNumber()));
+    }
+
+    @TestData(jsonFile = "requisitesData", model = "RequisitesData", folder = "personalTest")
+    @Test(description = "Add requisites to personal data",
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void addRequisites(RequisitesData requisites) {
+        popUpsSteps.clickAcceptCookiesButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickLoginButton();
+        modalWrapperSteps.enterDataIntoModalField(requisites.getTitleEmail(), requisites.getEmail());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getTitlePassword(), requisites.getPassword());
+        modalWrapperSteps.clickSubmitButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickProfileItem(requisites.getPersonalDataItem());
+        profileContentSteps.clickAddButton(requisites.getAddButtonTitle());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameUnp(), requisites.getDataUnp());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameAcc(), requisites.getDataAcc());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameLegalName(), requisites.getDataLegalName());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameBank(), requisites.getDataBank());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameLegalAddress(), requisites.getDataLegalAddress());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameRcbic(), requisites.getDataRcbic());
+        modalWrapperSteps.clickSubmitButton();
+
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleUnp()), requisites.getDataUnp());
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleAcc()), requisites.getDataAcc());
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleLegalName()), requisites.getDataLegalName());
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleBank()), requisites.getDataBank());
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleLegalAddress()), requisites.getDataLegalAddress());
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleRcbic()), requisites.getDataRcbic());
     }
 }

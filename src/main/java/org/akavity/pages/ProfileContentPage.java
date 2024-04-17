@@ -66,4 +66,29 @@ public class ProfileContentPage {
         return $(By.xpath("//span[contains(text(),'" + phoneNumber + "')]" +
                 "/ancestor::div[contains(@class,'PhoneItem')]//div[contains(@class,'delete')]"));
     }
+
+    public SelenideElement getRequisitesField(String title) {
+        return $(By.xpath("//h6[contains(text(),'" + title + "')]/../p"));
+    }
+
+    private final SelenideElement requisitesBlock = $(By.xpath("//div[contains(@class,'dataEntities')]"));
+
+    private final SelenideElement editRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]" +
+            "/../../following-sibling::div//div[contains(@class,'edit')]"));
+
+    private final SelenideElement deleteRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]" +
+            "/../../following-sibling::div//div[contains(@class,'delete')]"));
+
+
+    public SelenideElement getEditRequisitesButton() {
+        return editRequisitesButton;
+    }
+
+    public SelenideElement getDeleteRequisitesButton() {
+        return deleteRequisitesButton;
+    }
+
+    public SelenideElement getRequisitesBlock() {
+        return requisitesBlock;
+    }
 }

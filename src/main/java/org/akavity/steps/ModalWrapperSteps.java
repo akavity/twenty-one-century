@@ -13,12 +13,12 @@ public class ModalWrapperSteps {
     Utils utils = new Utils();
 
     @Step
-    public void enterDataIntoModalField(String title, String data) {  // cleanFieldAndEnterData
+    public void enterDataIntoModalField(String name, String data) {  // cleanFieldAndEnterData
         log.info("Enter data into modal field: " + data);
-        SelenideElement element = modalWrapperPage.getModalField(title);
+        SelenideElement element = modalWrapperPage.getModalField(name);
         element.sendKeys(Keys.CONTROL + "A");         // clear input field
         element.sendKeys(Keys.BACK_SPACE);                       //
-        modalWrapperPage.getModalField(title).sendKeys(data);
+        modalWrapperPage.getModalField(name).sendKeys(data);
     }
 
     @Step

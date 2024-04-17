@@ -24,7 +24,7 @@ public class ProfileContentSteps {
     }
 
     @Step
-    public void clickEditAddressButton(String street) {
+    public void editAddress(String street) {
         log.info("Edit address button");
         SelenideElement element = profileContentPage.getEditAddressButton(street);
         element.scrollIntoView(PARAMETER);
@@ -32,9 +32,17 @@ public class ProfileContentSteps {
     }
 
     @Step
-    public void clickEditPhoneNumberButton(String phoneNumber) {
+    public void editPhoneNumber(String phoneNumber) {
         log.info("Edit address button");
         SelenideElement element = profileContentPage.getEditPhoneNumberButton(phoneNumber);
+        element.scrollIntoView(PARAMETER);
+        element.click();
+    }
+
+    @Step
+    public void editRequisites() {
+        log.info("Edit requisites");
+        SelenideElement element = profileContentPage.getEditRequisitesButton();
         element.scrollIntoView(PARAMETER);
         element.click();
     }
@@ -52,10 +60,24 @@ public class ProfileContentSteps {
     }
 
     @Step
+    public boolean isRequisitesBockDisplayed() {
+        utils.sleep();
+        return profileContentPage.getRequisitesBlock().isDisplayed();
+    }
+
+    @Step
     public String extractTextFromPersonalDataField(String data) {
         utils.sleep();
         String text = profileContentPage.getPersonalDataField(data).getText();
         log.info("Personal data field contains text: " + text);
+        return text;
+    }
+
+    @Step
+    public String extractTextFromRequisitesField(String title) {
+        utils.sleep();
+        String text = profileContentPage.getRequisitesField(title).getText();
+        log.info("Requisites field contains text: " + text);
         return text;
     }
 
@@ -75,5 +97,11 @@ public class ProfileContentSteps {
     public void deletePhoneNumber(String phoneNumber) {
         log.info("Delete phone number: " + phoneNumber);
         profileContentPage.getDeletePhoneNumberButton(phoneNumber).click();
+    }
+
+    @Step
+    public void deleteRequisites() {
+        log.info("Delete requisites");
+        profileContentPage.getDeleteRequisitesButton().click();
     }
 }

@@ -25,12 +25,13 @@ public class ModalWrapperPage {
     }
 
     /**
-     * @param title email, password, name, birth, oldPassword, newPassword,
-     *              phone
-     *              city, entrance, floor, flat
+     * @param name email, password, name, birth, oldPassword, newPassword,
+     *             phone
+     *             city, entrance, floor, flat
+     *             unp, acc, legalName, bank, legalAddress, rcbic
      */
-    public SelenideElement getModalField(String title) {
-        return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + title + "']"));
+    public SelenideElement getModalField(String name) {
+        return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + name + "']"));
     }
 
     public SelenideElement getSubmitButton() {
