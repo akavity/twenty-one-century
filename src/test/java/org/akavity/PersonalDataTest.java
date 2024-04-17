@@ -195,4 +195,33 @@ public class PersonalDataTest extends BaseTest {
         Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleLegalAddress()), requisites.getDataLegalAddress());
         Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleRcbic()), requisites.getDataRcbic());
     }
+
+    @TestData(jsonFile = "requisitesData", model = "RequisitesData", folder = "personalTest")
+    @Test(dependsOnMethods = "addRequisites", description = "Change the requisites in personal data",  // dependsOnMethods = "addAddress", alwaysRun = true нежесткая зависимость
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void editRequisites(RequisitesData requisites) {
+        popUpsSteps.clickAcceptCookiesButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickLoginButton();
+        modalWrapperSteps.enterDataIntoModalField(requisites.getTitleEmail(), requisites.getEmail());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getTitlePassword(), requisites.getPassword());
+        modalWrapperSteps.clickSubmitButton();
+        headerSteps.clickAccountButton();
+        headerSteps.clickProfileItem(requisites.getPersonalDataItem());
+        profileContentSteps.editRequisites();
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameUnp(), requisites.getDataUnpNew());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameAcc(), requisites.getDataAccNew());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameLegalName(), requisites.getDataLegalNameNew());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameBank(), requisites.getDataBankNew());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameLegalAddress(), requisites.getDataLegalAddressNew());
+        modalWrapperSteps.enterDataIntoModalField(requisites.getNameRcbic(), requisites.getDataRcbicNew());
+        modalWrapperSteps.clickSubmitButton();
+
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleUnp()), requisites.getDataUnpNew());
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleAcc()), requisites.getDataAccNew());
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleLegalName()), requisites.getDataLegalNameNew());
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleBank()), requisites.getDataBankNew());
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleLegalAddress()), requisites.getDataLegalAddressNew());
+        Assert.assertEquals(profileContentSteps.extractTextFromRequisitesField(requisites.getTitleRcbic()), requisites.getDataRcbicNew());
+    }
 }
