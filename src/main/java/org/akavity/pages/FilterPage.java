@@ -10,6 +10,11 @@ public class FilterPage {
     private final SelenideElement maxPriceField = $(By.xpath("//input[@id='maxPrice']"));
     private final SelenideElement allFiltersButton = $(By.xpath("//div[contains(text(),'Все фильтры')]"));
     private final SelenideElement applyFiltersButton = $(By.cssSelector("button[data-testid*='apply']"));
+    private final SelenideElement sortButton = $(By.cssSelector("div[data-testid=sortSelectBlock]"));
+
+    public SelenideElement selectItem(String text) {
+        return $(By.xpath("//li[contains(@class,'select') and contains(text(),'" + text + "')]"));
+    }
 
     public SelenideElement getCheckbox(String title, String text) {
         return $(By.xpath("//div[contains(@class,'ListingFilters') and contains(text(),'" + title + "')]" +
@@ -35,5 +40,9 @@ public class FilterPage {
 
     public SelenideElement getApplyFiltersButton() {
         return applyFiltersButton;
+    }
+
+    public SelenideElement getSortButton() {
+        return sortButton;
     }
 }

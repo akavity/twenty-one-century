@@ -50,4 +50,11 @@ public class FilterSteps {
         element.scrollIntoView(PARAMETER);
         element.click();
     }
+
+    @Step
+    public void selectFilter(String text) {
+        log.info("Select filter: " + text);
+        filterPage.getSortButton().click();
+        filterPage.selectItem(text).click();
+    }
 }
