@@ -38,8 +38,7 @@ public class ShoppingTest extends BaseTest {
         headerSteps.lookForProductUsingCatalogSearch(searchData.getProductName());
         popUpsSteps.closePromoCode();
 
-        boolean result = contentWrapperSteps
-                .doDescriptionsContainText(searchData.getProductName(), searchData.getNumberOfProducts());
+        boolean result = contentWrapperSteps.doSearchDescriptionsContainText(searchData.getProductName(), searchData.getNumberOfProducts());
         Assert.assertTrue(result);
     }
 
@@ -71,7 +70,7 @@ public class ShoppingTest extends BaseTest {
         filterSteps.applyFiltersButton();
 
         Assert.assertTrue(contentWrapperSteps.areProductPricesWithinLimit(phone.getMinPrice(), phone.getMaxPrice()));
-        Assert.assertTrue(contentWrapperSteps.doDescriptionsContainText(phone.getManufacturer()));
-        Assert.assertTrue(contentWrapperSteps.doDescriptionsContainText(phone.getInternalMemory()));
+        Assert.assertTrue(contentWrapperSteps.doCatalogDescriptionsContainText(phone.getManufacturer()));
+        Assert.assertTrue(contentWrapperSteps.doCatalogDescriptionsContainText(phone.getInternalMemory()));
     }
 }

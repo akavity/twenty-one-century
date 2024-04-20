@@ -1,14 +1,17 @@
 package org.akavity.steps;
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.commands.Util;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.FilterPage;
+import org.akavity.utils.Utils;
 
 @Log4j2
 public class FilterSteps {
     String PARAMETER = "{behavior: \"instant\", block: \"center\", inline: \"center\"}";
     FilterPage filterPage = new FilterPage();
+    Utils utils = new Utils();
 
     @Step
     public void enterPrice(String min, String max) {
@@ -49,6 +52,7 @@ public class FilterSteps {
         SelenideElement element = filterPage.getApplyFiltersButton();
         element.scrollIntoView(PARAMETER);
         element.click();
+        utils.sleep(1500);
     }
 
     @Step
