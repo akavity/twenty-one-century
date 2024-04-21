@@ -65,7 +65,9 @@ public class Utils {
             log.info("List is empty");
             result = false;
         } else {
-            result = desc.stream().peek(d -> log.info("Description: " + d)).allMatch(description -> description.contains(text));
+            result = desc.stream()
+                    .peek(d -> log.info("Description: " + d))
+                    .allMatch(description -> description.contains(text));
         }
         return result;
     }

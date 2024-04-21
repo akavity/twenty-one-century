@@ -52,21 +52,16 @@ public class ContentWrapperSteps {
     public boolean areProductPricesWithinLimit(String min, String max) {
         log.info("Check product prices \n min price: " + min + "\n max price: " + max);
         ElementsCollection collection = contentWrapperPage.getPriceFields();
-        boolean result = true;
+        boolean result;
         if (collection.isEmpty()) {
             log.info("Collection is empty");
             result = false;
         } else {
-            for (SelenideElement el : collection) {
-                String text = el.getText();
-                double price = utils.extractDoubleFromText(text, "\\d+[,]\\d{2}");
-                log.info("Product price: " + price);
-                if (price > Double.parseDouble(max) && price < Double.parseDouble(min)) {
-                    log.info("The product price isn't in the limit");
-                    result = false;
-                    break;
-                }
-            }
+            result = collection.asDynamicIterable()
+                    .stream()
+                    .map(el -> utils.extractDoubleFromText(el.getText(),"\\d+[,]\\d{2}"))
+                    .peek(p -> log.info("Element price: " + p))
+                    .allMatch(p -> (p >= Double.parseDouble(min) && p <= Double.parseDouble(max)));
         }
         return result;
     }
