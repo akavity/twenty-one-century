@@ -59,20 +59,13 @@ public class Utils {
     }
 
     public boolean doesListContainText(List<String> desc, String text) {
-        boolean result = true;
+        boolean result;
         log.info("List size: " + desc.size());
         if (desc.isEmpty()) {
             log.info("List is empty");
             result = false;
         } else {
-            for (String name : desc) {
-                log.info("Description list contains : " + name);
-                if (!name.contains(text)) {
-                    log.info("Description: " + name + " doesn't contain text: " + text);
-                    result = false;
-                    break;
-                }
-            }
+            result = desc.stream().peek(d -> log.info("Description: " + d)).allMatch(description -> description.contains(text));
         }
         return result;
     }
