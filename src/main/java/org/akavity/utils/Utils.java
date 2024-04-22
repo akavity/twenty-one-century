@@ -1,13 +1,16 @@
 package org.akavity.utils;
 
 import com.github.javafaker.Faker;
+import lombok.extern.log4j.Log4j2;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Log4j2
 public class Utils {
     public void sleep() {
         try {
@@ -53,5 +56,19 @@ public class Utils {
     public String getFakeFullName() {
         Faker faker = new Faker();
         return faker.name().fullName();
+    }
+
+    public boolean doesListContainText(List<String> desc, String text) {
+        boolean result;
+        log.info("List size: " + desc.size());
+        if (desc.isEmpty()) {
+            log.info("List is empty");
+            result = false;
+        } else {
+            result = desc.stream()
+                    .peek(d -> log.info("Description: " + d))
+                    .allMatch(description -> description.contains(text));
+        }
+        return result;
     }
 }

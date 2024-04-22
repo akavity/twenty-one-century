@@ -16,4 +16,5 @@ public class PhoneNumberData {
     String addButtonTitle;
     String titlePhone;
     String phoneNumber;
+    String phoneNumberText;
 }

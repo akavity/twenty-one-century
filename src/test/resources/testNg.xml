@@ -1,0 +1,55 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Test" parallel="tests" thread-count="2">
+
+    <test name="First">
+        <parameter name="startType" value="selenoid"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="version" value="latest"/>
+        <classes>
+            <class name="org.akavity.CatalogTest">
+                <methods>
+                    <include name="selectHiddenCategoryItem"/>
+                    <include name="moveAroundTheCatalog"/>
+                    <include name="selectBrand"/>
+                </methods>
+            </class>
+            <class name="org.akavity.RegistrationTest">
+                <methods>
+                    <include name="isErrorMessageDisplayed"/>
+                    <include name="registeredUserLogin"/>
+                </methods>
+            </class>
+            <class name="org.akavity.ShoppingTest">
+                <methods>
+                    <include name="moveAroundTheHeader"/>
+                    <include name="findProductUsingTheSearch"/>
+                    <include name="findProductUsingSearchAndAddToCart"/>
+                    <include name="selectPhone"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Second">
+        <parameter name="startType" value="selenoid"/>
+        <parameter name="browser" value="chrome"/>
+        <parameter name="version" value="latest"/>
+        <classes>
+            <class name="org.akavity.PersonalDataTest">
+                <methods>
+                    <include name="changeNameGenderBirth"/>
+                    <include name="addAddress"/>
+                    <include name="editAddress"/>
+                    <include name="deleteAddress"/>
+                    <include name="addPhoneNumber"/>
+                    <include name="editPhoneNumber"/>
+                    <include name="deletePhoneNumber"/>
+                    <include name="addRequisites"/>
+                    <include name="editRequisites"/>
+                    <include name="deleteRequisites"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

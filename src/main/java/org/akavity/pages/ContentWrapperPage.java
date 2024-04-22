@@ -10,8 +10,8 @@ import static com.codeborne.selenide.Selenide.$$;
 public class ContentWrapperPage {
     private final SelenideElement titleField = $(By.cssSelector("h1[class*='title']"));
     private final ElementsCollection foundProducts = $$(By.xpath("//div[contains(@class,'style_product')]"));
-    private final ElementsCollection descriptionFields = $$(By.xpath("//span[@class='result__name']"));
-    private final ElementsCollection descriptionFiltersField = $$(By.cssSelector("a[data-testid='card-info-a']"));
+    private final ElementsCollection searchDescriptionFields = $$(By.xpath("//span[@class='result__name']"));
+    private final ElementsCollection catalogDescriptionField = $$(By.cssSelector("a[data-testid='card-info-a']"));
     private final ElementsCollection priceFields = $$(By.xpath("//p[contains(@class,'currentPrice')]"));
     private final ElementsCollection pinkButtons = $$(By.xpath("//button[@data-ga_action='add_to_cart']"));
 
@@ -23,8 +23,8 @@ public class ContentWrapperPage {
         return foundProducts;
     }
 
-    public ElementsCollection getDescriptionFields() {
-        return descriptionFields;
+    public ElementsCollection getSearchDescriptionFields() {
+        return searchDescriptionFields;
     }
 
     public ElementsCollection getPinkButtons() {
@@ -35,7 +35,7 @@ public class ContentWrapperPage {
         return priceFields;
     }
 
-    public ElementsCollection getDescriptionFiltersField() {
-        return descriptionFiltersField;
+    public ElementsCollection getCatalogDescriptionField() {
+        return catalogDescriptionField;
     }
 }

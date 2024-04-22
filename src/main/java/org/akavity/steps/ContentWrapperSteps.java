@@ -24,48 +24,18 @@ public class ContentWrapperSteps {
     }
 
     @Step
-    public boolean doDescriptionsContainText(String text, int numberOfElements) {
-        ElementsCollection collection = contentWrapperPage.getDescriptionFields();
+    public boolean doCatalogDescriptionsContainText(String text) {
+        ElementsCollection collection = contentWrapperPage.getCatalogDescriptionField();
+        List<String> names = new ArrayList<>(collection.texts());
         log.info("Description collection size: " + collection.size());
-        boolean result = true;
-        if (collection.isEmpty()) {
-            log.info("Collection is empty");
-            result = false;
-        } else {
-            List<String> names = new ArrayList<>(collection.first(numberOfElements).texts());
-            for (String name : names) {
-                log.info("Array names contains name: " + name);
-                if (!name.contains(text)) {
-                    log.info("/// Object name dose not contain text: " + text);
-                    result = false;
-                    break;
-                }
-            }
-        }
-        return result;
+        return utils.doesListContainText(names, text);
     }
-
     @Step
-    public boolean doDescriptionsContainText(String text) {
-        ElementsCollection collection = contentWrapperPage.getDescriptionFiltersField();
+    public boolean doSearchDescriptionsContainText(String text, int numberOfElements) {
+        ElementsCollection collection = contentWrapperPage.getSearchDescriptionFields();
+        List<String> names = new ArrayList<>(collection.first(numberOfElements).texts());
         log.info("Description collection size: " + collection.size());
-        boolean result = true;
-        if (collection.isEmpty()) {
-            log.info("Description collection is empty");
-            result = false;
-        } else {
-            List<String> names = new ArrayList<>(collection.texts());
-            for (String name : names) {
-                log.info("Description collection contains : " + name);
-                if (!name.contains(text)) {
-                    log.info("/// Object name dose not contain text: " + text);
-                    log.info("Description: " + name);
-                    result = false;
-                    break;
-                }
-            }
-        }
-        return result;
+        return utils.doesListContainText(names, text);
     }
 
     @Step
@@ -82,21 +52,16 @@ public class ContentWrapperSteps {
     public boolean areProductPricesWithinLimit(String min, String max) {
         log.info("Check product prices \n min price: " + min + "\n max price: " + max);
         ElementsCollection collection = contentWrapperPage.getPriceFields();
-        boolean result = true;
+        boolean result;
         if (collection.isEmpty()) {
             log.info("Collection is empty");
             result = false;
         } else {
-            for (SelenideElement el : collection) {
-                String text = el.getText();
-                double price = utils.extractDoubleFromText(text, "\\d+[,]\\d{2}");
-                log.info("Product price: " + price);
-                if (price > Double.parseDouble(max) && price < Double.parseDouble(min)) {
-                    log.info("The product price isn't in the limit");
-                    result = false;
-                    break;
-                }
-            }
+            result = collection.asDynamicIterable()
+                    .stream()
+                    .map(el -> utils.extractDoubleFromText(el.getText(),"\\d+[,]\\d{2}"))
+                    .peek(p -> log.info("Element price: " + p))
+                    .allMatch(p -> (p >= Double.parseDouble(min) && p <= Double.parseDouble(max)));
         }
         return result;
     }

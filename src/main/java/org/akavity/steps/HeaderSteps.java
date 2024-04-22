@@ -3,18 +3,24 @@ package org.akavity.steps;
 import com.codeborne.selenide.SelenideElement;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.HeaderPage;
+import org.akavity.pages.ModalWrapperPage;
 import org.openqa.selenium.Keys;
 
-import static com.codeborne.selenide.Condition.exist;
+import java.time.Duration;
+
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 @Log4j2
 public class HeaderSteps {
     HeaderPage headerPage = new HeaderPage();
+    ModalWrapperPage modalWrapperPage = new ModalWrapperPage();
 
     public void clickAccountButton() {
         log.info("Click account button");
-        headerPage.getAccountButton().shouldBe(exist);
-        headerPage.getAccountButton().click();
+        modalWrapperPage.getModalWindow().shouldNotBe(visible, Duration.ofSeconds(10));
+        SelenideElement element = headerPage.getAccountButton();
+        executeJavaScript("arguments[0].click();", element);
     }
 
     public void clickCatalogButton() {
