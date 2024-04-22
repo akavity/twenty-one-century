@@ -6,11 +6,10 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ModalWrapperPage {
+    private final SelenideElement modalWindow = $(By.cssSelector("div[class*='modalWrapper']"));
     private final SelenideElement submitButton = $(By.xpath("//div[not(contains(@class,'Subscription'))]" +
             "/button[@type='submit']"));
-
     private final SelenideElement addressField = $(By.cssSelector("div[data-testid='address'] input[class]"));
-
     private final SelenideElement pinkDeleteButton = $(By.cssSelector("button[class*=pink-primary]"));
 
     public SelenideElement getListItem(String text) {
@@ -32,6 +31,10 @@ public class ModalWrapperPage {
      */
     public SelenideElement getModalField(String name) {
         return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + name + "']"));
+    }
+
+    public SelenideElement getModalWindow() {
+        return modalWindow;
     }
 
     public SelenideElement getSubmitButton() {

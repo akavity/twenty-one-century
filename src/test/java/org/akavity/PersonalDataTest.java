@@ -127,7 +127,7 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.enterDataIntoModalField(phone.getTitlePhone(), phone.getPhoneNumber());
         modalWrapperSteps.clickSubmitButton();
 
-        Assert.assertTrue(profileContentSteps.isAddressDisplayed(phone.getPhoneNumber()));
+        Assert.assertTrue(profileContentSteps.isPhoneNumberDisplayed(phone.getPhoneNumberText()));
     }
 
     @TestData(jsonFile = "newPhoneNumberData", model = "NewPhoneNumberData", folder = "personalTest")
