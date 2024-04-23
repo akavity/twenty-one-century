@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 @Log4j2
 public class Utils {
+
     public void sleep() {
         try {
             Thread.sleep(1000);
@@ -38,7 +39,7 @@ public class Utils {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(text);
         while (matcher.find()) {
-            result = Double.parseDouble(matcher.group().replace(",", "."));
+            result = Double.parseDouble(matcher.group().replace(" ", "").replace(",", "."));
         }
         return result;
     }

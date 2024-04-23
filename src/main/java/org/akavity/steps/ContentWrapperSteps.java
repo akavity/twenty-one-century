@@ -65,4 +65,42 @@ public class ContentWrapperSteps {
         }
         return result;
     }
+
+    @Step
+    public boolean areProductPricesHigherThanPrice(int price, int elements) {
+        utils.sleep(1500);
+        log.info("Check that the price of products is higher than a specific price");
+        ElementsCollection collection = contentWrapperPage.getPriceFields().first(elements);
+        boolean result;
+        if (collection.isEmpty()) {
+            log.info("Collection is empty");
+            result = false;
+        } else {
+            result = collection.asDynamicIterable()
+                    .stream()
+                    .map(el -> utils.extractDoubleFromText(el.getText(),"\\d?[ ]?\\d+[,.]\\d{2}"))
+                    .peek(p -> log.info("Element price: " + p))
+                    .allMatch(p -> (p >= price));
+        }
+        return result;
+    }
+
+    @Step
+    public boolean areProductPricesLowerThanPrice(int price, int elements) {
+        utils.sleep(1500);
+        log.info("Check that the price of products is higher than a specific price");
+        ElementsCollection collection = contentWrapperPage.getPriceFields().first(elements);
+        boolean result;
+        if (collection.isEmpty()) {
+            log.info("Collection is empty");
+            result = false;
+        } else {
+            result = collection.asDynamicIterable()
+                    .stream()
+                    .map(el -> utils.extractDoubleFromText(el.getText(),"\\d?[ ]?\\d+[,.]\\d{2}"))
+                    .peek(p -> log.info("Element price: " + p))
+                    .allMatch(p -> (p <= price));
+        }
+        return result;
+    }
 }

@@ -1,7 +1,6 @@
 package org.akavity.steps;
 
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.commands.Util;
 import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.FilterPage;
