@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class ContentWrapperPage {
     private final SelenideElement titleField = $(By.cssSelector("h1[class*='title']"));
+    private final SelenideElement brandLogo = $(By.cssSelector("h1[class*='logo']"));
     private final ElementsCollection foundProducts = $$(By.xpath("//div[contains(@class,'style_product')]"));
     private final ElementsCollection searchDescriptionFields = $$(By.xpath("//span[@class='result__name']"));
     private final ElementsCollection catalogDescriptionField = $$(By.cssSelector("a[data-testid='card-info-a']"));
@@ -17,6 +18,10 @@ public class ContentWrapperPage {
 
     public SelenideElement getTitleField() {
         return titleField;
+    }
+
+    public SelenideElement getBrandLogo() {
+        return brandLogo;
     }
 
     public ElementsCollection getFoundProducts() {

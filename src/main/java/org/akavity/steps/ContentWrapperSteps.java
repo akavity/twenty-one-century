@@ -17,10 +17,17 @@ public class ContentWrapperSteps {
     Utils utils = new Utils();
 
     @Step
-    public String getTitle() {
-        String title = contentWrapperPage.getTitleField().getText();
-        log.info("Title: " + title);
-        return title;
+    public String extractTextFromLogoOrTitle() {
+        SelenideElement title = contentWrapperPage.getTitleField();
+        String text;
+        if (title.isDisplayed()) {
+            text = title.getText();
+            log.info("Title is displayed: " + text);
+        } else {
+            text = contentWrapperPage.getBrandLogo().getText();
+            log.info("BrandLogo is displayed: " + text);
+        }
+        return text;
     }
 
     @Step
@@ -30,6 +37,7 @@ public class ContentWrapperSteps {
         log.info("Description collection size: " + collection.size());
         return utils.doesListContainText(names, text);
     }
+
     @Step
     public boolean doSearchDescriptionsContainText(String text, int numberOfElements) {
         ElementsCollection collection = contentWrapperPage.getSearchDescriptionFields();
@@ -59,7 +67,7 @@ public class ContentWrapperSteps {
         } else {
             result = collection.asDynamicIterable()
                     .stream()
-                    .map(el -> utils.extractDoubleFromText(el.getText(),"\\d+[,]\\d{2}"))
+                    .map(el -> utils.extractDoubleFromText(el.getText(), "\\d+[,]\\d{2}"))
                     .peek(p -> log.info("Element price: " + p))
                     .allMatch(p -> (p >= Double.parseDouble(min) && p <= Double.parseDouble(max)));
         }
@@ -78,7 +86,7 @@ public class ContentWrapperSteps {
         } else {
             result = collection.asDynamicIterable()
                     .stream()
-                    .map(el -> utils.extractDoubleFromText(el.getText(),"\\d?[ ]?\\d+[,.]\\d{2}"))
+                    .map(el -> utils.extractDoubleFromText(el.getText(), "\\d?[ ]?\\d+[,.]\\d{2}"))
                     .peek(p -> log.info("Element price: " + p))
                     .allMatch(p -> (p >= price));
         }
@@ -97,7 +105,7 @@ public class ContentWrapperSteps {
         } else {
             result = collection.asDynamicIterable()
                     .stream()
-                    .map(el -> utils.extractDoubleFromText(el.getText(),"\\d?[ ]?\\d+[,.]\\d{2}"))
+                    .map(el -> utils.extractDoubleFromText(el.getText(), "\\d?[ ]?\\d+[,.]\\d{2}"))
                     .peek(p -> log.info("Element price: " + p))
                     .allMatch(p -> (p <= price));
         }

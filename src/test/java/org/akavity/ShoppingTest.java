@@ -23,7 +23,7 @@ public class ShoppingTest extends BaseOldTest {
         popUpsSteps.clickSecondCookiesRefuseButton();
         headerSteps.clickPromoItem(catalog.getPromoItem());
 
-        Assert.assertEquals(contentWrapperSteps.getTitle(), catalog.getTitle());
+        Assert.assertEquals(contentWrapperSteps.extractTextFromLogoOrTitle(), catalog.getTitle());
     }
 
     @TestData(jsonFile = "searchData", model = "SearchData", folder = "shoppingTest")
