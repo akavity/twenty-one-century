@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
 public class ContentWrapperPage {
-    private final SelenideElement titleField = $(By.cssSelector("h1[class*='title']"));
+    private final SelenideElement titleField = $(By.xpath("//h1[contains(@class,'title') or contains(@class,'header')]"));
     private final SelenideElement brandLogo = $(By.cssSelector("h1[class*='logo']"));
     private final ElementsCollection foundProducts = $$(By.xpath("//div[contains(@class,'style_product')]"));
     private final ElementsCollection searchDescriptionFields = $$(By.xpath("//span[@class='result__name']"));

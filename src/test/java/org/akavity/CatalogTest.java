@@ -2,20 +2,19 @@ package org.akavity;
 
 import org.akavity.annotations.TestData;
 import org.akavity.models.catalogTest.BrandData;
+import org.akavity.models.catalogTest.BrandItemData;
 import org.akavity.models.catalogTest.CatalogData;
 import org.akavity.models.catalogTest.HiddenItemData;
-import org.akavity.steps.CatalogSteps;
-import org.akavity.steps.ContentWrapperSteps;
-import org.akavity.steps.HeaderSteps;
-import org.akavity.steps.PopUpsSteps;
+import org.akavity.steps.*;
 import org.akavity.utils.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CatalogTest extends BaseTest {
+public class CatalogTest extends BaseOldTest {
     PopUpsSteps popUpsSteps = new PopUpsSteps();
     HeaderSteps headerSteps = new HeaderSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
+    ContentHomeSteps contentSteps = new ContentHomeSteps();
     ContentWrapperSteps contentWrapperSteps = new ContentWrapperSteps();
 
     @TestData(jsonFile = "hiddenItemData", model = "HiddenItemData", folder = "catalogTest")
@@ -28,7 +27,7 @@ public class CatalogTest extends BaseTest {
         catalogSteps.clickShowAllButton(hiddenItem.getAllButton());
         catalogSteps.clickSubsectionItem(hiddenItem.getCategoryItem());
 
-        String actualTitle = contentWrapperSteps.getTitle();
+        String actualTitle = contentWrapperSteps.extractTextFromLogoOrTitle();
         String expectedTitle = hiddenItem.getExpectedTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
     }
@@ -42,7 +41,7 @@ public class CatalogTest extends BaseTest {
         catalogSteps.hoverTheMouseOverChapterItem(catalog.getChapterItem());
         catalogSteps.clickSubsectionItem(catalog.getCategoryItem());
 
-        String actualTitle = contentWrapperSteps.getTitle();
+        String actualTitle = contentWrapperSteps.extractTextFromLogoOrTitle();
         String expectedTitle = catalog.getExpectedTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
     }
@@ -56,8 +55,19 @@ public class CatalogTest extends BaseTest {
         catalogSteps.hoverTheMouseOverChapterItem(brand.getChapterItem());
         catalogSteps.clickBrandButton(brand.getBrand());
 
-        String actualTitle = contentWrapperSteps.getTitle();
+        String actualTitle = contentWrapperSteps.extractTextFromLogoOrTitle();
         String expectedTitle = brand.getExpectedTitle();
         Assert.assertEquals(actualTitle, expectedTitle);
+    }
+
+    @TestData(jsonFile = "brandItemData", model = "BrandItemData", folder = "catalogTest")
+    @Test(description = "Click on the banner in banner box",
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void clickBannerItem(BrandItemData brand) {
+        popUpsSteps.clickRefuseCookiesButton();
+        popUpsSteps.clickSecondCookiesRefuseButton();
+        contentSteps.clickBannerItem(brand.getBrand());
+
+        Assert.assertTrue(contentWrapperSteps.extractTextFromLogoOrTitle().contains(brand.getBrand()));
     }
 }
