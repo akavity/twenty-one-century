@@ -1,0 +1,10 @@
+[
+  {
+    "offerType": "Товары с подарками",
+    "discountType": "Подарок"
+  },
+  {
+    "offerType": "Товары со скидкой",
+    "discountType": "%"
+  }
+]

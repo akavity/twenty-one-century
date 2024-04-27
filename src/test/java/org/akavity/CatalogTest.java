@@ -1,12 +1,10 @@
 package org.akavity;
 
 import org.akavity.annotations.TestData;
-import org.akavity.models.catalogTest.BrandData;
-import org.akavity.models.catalogTest.BrandItemData;
-import org.akavity.models.catalogTest.CatalogData;
-import org.akavity.models.catalogTest.HiddenItemData;
+import org.akavity.models.catalogTest.*;
 import org.akavity.steps.*;
 import org.akavity.utils.JsonReader;
+import org.akavity.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -16,6 +14,7 @@ public class CatalogTest extends BaseOldTest {
     CatalogSteps catalogSteps = new CatalogSteps();
     ContentHomeSteps contentSteps = new ContentHomeSteps();
     ContentWrapperSteps contentWrapperSteps = new ContentWrapperSteps();
+    Utils utils = new Utils();
 
     @TestData(jsonFile = "hiddenItemData", model = "HiddenItemData", folder = "catalogTest")
     @Test(description = "Select hidden an element in the catalog",
@@ -69,5 +68,16 @@ public class CatalogTest extends BaseOldTest {
         contentSteps.clickBannerItem(brand.getBrand());
 
         Assert.assertTrue(contentWrapperSteps.extractTextFromLogoOrTitle().contains(brand.getBrand()));
+    }
+
+    @TestData(jsonFile = "specialOfferData", model = "SpecialOfferData", folder = "catalogTest")
+    @Test(description = "Check that the discounts are shown on the products",
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void clickSpecialOfferItem(SpecialOfferData offer) {
+        popUpsSteps.clickRefuseCookiesButton();
+        popUpsSteps.clickSecondCookiesRefuseButton();
+        contentSteps.clickSpecialOfferButton(offer.getOfferType());
+
+        Assert.assertTrue(contentSteps.areDiscountsDisplayed(offer.getDiscountType()));
     }
 }
