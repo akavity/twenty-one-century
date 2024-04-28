@@ -4,7 +4,6 @@ import org.akavity.annotations.TestData;
 import org.akavity.models.catalogTest.*;
 import org.akavity.steps.*;
 import org.akavity.utils.JsonReader;
-import org.akavity.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -14,7 +13,6 @@ public class CatalogTest extends BaseOldTest {
     CatalogSteps catalogSteps = new CatalogSteps();
     ContentHomeSteps contentSteps = new ContentHomeSteps();
     ContentWrapperSteps contentWrapperSteps = new ContentWrapperSteps();
-    Utils utils = new Utils();
 
     @TestData(jsonFile = "hiddenItemData", model = "HiddenItemData", folder = "catalogTest")
     @Test(description = "Select hidden an element in the catalog",
@@ -79,5 +77,16 @@ public class CatalogTest extends BaseOldTest {
         contentSteps.clickSpecialOfferButton(offer.getOfferType());
 
         Assert.assertTrue(contentSteps.areDiscountsDisplayed(offer.getDiscountType()));
+    }
+
+    @TestData(jsonFile = "popProductsData", model = "PopProductsData", folder = "catalogTest")
+    @Test(description = "Sort popular products by price",
+            dataProviderClass = JsonReader.class, dataProvider = "getData")
+    public void sortPopularProductsByPrice(PopProductsData products) {
+        popUpsSteps.clickRefuseCookiesButton();
+        popUpsSteps.clickSecondCookiesRefuseButton();
+        contentSteps.clickPopularButton(products.getButtonText());
+
+        Assert.assertTrue(contentSteps.checkPriceOfPopularProducts(products.getButtonText(), products.getElements()));
     }
 }

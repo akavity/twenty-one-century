@@ -1,0 +1,14 @@
+[
+  {
+    "buttonText": "до 100",
+    "elements": 5
+  },
+  {
+    "buttonText": "от 400",
+    "elements": 5
+  },
+  {
+    "buttonText": "200 – 400",
+    "elements": 5
+  }
+]

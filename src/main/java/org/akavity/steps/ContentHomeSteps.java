@@ -40,4 +40,17 @@ public class ContentHomeSteps {
         ElementsCollection collection = contentPage.getDiscountTypeItem(disType);
         return collection.asDynamicIterable().stream().allMatch(SelenideElement::isDisplayed);
     }
+
+    @Step
+    public boolean checkPriceOfPopularProducts(String text, int elements) {
+        boolean result = false;
+        ElementsCollection prices = contentPage.getPopularPrice().first(elements);
+        switch (text) {
+            case "до 100" -> result = utils.arePricesLowerThanPrice(prices, 100, elements);
+            case "от 400" -> result = utils.arPricesHigherThanPrice(prices, 400, elements);
+            case "200 – 400" -> result = utils.arePricesWithinLimit(prices, 200, 400, elements);
+            default -> log.info("Entered an incorrect text");
+        }
+        return result;
+    }
 }
