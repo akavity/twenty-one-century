@@ -7,7 +7,7 @@ import org.akavity.utils.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CatalogTest extends BaseOldTest {
+public class CatalogTest extends BaseTest {
     PopUpsSteps popUpsSteps = new PopUpsSteps();
     HeaderSteps headerSteps = new HeaderSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
