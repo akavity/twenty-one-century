@@ -1,5 +1,6 @@
 package org.akavity.utils;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.github.javafaker.Faker;
 import lombok.extern.log4j.Log4j2;
 
@@ -69,6 +70,59 @@ public class Utils {
             result = desc.stream()
                     .peek(d -> log.info("Description: " + d))
                     .allMatch(description -> description.contains(text));
+        }
+        return result;
+    }
+
+    public boolean arePricesLowerThanPrice(ElementsCollection prices, int price, int elements) {
+        sleep(1500);
+        log.info("Check that the price of products is higher than a specific price");
+        ElementsCollection collection = prices.first(elements);
+        boolean result;
+        if (collection.isEmpty()) {
+            log.info("Collection is empty");
+            result = false;
+        } else {
+            result = collection.asDynamicIterable()
+                    .stream()
+                    .map(el -> extractDoubleFromText(el.getText(), "\\d?[ ]?\\d+[,.]\\d{2}"))
+                    .peek(p -> log.info("Element price: " + p))
+                    .allMatch(p -> (p <= price));
+        }
+        return result;
+    }
+
+    public boolean arPricesHigherThanPrice(ElementsCollection prices, int price, int elements) {
+        sleep(1500);
+        log.info("Check that the price of products is higher than a specific price");
+        ElementsCollection collection = prices.first(elements);
+        boolean result;
+        if (collection.isEmpty()) {
+            log.info("Collection is empty");
+            result = false;
+        } else {
+            result = collection.asDynamicIterable()
+                    .stream()
+                    .map(el -> extractDoubleFromText(el.getText(), "\\d?[ ]?\\d+[,.]\\d{2}"))
+                    .peek(p -> log.info("Element price: " + p))
+                    .allMatch(p -> (p >= price));
+        }
+        return result;
+    }
+
+    public boolean arePricesWithinLimit(ElementsCollection prices, int min, int max, int elements) {
+        log.info("Check product prices \n min price: " + min + "\n max price: " + max);
+        ElementsCollection collection = prices.first(elements);
+        boolean result;
+        if (collection.isEmpty()) {
+            log.info("Collection is empty");
+            result = false;
+        } else {
+            result = collection.asDynamicIterable()
+                    .stream()
+                    .map(el -> extractDoubleFromText(el.getText(), "\\d+[,]\\d{2}"))
+                    .peek(p -> log.info("Element price: " + p))
+                    .allMatch(p -> (p >= min && p <= max));
         }
         return result;
     }
