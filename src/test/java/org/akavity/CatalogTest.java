@@ -44,7 +44,7 @@ public class CatalogTest extends BaseOldTest {
     }
 
     @TestData(jsonFile = "brandData", model = "BrandData", folder = "catalogTest")
-    @Test(description = "Select brand in the catalog",
+    @Test(description = "Select a brand in the catalog",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void selectBrand(BrandData brand) {
         popUpsSteps.clickAcceptCookiesButton();
@@ -58,7 +58,7 @@ public class CatalogTest extends BaseOldTest {
     }
 
     @TestData(jsonFile = "brandItemData", model = "BrandItemData", folder = "catalogTest")
-    @Test(description = "Click on the banner in banner box",
+    @Test(description = "Select a banner in the banner box",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void clickBannerItem(BrandItemData brand) {
         popUpsSteps.clickRefuseCookiesButton();

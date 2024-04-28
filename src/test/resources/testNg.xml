@@ -11,6 +11,9 @@
                     <include name="selectHiddenCategoryItem"/>
                     <include name="moveAroundTheCatalog"/>
                     <include name="selectBrand"/>
+                    <include name="clickBannerItem"/>
+                    <include name="clickSpecialOfferItem"/>
+                    <include name="sortPopularProductsByPrice"/>
                 </methods>
             </class>
             <class name="org.akavity.RegistrationTest">
