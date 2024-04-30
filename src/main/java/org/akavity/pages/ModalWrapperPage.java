@@ -11,6 +11,16 @@ public class ModalWrapperPage {
             "/button[@type='submit']"));
     private final SelenideElement addressField = $(By.cssSelector("div[data-testid='address'] input[class]"));
     private final SelenideElement pinkDeleteButton = $(By.cssSelector("button[class*=pink-primary]"));
+    private final SelenideElement registrationButton = $(By.xpath("//div[contains(text(),'Регистрация')]"));
+    private final SelenideElement forgottenPasswordButton = $(By.xpath("//button[contains(@class,'reset')]"));
+
+    public SelenideElement getRegistrationButton() {
+        return registrationButton;
+    }
+
+    public SelenideElement getForgottenPasswordButton() {
+        return forgottenPasswordButton;
+    }
 
     public SelenideElement getListItem(String text) {
         return $(By.xpath("//li/div[contains(text(),'" + text + "')]"));

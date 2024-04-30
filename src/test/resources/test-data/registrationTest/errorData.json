@@ -1,13 +1,16 @@
 [
   {
+    "name": "email",
     "email": "ugetsttt@fexpost.com",
     "error": "Аккаунт зарегистрирован"
   },
   {
+    "name": "email",
     "email": "ugetsttt@fexpost.",
     "error": "Неправильный формат электронной почты"
   },
   {
+    "name": "email",
     "email": "ugetstttfexpost.com",
     "error": "Неправильный формат электронной почты"
   }

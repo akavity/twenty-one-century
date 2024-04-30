@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.HeaderPage;
 import org.akavity.pages.ModalWrapperPage;
+import org.akavity.utils.Utils;
 import org.openqa.selenium.Keys;
 
 import java.time.Duration;
@@ -15,6 +16,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 public class HeaderSteps {
     HeaderPage headerPage = new HeaderPage();
     ModalWrapperPage modalWrapperPage = new ModalWrapperPage();
+    Utils utils = new Utils();
 
     public void clickAccountButton() {
         log.info("Click account button");
@@ -50,23 +52,6 @@ public class HeaderSteps {
         headerPage.getHeaderCartButton().click();
     }
 
-    public void enterEmail(String email) {
-        log.info("Enter email: " + email);
-        headerPage.getEmailField().click();
-        headerPage.getEmailField().sendKeys(email);
-    }
-
-    public void enterPassword(String password) {
-        log.info("Enter password: " + password);
-        headerPage.getPasswordField().click();
-        headerPage.getPasswordField().sendKeys(password);
-    }
-
-    public void clickSubmitButton() {
-        log.info("Click submit button");
-        headerPage.getSubmitButton().click();
-    }
-
     public String extractTextFromSubTitle() {
         String text = headerPage.getSubTitleField().getText();
         log.info("Get title text: " + text);
@@ -78,25 +63,9 @@ public class HeaderSteps {
         headerPage.getProfileItem(text).click();
     }
 
-    public void clickRegistrationButton() {
-        log.info("Click registration button");
-        headerPage.getRegistrationButton().click();
-    }
-
-    public void clickForgottenPasswordButton() {
-        log.info("Click forgotten password button");
-        headerPage.getForgottenPasswordButton().click();
-    }
-
     public boolean isErrorFieldDisplayed(String errorText) {
         log.info("Error: " + headerPage.getErrorField(errorText).getText());
         return headerPage.getErrorField(errorText).isDisplayed();
-    }
-
-    public void enterRegistrationEmail(String email) {
-        log.info("Enter registration email: " + email);
-        headerPage.getRegistrationEmailField().click();
-        headerPage.getRegistrationEmailField().sendKeys(email);
     }
 
     public void cleanSearchField() {
@@ -112,12 +81,8 @@ public class HeaderSteps {
         headerPage.getCatalogSearchFiled().pressEnter();
     }
 
-    public void clickRegistrationSubmitButton() {
-        log.info("Click registration submit button");
-        headerPage.getRegistrationSubmitButton().click();
-    }
-
     public String extractEmailFromAccount() {
+        utils.sleep();
         String email = headerPage.getSubTitleField().getText();
         log.info("Account email: " + email);
         return email;

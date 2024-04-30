@@ -79,7 +79,6 @@ public class ProfileContentPage {
     private final SelenideElement deleteRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]" +
             "/../../following-sibling::div//div[contains(@class,'delete')]"));
 
-
     public SelenideElement getEditRequisitesButton() {
         return editRequisitesButton;
     }

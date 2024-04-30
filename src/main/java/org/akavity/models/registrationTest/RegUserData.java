@@ -10,4 +10,6 @@ import lombok.NoArgsConstructor;
 public class RegUserData {
     String email;
     String password;
+    String pasName;
+    String emailName;
 }

@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class ErrorData {
     String email;
     String error;
+    String name;
 }

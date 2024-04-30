@@ -59,4 +59,13 @@ public class ModalWrapperSteps {
         log.info("Click the \"Delete\" button");
         modalWrapperPage.getPinkDeleteButton().click();
     }
+    public void clickRegistrationButton() {
+        log.info("Click registration button");
+        modalWrapperPage.getRegistrationButton().click();
+    }
+
+    public void clickForgottenPasswordButton() {
+        log.info("Click forgotten password button");
+        modalWrapperPage.getForgottenPasswordButton().click();
+    }
 }
