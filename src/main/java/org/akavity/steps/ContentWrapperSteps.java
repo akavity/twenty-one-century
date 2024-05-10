@@ -60,18 +60,7 @@ public class ContentWrapperSteps {
     public boolean areProductPricesWithinLimit(String min, String max) {
         log.info("Check product prices \n min price: " + min + "\n max price: " + max);
         ElementsCollection collection = contentWrapperPage.getPriceFields();
-        boolean result;
-        if (collection.isEmpty()) {
-            log.info("Collection is empty");
-            result = false;
-        } else {
-            result = collection.asDynamicIterable()
-                    .stream()
-                    .map(el -> utils.extractDoubleFromText(el.getText(), "\\d+[,]\\d{2}"))
-                    .peek(p -> log.info("Element price: " + p))
-                    .allMatch(p -> (p >= Double.parseDouble(min) && p <= Double.parseDouble(max)));
-        }
-        return result;
+        return utils.arePricesWithinLimit(collection, Integer.parseInt(min), Integer.parseInt(max));
     }
 
     @Step
@@ -79,18 +68,7 @@ public class ContentWrapperSteps {
         utils.sleep(1500);
         log.info("Check that the price of products is higher than a specific price");
         ElementsCollection collection = contentWrapperPage.getPriceFields().first(elements);
-        boolean result;
-        if (collection.isEmpty()) {
-            log.info("Collection is empty");
-            result = false;
-        } else {
-            result = collection.asDynamicIterable()
-                    .stream()
-                    .map(el -> utils.extractDoubleFromText(el.getText(), "\\d?[ ]?\\d+[,.]\\d{2}"))
-                    .peek(p -> log.info("Element price: " + p))
-                    .allMatch(p -> (p >= price));
-        }
-        return result;
+        return utils.arePricesHigherThanPrice(collection, price);
     }
 
     @Step
@@ -98,17 +76,6 @@ public class ContentWrapperSteps {
         utils.sleep(1500);
         log.info("Check that the price of products is higher than a specific price");
         ElementsCollection collection = contentWrapperPage.getPriceFields().first(elements);
-        boolean result;
-        if (collection.isEmpty()) {
-            log.info("Collection is empty");
-            result = false;
-        } else {
-            result = collection.asDynamicIterable()
-                    .stream()
-                    .map(el -> utils.extractDoubleFromText(el.getText(), "\\d?[ ]?\\d+[,.]\\d{2}"))
-                    .peek(p -> log.info("Element price: " + p))
-                    .allMatch(p -> (p <= price));
-        }
-        return result;
+        return utils.arePricesLowerThanPrice(collection, price);
     }
 }

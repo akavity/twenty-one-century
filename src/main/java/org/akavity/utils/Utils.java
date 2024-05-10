@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -74,55 +75,38 @@ public class Utils {
         return result;
     }
 
-    public boolean arePricesLowerThanPrice(ElementsCollection prices, int price, int elements) {
+    public boolean arePricesLowerThanPrice(ElementsCollection prices, int price) {
         sleep(1500);
         log.info("Check that the price of products is higher than a specific price");
-        ElementsCollection collection = prices.first(elements);
-        boolean result;
-        if (collection.isEmpty()) {
-            log.info("Collection is empty");
-            result = false;
-        } else {
-            result = collection.asDynamicIterable()
-                    .stream()
-                    .map(el -> extractDoubleFromText(el.getText(), "\\d?[ ]?\\d+[,.]\\d{2}"))
-                    .peek(p -> log.info("Element price: " + p))
-                    .allMatch(p -> (p <= price));
-        }
-        return result;
+        Predicate<? super Double> predicate = p -> (p <= price);
+        return relationalMethod(prices, predicate);
     }
 
-    public boolean arPricesHigherThanPrice(ElementsCollection prices, int price, int elements) {
+    public boolean arePricesHigherThanPrice(ElementsCollection prices, int price) {
         sleep(1500);
         log.info("Check that the price of products is higher than a specific price");
-        ElementsCollection collection = prices.first(elements);
-        boolean result;
-        if (collection.isEmpty()) {
-            log.info("Collection is empty");
-            result = false;
-        } else {
-            result = collection.asDynamicIterable()
-                    .stream()
-                    .map(el -> extractDoubleFromText(el.getText(), "\\d?[ ]?\\d+[,.]\\d{2}"))
-                    .peek(p -> log.info("Element price: " + p))
-                    .allMatch(p -> (p >= price));
-        }
-        return result;
+        Predicate<? super Double> predicate = p -> (p >= price);
+        return relationalMethod(prices, predicate);
     }
 
-    public boolean arePricesWithinLimit(ElementsCollection prices, int min, int max, int elements) {
+    public boolean arePricesWithinLimit(ElementsCollection prices, int min, int max) {
+        sleep(1500);
         log.info("Check product prices \n min price: " + min + "\n max price: " + max);
-        ElementsCollection collection = prices.first(elements);
+        Predicate<? super Double> predicate = p -> (p >= min && p <= max);
+        return relationalMethod(prices, predicate);
+    }
+
+    private boolean relationalMethod(ElementsCollection col, Predicate<? super Double> predicate) {
         boolean result;
-        if (collection.isEmpty()) {
+        if (col.isEmpty()) {
             log.info("Collection is empty");
             result = false;
         } else {
-            result = collection.asDynamicIterable()
+            result = col.asDynamicIterable()
                     .stream()
-                    .map(el -> extractDoubleFromText(el.getText(), "\\d+[,]\\d{2}"))
+                    .map(el -> extractDoubleFromText(el.getText(), "\\d?[ ]?\\d+[,.]\\d{2}"))
                     .peek(p -> log.info("Element price: " + p))
-                    .allMatch(p -> (p >= min && p <= max));
+                    .allMatch(predicate);
         }
         return result;
     }

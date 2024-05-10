@@ -18,21 +18,11 @@ public class HeaderPage {
 
     // Profile navigation
     private final SelenideElement loginButton = $(By.cssSelector("button[data-testid='loginButton']"));
+    private final SelenideElement subTitleField = $(By.cssSelector("span[class='userToolsSubtitle']"));
 
     public SelenideElement getProfileItem(String text) {
         return $(By.xpath("//div[contains(@class,'itemText') and contains(text(), '" + text + "')]"));
     }
-
-    private final SelenideElement subTitleField = $(By.cssSelector("span[class='userToolsSubtitle']"));
-
-    //    modalWrapperPage
-    private final SelenideElement emailField = $(By.cssSelector("#login-email"));   // modalWrapperPage
-    private final SelenideElement passwordField = $(By.cssSelector("#login-password")); // modalWrapperPage
-    private final SelenideElement submitButton = $(By.cssSelector("div[data-testid='loginForm'] button[type='submit']")); // modalWrapperPage
-    private final SelenideElement registrationButton = $(By.xpath("//div[contains(text(),'Регистрация')]"));
-    private final SelenideElement forgottenPasswordButton = $(By.xpath("//button[contains(@class,'reset')]"));
-    private final SelenideElement registrationEmailField = $(By.cssSelector("div[class*='BaseInput'] input"));
-    private final SelenideElement registrationSubmitButton = $(By.xpath("//div[contains(@class,'submit')]/button"));
 
     public SelenideElement getErrorField(String errorText) {
         return $(By.xpath("//div[contains(@class,'ErrorMessage')]//span[contains(text(),'" + errorText + "')]"));
@@ -58,36 +48,8 @@ public class HeaderPage {
         return headerCartButton;
     }
 
-    public SelenideElement getEmailField() {
-        return emailField;
-    }
-
-    public SelenideElement getPasswordField() {
-        return passwordField;
-    }
-
-    public SelenideElement getSubmitButton() {
-        return submitButton;
-    }
-
     public SelenideElement getSubTitleField() {
         return subTitleField;
-    }
-
-    public SelenideElement getRegistrationButton() {
-        return registrationButton;
-    }
-
-    public SelenideElement getForgottenPasswordButton() {
-        return forgottenPasswordButton;
-    }
-
-    public SelenideElement getRegistrationEmailField() {
-        return registrationEmailField;
-    }
-
-    public SelenideElement getRegistrationSubmitButton() {
-        return registrationSubmitButton;
     }
 
     public SelenideElement getCatalogButton() {

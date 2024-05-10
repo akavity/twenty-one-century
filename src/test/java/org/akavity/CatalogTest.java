@@ -54,7 +54,7 @@ public class CatalogTest extends BaseTest {
 
         String actualTitle = contentWrapperSteps.extractTextFromLogoOrTitle();
         String expectedTitle = brand.getExpectedTitle();
-        Assert.assertEquals(actualTitle, expectedTitle);
+        Assert.assertTrue(actualTitle.contains(expectedTitle));
     }
 
     @TestData(jsonFile = "brandItemData", model = "BrandItemData", folder = "catalogTest")

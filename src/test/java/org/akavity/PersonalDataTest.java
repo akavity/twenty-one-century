@@ -60,7 +60,6 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(address.getItemPersonalData());
         profileContentSteps.clickAddButton(address.getAddButtonTitle());
-        modalWrapperSteps.enterCity(address.getCity());
         modalWrapperSteps.enterStreet(address.getStreet());
         modalWrapperSteps.enterDataIntoModalField(address.getTitleEntrance(), address.getNumberOfEntrance());
         modalWrapperSteps.enterDataIntoModalField(address.getTitleFloor(), address.getNumberOfFloor());
