@@ -90,6 +90,7 @@ public class Utils {
     }
 
     public boolean arePricesWithinLimit(ElementsCollection prices, int min, int max) {
+        sleep(1500);
         log.info("Check product prices \n min price: " + min + "\n max price: " + max);
         Predicate<? super Double> predicate = p -> (p >= min && p <= max);
         return relationalMethod(prices, predicate);
