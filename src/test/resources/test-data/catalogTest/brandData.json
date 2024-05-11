@@ -3,5 +3,25 @@
     "chapterItem": "Смартфоны, ТВ",
     "brand": "LG",
     "expectedTitle": "LG"
+  },
+  {
+    "chapterItem": "Смартфоны, ТВ",
+    "brand": "Samsung",
+    "expectedTitle": "Samsung"
+  },
+  {
+    "chapterItem": "Смартфоны, ТВ",
+    "brand": "Xiaomi",
+    "expectedTitle": "Xiaomi"
+  },
+  {
+    "chapterItem": "Смартфоны, ТВ",
+    "brand": "Huawei",
+    "expectedTitle": "Huawei"
+  },
+  {
+    "chapterItem": "Смартфоны, ТВ",
+    "brand": "Apple",
+    "expectedTitle": "Apple"
   }
 ]
