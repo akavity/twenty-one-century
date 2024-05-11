@@ -3,5 +3,25 @@
     "chapterItem": "Смартфоны, ТВ",
     "categoryItem": "Умные часы",
     "expectedTitle": "Умные часы, фитнес-браслеты"
+  },
+  {
+    "chapterItem": "Бытовая техника",
+    "categoryItem": "Вытяжки",
+    "expectedTitle": "Вытяжки"
+  },
+  {
+    "chapterItem": "Компьютеры и периферия",
+    "categoryItem": "Планшеты",
+    "expectedTitle": "Планшеты"
+  },
+  {
+    "chapterItem": "Товары для дома",
+    "categoryItem": "Настольные лампы",
+    "expectedTitle": "Настольные лампы"
+  },
+  {
+    "chapterItem": "Спорт",
+    "categoryItem": "Гантели, штанги",
+    "expectedTitle": "Гантели, штанги"
   }
 ]
