@@ -27,10 +27,10 @@ public class ModalWrapperPage {
     }
 
     /**
-     * @param gender male, female
+     * @param gender Мужской, Женский
      */
     public SelenideElement getGenderButton(String gender) {
-        return $(By.xpath("//input[@name='gender' and @value='" + gender + "']/parent::label"));
+        return $(By.xpath("//label[@role='presentation']//span[contains(text(),'" + gender + "')]"));
     }
 
     /**
