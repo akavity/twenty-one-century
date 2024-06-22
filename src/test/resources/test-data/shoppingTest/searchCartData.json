@@ -1,12 +1,12 @@
 [
   {
     "product": "iPhone 12",
-    "numberOfElements": 5,
+    "numberOfElements": 3,
     "cartProduct": "iPhone 12"
   },
   {
     "product": "Xiaomi Redmi Note 13",
-    "numberOfElements": 5,
+    "numberOfElements": 3,
     "cartProduct": "Xiaomi Redmi Note 13"
   }
 ]
