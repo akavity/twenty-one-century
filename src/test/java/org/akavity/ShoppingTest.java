@@ -4,18 +4,16 @@ import org.akavity.annotations.TestData;
 import org.akavity.models.shoppingTest.*;
 import org.akavity.steps.*;
 import org.akavity.utils.JsonReader;
-import org.akavity.utils.Utils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ShoppingTest extends OldBaseTest {
+public class ShoppingTest extends BaseTest {
     PopUpsSteps popUpsSteps = new PopUpsSteps();
     HeaderSteps headerSteps = new HeaderSteps();
     ContentWrapperSteps contentWrapperSteps = new ContentWrapperSteps();
     CartSteps cartSteps = new CartSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
     FilterSteps filterSteps = new FilterSteps();
-    Utils utils = new Utils();
 
     @TestData(jsonFile = "catalogData", model = "CatalogData", folder = "shoppingTest")
     @Test(description = "Headers Navigation",

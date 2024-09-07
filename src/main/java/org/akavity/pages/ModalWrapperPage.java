@@ -7,8 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ModalWrapperPage {
     private final SelenideElement modalWindow = $(By.cssSelector("div[data-testid='modal']"));
-    private final SelenideElement submitButton = $(By.xpath("//div[not(contains(@class,'Subscription'))]" +
-            "/button[@type='submit']"));
+    private final SelenideElement submitButton = $(By.cssSelector("button[data-testid='loginSubmit'] div[class*='button']"));
     private final SelenideElement addressField = $(By.cssSelector("div[data-testid='address'] input[class]"));
     private final SelenideElement pinkDeleteButton = $(By.cssSelector("button[class*=pink-primary]"));
     private final SelenideElement registrationButton = $(By.xpath("//div[contains(text(),'Регистрация')]"));
