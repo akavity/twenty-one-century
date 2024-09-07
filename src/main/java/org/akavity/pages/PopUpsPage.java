@@ -11,6 +11,7 @@ public class PopUpsPage {
     private final SelenideElement cookiesAcceptButton = $(By.cssSelector("div[class*='Cookie'] button[class*='blue-primary']"));
     private final SelenideElement popmechanicDesktop = $(By.cssSelector("div[class*='popmechanic-main']"));
     private final SelenideElement popmechanicCloseButton = $(By.cssSelector("div[class='popmechanic-close']"));
+    private final SelenideElement closeButton = $(By.cssSelector("button[data-testid='modalClose']"));
 
     public SelenideElement getCookiesRefuseButton() {
         return cookiesRefuseButton;
@@ -30,5 +31,9 @@ public class PopUpsPage {
 
     public SelenideElement getPopmechanicCloseButton() {
         return popmechanicCloseButton;
+    }
+
+    public SelenideElement getCloseButton() {
+        return closeButton;
     }
 }
