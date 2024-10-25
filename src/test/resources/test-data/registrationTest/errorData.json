@@ -1,16 +1,15 @@
 [
   {
-    "name": "email",
-    "email": "ugetsttt@fexpost.com",
-    "error": "Проверьте электронную"
-  },
-  {
-    "name": "email",
+    "namePhone": "phone",
+    "phone": "442222222",
+    "nameEmail": "email",
     "email": "ugetsttt@fexpost.",
     "error": "Неправильный формат электронной почты"
   },
   {
-    "name": "email",
+    "namePhone": "phone",
+    "phone": "442222222",
+    "nameEmail": "email",
     "email": "ugetstttfexpost.com",
     "error": "Неправильный формат электронной почты"
   }

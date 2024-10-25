@@ -23,8 +23,9 @@ public class RegistrationTest extends BaseTest {
         headerSteps.clickAccountButton();
         headerSteps.clickLoginButton();
         modal.clickRegistrationButton();
-        modal.enterDataIntoModalField(error.getName(), error.getEmail());
-        modal.clickSubmitButton();
+        modal.enterDataIntoModalField(error.getNamePhone(), error.getPhone());
+        modal.enterDataIntoModalField(error.getNameEmail(), error.getEmail());
+        modal.clickModalWindow();
 
         Assert.assertTrue(headerSteps.isErrorFieldDisplayed(error.getError()));
     }
@@ -38,7 +39,8 @@ public class RegistrationTest extends BaseTest {
         headerSteps.clickLoginButton();
         modal.enterDataIntoModalField(regUser.getEmailName(), regUser.getEmail());
         modal.enterDataIntoModalField(regUser.getPasName(), regUser.getPassword());
-        modal.clickSubmitButton();
+        modal.clickSubmitEmailButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
 
         String actualAccountEmail = headerSteps.extractEmailFromAccount();
