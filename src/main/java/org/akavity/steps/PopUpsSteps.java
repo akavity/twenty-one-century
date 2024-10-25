@@ -4,8 +4,6 @@ import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.PopUpsPage;
 import org.akavity.utils.Utils;
 
-import static com.codeborne.selenide.Condition.visible;
-
 @Log4j2
 public class PopUpsSteps {
     PopUpsPage popUpsPage = new PopUpsPage();
@@ -17,7 +15,7 @@ public class PopUpsSteps {
     }
 
     public void clickSecondCookiesRefuseButton() {
-        log.info("Click second time refuse  cookies button ");
+        log.info("Click second time refuse cookies button");
         popUpsPage.getCookiesSecondRefuseButton().click();
     }
 
@@ -36,6 +34,7 @@ public class PopUpsSteps {
 
     public void closePopUp() {
         log.info("Close Pop-up");
-        popUpsPage.getCloseButton().shouldBe(visible).click();
+        utils.sleep();
+        popUpsPage.getCloseButton().click();
     }
 }
