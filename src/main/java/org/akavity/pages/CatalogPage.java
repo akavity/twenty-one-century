@@ -29,7 +29,7 @@ public class CatalogPage {
     }
 
     public SelenideElement getBrandButton(String brand) {
-        return $(By.xpath("//a[contains(@class,'randCrisps') and contains(text(),'" + brand + "')]"));
+        return $(By.xpath("//a[contains(@class,'BrandCrisps')]/span[contains(text(),'" + brand + "')]"));
     }
 
     public SelenideElement getCategoryTitleField() {
