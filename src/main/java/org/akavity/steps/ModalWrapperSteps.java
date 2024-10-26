@@ -45,6 +45,7 @@ public class ModalWrapperSteps {
     @Step
     public void clickSubmitButton() {
         log.info("Click submit button");
+        utils.sleep(1200);
         modalWrapperPage.getSubmitButton().click();
     }
 
