@@ -34,7 +34,7 @@ public class PopUpsSteps {
 
     public void closePopUp() {
         log.info("Close Pop-up");
-        utils.sleep();
+        utils.sleep(1500);
         popUpsPage.getCloseButton().click();
     }
 }

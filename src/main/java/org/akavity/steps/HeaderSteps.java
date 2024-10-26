@@ -32,7 +32,7 @@ public class HeaderSteps {
 
     public boolean isLoginButtonDisplayed() {
         boolean result = headerPage.getLoginButton().isDisplayed();
-        log.info("Is login button displayed: " + result);
+        log.info("Is login button displayed: {}", result);
         return result;
     }
 
@@ -42,7 +42,7 @@ public class HeaderSteps {
     }
 
     public void clickPromoItem(String title) {
-        log.info("Click promo item: " + title);
+        log.info("Click promo item: {}", title);
         headerPage.getPromoItem(title).click();
     }
 
@@ -54,7 +54,7 @@ public class HeaderSteps {
 
     public String extractTextFromSubTitle() {
         String text = headerPage.getSubTitleField().getText();
-        log.info("Get title text: " + text);
+        log.info("Get title text: {}", text);
         return text;
     }
 
@@ -64,7 +64,7 @@ public class HeaderSteps {
     }
 
     public boolean isErrorFieldDisplayed(String errorText) {
-        log.info("Error: " + headerPage.getErrorField(errorText).getText());
+        log.info("Error: {}", headerPage.getErrorField(errorText).getText());
         return headerPage.getErrorField(errorText).isDisplayed();
     }
 
@@ -84,7 +84,7 @@ public class HeaderSteps {
     public String extractEmailFromAccount() {
         utils.sleep();
         String email = headerPage.getSubTitleField().getText();
-        log.info("Account email: " + email);
+        log.info("Account email: {}", email);
         return email;
     }
 }
