@@ -7,20 +7,13 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ModalWrapperPage {
     private final SelenideElement modalWindow = $(By.cssSelector("div[data-testid='modal']"));
-    private final SelenideElement submitButton = $(By.xpath("//div[not(contains(@class,'Subscription'))]" +
-            "/button[@type='submit']"));
+    private final SelenideElement submitButton = $(By.xpath("//button[@type='submit']/div[contains(@class,'Button')]"));
+    private final SelenideElement submitEmailButton = $(By.cssSelector("div[class*='EmailLogin'] button[type='submit']"));
+    private final SelenideElement submitPhoneButton = $(By.cssSelector("div[class*='PhoneLogin'] button[type='submit']"));
     private final SelenideElement addressField = $(By.cssSelector("div[data-testid='address'] input[class]"));
     private final SelenideElement pinkDeleteButton = $(By.cssSelector("button[class*=pink-primary]"));
-    private final SelenideElement registrationButton = $(By.xpath("//div[contains(text(),'Регистрация')]"));
+    private final SelenideElement registrationButton = $(By.xpath("//div[contains(@class,'Email')]//button[contains(text(),'Регистрация')]"));
     private final SelenideElement forgottenPasswordButton = $(By.xpath("//button[contains(@class,'reset')]"));
-
-    public SelenideElement getRegistrationButton() {
-        return registrationButton;
-    }
-
-    public SelenideElement getForgottenPasswordButton() {
-        return forgottenPasswordButton;
-    }
 
     public SelenideElement getListItem(String text) {
         return $(By.xpath("//li/div[contains(text(),'" + text + "')]"));
@@ -40,7 +33,11 @@ public class ModalWrapperPage {
      *             unp, acc, legalName, bank, legalAddress, rcbic
      */
     public SelenideElement getModalField(String name) {
-        return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + name + "']"));
+        if (name.equals("bank")) {
+            return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='bank']/..//input[@class]"));
+        } else {
+            return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + name + "']"));
+        }
     }
 
     public SelenideElement getModalWindow() {
@@ -57,5 +54,21 @@ public class ModalWrapperPage {
 
     public SelenideElement getPinkDeleteButton() {
         return pinkDeleteButton;
+    }
+
+    public SelenideElement getSubmitEmailButton() {
+        return submitEmailButton;
+    }
+
+    public SelenideElement getSubmitPhoneButton() {
+        return submitPhoneButton;
+    }
+
+    public SelenideElement getRegistrationButton() {
+        return registrationButton;
+    }
+
+    public SelenideElement getForgottenPasswordButton() {
+        return forgottenPasswordButton;
     }
 }

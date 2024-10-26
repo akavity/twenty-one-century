@@ -22,10 +22,10 @@ public class ContentWrapperSteps {
         String text;
         if (title.isDisplayed()) {
             text = title.getText();
-            log.info("Title is displayed: " + text);
+            log.info("Title is displayed: {}", text);
         } else {
             text = contentWrapperPage.getBrandLogo().getText();
-            log.info("BrandLogo is displayed: " + text);
+            log.info("BrandLogo is displayed: {}", text);
         }
         return text;
     }
@@ -34,7 +34,7 @@ public class ContentWrapperSteps {
     public boolean doCatalogDescriptionsContainText(String text) {
         ElementsCollection collection = contentWrapperPage.getCatalogDescriptionField();
         List<String> names = new ArrayList<>(collection.texts());
-        log.info("Description collection size: " + collection.size());
+        log.info("Catalog description collection size: {}", collection.size());
         return utils.doesListContainText(names, text);
     }
 
@@ -42,7 +42,7 @@ public class ContentWrapperSteps {
     public boolean doSearchDescriptionsContainText(String text, int numberOfElements) {
         ElementsCollection collection = contentWrapperPage.getSearchDescriptionFields();
         List<String> names = new ArrayList<>(collection.first(numberOfElements).texts());
-        log.info("Description collection size: " + collection.size());
+        log.info("Search description collection size: {}", collection.size());
         return utils.doesListContainText(names, text);
     }
 
@@ -58,7 +58,7 @@ public class ContentWrapperSteps {
 
     @Step
     public boolean areProductPricesWithinLimit(String min, String max) {
-        log.info("Check product prices \n min price: " + min + "\n max price: " + max);
+        log.info("Check product prices \n min price: {} \n max price: {}", min, max);
         ElementsCollection collection = contentWrapperPage.getPriceFields();
         return utils.arePricesWithinLimit(collection, Integer.parseInt(min), Integer.parseInt(max));
     }
@@ -74,7 +74,7 @@ public class ContentWrapperSteps {
     @Step
     public boolean areProductPricesLowerThanPrice(int price, int elements) {
         utils.sleep(1500);
-        log.info("Check that the price of products is higher than a specific price");
+        log.info("Check that the price of products is lower than a specific price");
         ElementsCollection collection = contentWrapperPage.getPriceFields().first(elements);
         return utils.arePricesLowerThanPrice(collection, price);
     }

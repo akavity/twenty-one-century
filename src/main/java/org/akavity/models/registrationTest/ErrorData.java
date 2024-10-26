@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ErrorData {
+    String namePhone;
+    String phone;
+    String nameEmail;
     String email;
     String error;
-    String name;
 }

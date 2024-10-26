@@ -15,7 +15,7 @@ public class PopUpsSteps {
     }
 
     public void clickSecondCookiesRefuseButton() {
-        log.info("Click second time refuse  cookies button ");
+        log.info("Click second time refuse cookies button");
         popUpsPage.getCookiesSecondRefuseButton().click();
     }
 
@@ -30,5 +30,11 @@ public class PopUpsSteps {
             log.info("Close promotional code");
             popUpsPage.getPopmechanicCloseButton().click();
         }
+    }
+
+    public void closePopUp() {
+        log.info("Close Pop-up");
+        utils.sleep(1500);
+        popUpsPage.getCloseButton().click();
     }
 }

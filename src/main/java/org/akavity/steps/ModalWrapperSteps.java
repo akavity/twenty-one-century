@@ -14,7 +14,7 @@ public class ModalWrapperSteps {
 
     @Step
     public void enterDataIntoModalField(String name, String data) {  // cleanFieldAndEnterData
-        log.info("Enter data into modal field: " + data);
+        log.info("Enter data into modal field: {}", data);
         SelenideElement element = modalWrapperPage.getModalField(name);
         element.sendKeys(Keys.CONTROL + "A");         // clear input field
         element.sendKeys(Keys.BACK_SPACE);                       //
@@ -45,12 +45,25 @@ public class ModalWrapperSteps {
     @Step
     public void clickSubmitButton() {
         log.info("Click submit button");
+        utils.sleep(1200);
         modalWrapperPage.getSubmitButton().click();
     }
 
     @Step
+    public void clickSubmitEmailButton() {
+        log.info("Click submit email button");
+        modalWrapperPage.getSubmitEmailButton().click();
+    }
+
+    @Step
+    public void clickSubmitPhoneButton() {
+        log.info("Click submit phone button");
+        modalWrapperPage.getSubmitPhoneButton().click();
+    }
+
+    @Step
     public void clickGenderButton(String gender) {
-        log.info("Select gender: " + gender);
+        log.info("Select gender: {}", gender);
         modalWrapperPage.getGenderButton(gender).click();
     }
 
@@ -62,11 +75,17 @@ public class ModalWrapperSteps {
 
     public void clickRegistrationButton() {
         log.info("Click registration button");
+        utils.sleep(800);
         modalWrapperPage.getRegistrationButton().click();
     }
 
     public void clickForgottenPasswordButton() {
         log.info("Click forgotten password button");
         modalWrapperPage.getForgottenPasswordButton().click();
+    }
+
+    public void clickModalWindow() {
+        log.info("Click modal window");
+        modalWrapperPage.getModalWindow().click();
     }
 }

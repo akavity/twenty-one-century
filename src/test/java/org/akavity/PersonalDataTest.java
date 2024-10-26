@@ -30,8 +30,9 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickLoginButton();
         modalWrapperSteps.enterDataIntoModalField(data.getTitleEmail(), data.getEmail());
         modalWrapperSteps.enterDataIntoModalField(data.getTitlePassword(), data.getPassword());
-        modalWrapperSteps.clickSubmitButton();
+        modalWrapperSteps.clickSubmitEmailButton();
         headerSteps.clickAccountButton();
+        popUpsSteps.closePopUp();                                // your phone number
         headerSteps.clickProfileItem(data.getItemPersonalData());
         profileContentSteps.clickEditData(data.getDataType());
         modalWrapperSteps.enterDataIntoModalField(data.getTitleName(), fakeName); // use fake name
@@ -56,7 +57,8 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickLoginButton();
         modalWrapperSteps.enterDataIntoModalField(address.getTitleEmail(), address.getEmail());
         modalWrapperSteps.enterDataIntoModalField(address.getTitlePassword(), address.getPassword());
-        modalWrapperSteps.clickSubmitButton();
+        modalWrapperSteps.clickSubmitEmailButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(address.getItemPersonalData());
         profileContentSteps.clickAddButton(address.getAddButtonTitle());
@@ -78,10 +80,11 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickLoginButton();
         modalWrapperSteps.enterDataIntoModalField(address.getTitleEmail(), address.getEmail());
         modalWrapperSteps.enterDataIntoModalField(address.getTitlePassword(), address.getPassword());
-        modalWrapperSteps.clickSubmitButton();
+        modalWrapperSteps.clickSubmitEmailButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(address.getItemPersonalData());
-        profileContentSteps.editAddress(address.getOldStreet());
+        profileContentSteps.editAddress();
         modalWrapperSteps.enterStreet(address.getNewStreet());
         modalWrapperSteps.enterDataIntoModalField(address.getTitleEntrance(), address.getNumberOfEntrance());
         modalWrapperSteps.enterDataIntoModalField(address.getTitleFloor(), address.getNumberOfFloor());
@@ -100,10 +103,11 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickLoginButton();
         modalWrapperSteps.enterDataIntoModalField(address.getTitleEmail(), address.getEmail());
         modalWrapperSteps.enterDataIntoModalField(address.getTitlePassword(), address.getPassword());
-        modalWrapperSteps.clickSubmitButton();
+        modalWrapperSteps.clickSubmitEmailButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(address.getItemPersonalData());
-        profileContentSteps.deleteAddress(address.getNewStreet());
+        profileContentSteps.deleteAddress();
         modalWrapperSteps.clickPinkDeleteButton();
 
         Assert.assertFalse(profileContentSteps.isAddressDisplayed(address.getNewStreet()));
@@ -119,7 +123,8 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickLoginButton();
         modalWrapperSteps.enterDataIntoModalField(phone.getTitleEmail(), phone.getEmail());
         modalWrapperSteps.enterDataIntoModalField(phone.getTitlePassword(), phone.getPassword());
-        modalWrapperSteps.clickSubmitButton();
+        modalWrapperSteps.clickSubmitEmailButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(phone.getItemPersonalData());
         profileContentSteps.clickAddButton(phone.getAddButtonTitle());
@@ -138,7 +143,8 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickLoginButton();
         modalWrapperSteps.enterDataIntoModalField(phone.getTitleEmail(), phone.getEmail());
         modalWrapperSteps.enterDataIntoModalField(phone.getTitlePassword(), phone.getPassword());
-        modalWrapperSteps.clickSubmitButton();
+        modalWrapperSteps.clickSubmitEmailButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(phone.getItemPersonalData());
         profileContentSteps.editPhoneNumber(phone.getOldPhoneNumber());
@@ -157,7 +163,8 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickLoginButton();
         modalWrapperSteps.enterDataIntoModalField(phone.getTitleEmail(), phone.getEmail());
         modalWrapperSteps.enterDataIntoModalField(phone.getTitlePassword(), phone.getPassword());
-        modalWrapperSteps.clickSubmitButton();
+        modalWrapperSteps.clickSubmitEmailButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(phone.getItemPersonalData());
         profileContentSteps.deletePhoneNumber(phone.getNewPhoneNumber());
@@ -175,7 +182,8 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickLoginButton();
         modalWrapperSteps.enterDataIntoModalField(requisites.getTitleEmail(), requisites.getEmail());
         modalWrapperSteps.enterDataIntoModalField(requisites.getTitlePassword(), requisites.getPassword());
-        modalWrapperSteps.clickSubmitButton();
+        modalWrapperSteps.clickSubmitEmailButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(requisites.getPersonalDataItem());
         profileContentSteps.clickAddButton(requisites.getAddButtonTitle());
@@ -204,7 +212,8 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickLoginButton();
         modalWrapperSteps.enterDataIntoModalField(requisites.getTitleEmail(), requisites.getEmail());
         modalWrapperSteps.enterDataIntoModalField(requisites.getTitlePassword(), requisites.getPassword());
-        modalWrapperSteps.clickSubmitButton();
+        modalWrapperSteps.clickSubmitEmailButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(requisites.getPersonalDataItem());
         profileContentSteps.editRequisites();
@@ -233,7 +242,8 @@ public class PersonalDataTest extends BaseTest {
         headerSteps.clickLoginButton();
         modalWrapperSteps.enterDataIntoModalField(requisites.getTitleEmail(), requisites.getEmail());
         modalWrapperSteps.enterDataIntoModalField(requisites.getTitlePassword(), requisites.getPassword());
-        modalWrapperSteps.clickSubmitButton();
+        modalWrapperSteps.clickSubmitEmailButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
         headerSteps.clickProfileItem(requisites.getPersonalDataItem());
         profileContentSteps.deleteRequisites();

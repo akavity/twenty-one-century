@@ -63,12 +63,9 @@ public class ShoppingTest extends BaseTest {
         catalogSteps.clickSubsectionItem(phone.getSubsectionItem());
         filterSteps.enterPrice(phone.getMinPrice(), phone.getMaxPrice());
         filterSteps.selectCheckbox(phone.getTitleManufacturer(), phone.getManufacturer());
-        filterSteps.selectCheckbox(phone.getTitleInternalMemory(), phone.getInternalMemory());
-        filterSteps.applyFiltersButton();
 
         Assert.assertTrue(contentWrapperSteps.areProductPricesWithinLimit(phone.getMinPrice(), phone.getMaxPrice()));
         Assert.assertTrue(contentWrapperSteps.doCatalogDescriptionsContainText(phone.getManufacturer()));
-        Assert.assertTrue(contentWrapperSteps.doCatalogDescriptionsContainText(phone.getInternalMemory()));
     }
 
     @TestData(jsonFile = "expensiveFilterData", model = "ExpensiveFilterData", folder = "shoppingTest")

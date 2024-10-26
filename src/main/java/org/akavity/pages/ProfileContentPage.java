@@ -6,6 +6,12 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ProfileContentPage {
+    private final SelenideElement editAddressButton = $(By.xpath("//h2[contains(text(),'Адреса')]/../../following-sibling::div//div[contains(@class,'edit')]"));
+    private final SelenideElement deleteAddressButton = $(By.xpath("//h2[contains(text(),'Адреса')]/../../following-sibling::div//div[contains(@class,'delete')]"));
+    private final SelenideElement requisitesBlock = $(By.xpath("//div[contains(@class,'dataEntities')]"));
+    private final SelenideElement editRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]/../../following-sibling::div//div[contains(@class,'edit')]"));
+    private final SelenideElement deleteRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]/../../following-sibling::div//div[contains(@class,'delete')]"));
+
     /**
      * @param text Имя, Пол, Год рождения, Почта
      */
@@ -43,16 +49,6 @@ public class ProfileContentPage {
         return $(By.xpath("//p[contains(@data-testid,'addres') and contains(text(),'" + street + "')]"));
     }
 
-    public SelenideElement getEditAddressButton(String street) {
-        return $(By.xpath("//p[contains(@data-testid,'addres') and contains(text(),'" + street + "')]" +
-                "/ancestor::div[contains(@class,'dataWrapper')]//div[contains(@class,'edit')]"));
-    }
-
-    public SelenideElement getDeleteAddressButton(String street) {
-        return $(By.xpath("//p[contains(@data-testid,'addres') and contains(text(),'" + street + "')]" +
-                "/ancestor::div[contains(@class,'dataWrapper')]//div[contains(@class,'delete')]"));
-    }
-
     public SelenideElement getPhoneNumberField(String phoneNumber) {
         return $(By.xpath("//div[contains(@class,'PhoneItem')]//span[contains(text(),'" + phoneNumber + "')]"));
     }
@@ -71,14 +67,6 @@ public class ProfileContentPage {
         return $(By.xpath("//h6[contains(text(),'" + title + "')]/../p"));
     }
 
-    private final SelenideElement requisitesBlock = $(By.xpath("//div[contains(@class,'dataEntities')]"));
-
-    private final SelenideElement editRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]" +
-            "/../../following-sibling::div//div[contains(@class,'edit')]"));
-
-    private final SelenideElement deleteRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]" +
-            "/../../following-sibling::div//div[contains(@class,'delete')]"));
-
     public SelenideElement getEditRequisitesButton() {
         return editRequisitesButton;
     }
@@ -89,5 +77,13 @@ public class ProfileContentPage {
 
     public SelenideElement getRequisitesBlock() {
         return requisitesBlock;
+    }
+
+    public SelenideElement getEditAddressButton() {
+        return editAddressButton;
+    }
+
+    public SelenideElement getDeleteAddressButton() {
+        return deleteAddressButton;
     }
 }

@@ -11,14 +11,15 @@ public class ContentHomePage {
     private final ElementsCollection popularItems = $$(By.cssSelector("section[class*='PopularsContainer'] div[class*='ListItem']"));
     private final ElementsCollection specialOfferItems = $$(By.cssSelector("div[aria-hidden='false'] div[class*='CardContainer']"));
     private final ElementsCollection favoritesButtons = $$(By.cssSelector("button[data-testid='card-favorites']"));
+    private final ElementsCollection popularPrice = $$(By.xpath("//header[contains(@class,'PopularsList')]" +
+            "/following-sibling::div//p[contains(@class,'currentPrice')]"));
 
     public SelenideElement getBannersItem(String text) {
         return $(By.xpath("//span[contains(@class,'Banners_title') and contains(text(),'" + text + "')]/../.."));
     }
 
     public SelenideElement getSpecialOfferButton(String text) {
-        return $(By.xpath("//div[contains(@class,'SpecialOffersList')]" +
-                "//span[contains(@class,'label') and contains(text(),'" + text + "')]"));
+        return $(By.xpath("//div[contains(@class,'SpecialOffersList')]//span[contains(@class,'Chip') and contains(text(),'" + text + "')]"));
     }
 
     public ElementsCollection getDiscountTypeItem(String disType) {
@@ -29,12 +30,8 @@ public class ContentHomePage {
     }
 
     public SelenideElement getPopularButton(String text) {
-        return $(By.xpath("//header[contains(@class,'PopularsList')]" +
-                "//span[contains(@class,'label') and contains(text(),'" + text + "')]"));
+        return $(By.xpath("//header[contains(@class,'PopularsList')]//span[contains(@class,'Chip') and contains(text(),'" + text + "')]"));
     }
-
-    private final ElementsCollection popularPrice = $$(By.xpath("//header[contains(@class,'PopularsList')]" +
-            "/following-sibling::div//p[contains(@class,'currentPrice')]"));
 
     public ElementsCollection getPopularItems() {
         return popularItems;
@@ -42,6 +39,10 @@ public class ContentHomePage {
 
     public ElementsCollection getSpecialOfferItems() {
         return specialOfferItems;
+    }
+
+    public ElementsCollection getFavoritesButtons() {
+        return favoritesButtons;
     }
 
     public ElementsCollection getPopularPrice() {

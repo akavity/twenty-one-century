@@ -24,16 +24,16 @@ public class ProfileContentSteps {
     }
 
     @Step
-    public void editAddress(String street) {
-        log.info("Edit address button");
-        SelenideElement element = profileContentPage.getEditAddressButton(street);
+    public void editAddress() {
+        log.info("click the edit address button");
+        SelenideElement element = profileContentPage.getEditAddressButton();
         element.scrollIntoView(PARAMETER);
         element.click();
     }
 
     @Step
     public void editPhoneNumber(String phoneNumber) {
-        log.info("Edit address button");
+        log.info("Edit phobutton");
         SelenideElement element = profileContentPage.getEditPhoneNumberButton(phoneNumber);
         element.scrollIntoView(PARAMETER);
         element.click();
@@ -69,7 +69,7 @@ public class ProfileContentSteps {
     public String extractTextFromPersonalDataField(String data) {
         utils.sleep();
         String text = profileContentPage.getPersonalDataField(data).getText();
-        log.info("Personal data field contains text: " + text);
+        log.info("Personal data field contains text: {}", text);
         return text;
     }
 
@@ -77,7 +77,7 @@ public class ProfileContentSteps {
     public String extractTextFromRequisitesField(String title) {
         utils.sleep();
         String text = profileContentPage.getRequisitesField(title).getText();
-        log.info("Requisites field contains text: " + text);
+        log.info("Requisites field contains text: {}", text);
         return text;
     }
 
@@ -88,14 +88,14 @@ public class ProfileContentSteps {
     }
 
     @Step
-    public void deleteAddress(String address) {
-        log.info("Delete address: " + address);
-        profileContentPage.getDeleteAddressButton(address).click();
+    public void deleteAddress() {
+        log.info("Delete address");
+        profileContentPage.getDeleteAddressButton().click();
     }
 
     @Step
     public void deletePhoneNumber(String phoneNumber) {
-        log.info("Delete phone number: " + phoneNumber);
+        log.info("Delete phone number: {}", phoneNumber);
         profileContentPage.getDeletePhoneNumberButton(phoneNumber).click();
     }
 
