@@ -25,7 +25,7 @@ public class ProfileContentSteps {
 
     @Step
     public void editAddress() {
-        log.info("click the edit address button");
+        log.info("Click the edit address button");
         SelenideElement element = profileContentPage.getEditAddressButton();
         element.scrollIntoView(PARAMETER);
         element.click();
@@ -33,7 +33,7 @@ public class ProfileContentSteps {
 
     @Step
     public void editPhoneNumber(String phoneNumber) {
-        log.info("Edit phobutton");
+        log.info("Edit phone button");
         SelenideElement element = profileContentPage.getEditPhoneNumberButton(phoneNumber);
         element.scrollIntoView(PARAMETER);
         element.click();

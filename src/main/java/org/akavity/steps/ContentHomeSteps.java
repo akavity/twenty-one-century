@@ -15,14 +15,14 @@ public class ContentHomeSteps {
 
     @Step
     public void clickBannerItem(String text) {
-        log.info("Click the banner item: " + text);
+        log.info("Click the banner item: {}", text);
         contentPage.getBannersItem(text).scrollIntoView(PARAMETER);
         contentPage.getBannersItem(text).click();
     }
 
     @Step
     public void clickSpecialOfferButton(String text) {
-        log.info("Click the special offer button: " + text);
+        log.info("Click the special offer button: {}", text);
         contentPage.getSpecialOfferButton(text).scrollIntoView(PARAMETER);
         contentPage.getSpecialOfferButton(text).click();
         utils.sleep();
@@ -30,7 +30,7 @@ public class ContentHomeSteps {
 
     @Step
     public void clickPopularButton(String text) {
-        log.info("CLick the popular button: " + text);
+        log.info("CLick the popular button: {}", text);
         contentPage.getPopularButton(text).scrollIntoView(PARAMETER);
         contentPage.getPopularButton(text).click();
     }

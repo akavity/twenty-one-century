@@ -11,7 +11,7 @@ public class CartSteps {
     @Step
     public String extractBasketTitleItem() {
         String title = cartPage.getBasketItemTitle().getText();
-        log.info("Extract text from basket title item: " + title);
+        log.info("Extract text from basket title item: {}", title);
         return title;
     }
 }

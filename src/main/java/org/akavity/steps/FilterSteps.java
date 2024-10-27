@@ -14,7 +14,7 @@ public class FilterSteps {
 
     @Step
     public void enterPrice(String min, String max) {
-        log.info("Enter min price: " + min + "\n Enter max price: " + max);
+        log.info("Enter min price: {} \n Enter max price: {}", min, max);
         SelenideElement minPrice = filterPage.getMinPriceField();
         minPrice.scrollIntoView(PARAMETER);
         minPrice.sendKeys(min);
@@ -23,7 +23,7 @@ public class FilterSteps {
 
     @Step
     public void selectCheckbox(String title, String text) {
-        log.info("In section: " + title + " select element " + text);
+        log.info("In section: {} select element {}", title, text);
         SelenideElement element = filterPage.getCheckbox(title, text);
         element.scrollIntoView(PARAMETER);
         element.click();
@@ -31,7 +31,7 @@ public class FilterSteps {
 
     @Step
     public void clickShowAllButton(String title) {
-        log.info("In section: " + title + " click button show all");
+        log.info("In section: {} click button show all", title);
         SelenideElement element = filterPage.getShowAllButton(title);
         element.scrollIntoView(PARAMETER);
         element.click();
@@ -56,7 +56,7 @@ public class FilterSteps {
 
     @Step
     public void selectFilter(String text) {
-        log.info("Select filter: " + text);
+        log.info("Select filter: {}", text);
         filterPage.getSortButton().click();
         filterPage.selectItem(text).click();
     }
