@@ -54,7 +54,7 @@ public class CatalogTest extends BaseTest {
 
         String actualTitle = contentWrapperSteps.extractTextFromLogoOrTitle();
         String expectedTitle = brand.getExpectedTitle();
-        Assert.assertTrue(actualTitle.contains(expectedTitle));
+        Assert.assertTrue(actualTitle.contains(expectedTitle));   // "Все акции" instead of Huawei
     }
 
     @TestData(jsonFile = "brandItemData", model = "BrandItemData", folder = "catalogTest")
@@ -65,7 +65,7 @@ public class CatalogTest extends BaseTest {
         popUpsSteps.clickSecondCookiesRefuseButton();
         contentSteps.clickBannerItem(brand.getBrand());
 
-        Assert.assertTrue(contentWrapperSteps.extractTextFromLogoOrTitle().contains(brand.getBrand()));
+        Assert.assertTrue(contentWrapperSteps.extractTextFromLogoOrTitle().contains(brand.getBrand()));  // "Все акции" instead of LG or Mio Tesoro
     }
 
     @TestData(jsonFile = "specialOfferData", model = "SpecialOfferData", folder = "catalogTest")
