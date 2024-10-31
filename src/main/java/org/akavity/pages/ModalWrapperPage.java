@@ -36,7 +36,7 @@ public class ModalWrapperPage {
         if (name.equals("bank")) {
             return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='bank']/..//input[@class]"));
         } else {
-            return $(By.xpath("//div[not(contains(@class,'Subscription'))]/input[@name='" + name + "']"));
+            return $(By.xpath("//div[@data-testid='modal']//div[not(contains(@class,'Subscription'))]/input[@name='" + name + "']"));
         }
     }
 
