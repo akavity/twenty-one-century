@@ -63,13 +63,13 @@ public class Utils {
 
     public boolean doesListContainText(List<String> desc, String text) {
         boolean result;
-        log.info("List size: " + desc.size());
+        log.info("List size: {}", desc.size());
         if (desc.isEmpty()) {
             log.info("List is empty");
             result = false;
         } else {
             result = desc.stream()
-                    .peek(d -> log.info("Description: " + d))
+                    .peek(d -> log.info("Description: {}", d))
                     .allMatch(description -> description.contains(text));
         }
         return result;
@@ -77,7 +77,7 @@ public class Utils {
 
     public boolean arePricesLowerThanPrice(ElementsCollection prices, int price) {
         sleep(1500);
-        log.info("Check that the price of products is higher than a specific price");
+        log.info("Check that the price of products is lower than a specific price");
         Predicate<? super Double> predicate = p -> (p <= price);
         return relationalMethod(prices, predicate);
     }
@@ -91,7 +91,7 @@ public class Utils {
 
     public boolean arePricesWithinLimit(ElementsCollection prices, int min, int max) {
         sleep(1500);
-        log.info("Check product prices \n min price: " + min + "\n max price: " + max);
+        log.info("Check product prices \n min price: {} \n max price: {}", min, max);
         Predicate<? super Double> predicate = p -> (p >= min && p <= max);
         return relationalMethod(prices, predicate);
     }
@@ -105,7 +105,7 @@ public class Utils {
             result = col.asDynamicIterable()
                     .stream()
                     .map(el -> extractDoubleFromText(el.getText(), "\\d?[ ]?\\d+[,.]\\d{2}"))
-                    .peek(p -> log.info("Element price: " + p))
+                    .peek(p -> log.info("Element price: {}", p))
                     .allMatch(predicate);
         }
         return result;
