@@ -91,7 +91,7 @@ public class Utils {
 
     public boolean arePricesWithinLimit(ElementsCollection prices, int min, int max) {
         sleep(1500);
-        log.info("Check product prices \n min price: {} \n max price: {}", min, max);
+        log.info("Check that the price of the product is within acceptable limit");
         Predicate<? super Double> predicate = p -> (p >= min && p <= max);
         return relationalMethod(prices, predicate);
     }
@@ -108,6 +108,7 @@ public class Utils {
                     .peek(p -> log.info("Element price: {}", p))
                     .allMatch(predicate);
         }
+        log.info("result: {}", result);
         return result;
     }
 }
