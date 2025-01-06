@@ -7,7 +7,7 @@ import org.akavity.utils.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CatalogTest extends OldBaseTest {
+public class CatalogTest extends BaseTest {
     PopUpsSteps popUpsSteps = new PopUpsSteps();
     HeaderSteps headerSteps = new HeaderSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
@@ -66,16 +66,6 @@ public class CatalogTest extends OldBaseTest {
 
         Assert.assertTrue(contentWrapperSteps.extractTextFromLogoOrTitle().contains(brand.getBrand()));  // "Все акции" instead of LG or Mio Tesoro
     }
-
-//    @TestData(jsonFile = "specialOfferData", model = "SpecialOfferData", folder = "catalogTest")
-//    @Test(description = "Check that the discounts are shown on the products",
-//            dataProviderClass = JsonReader.class, dataProvider = "getData")
-//    public void clickSpecialOfferItem(SpecialOfferData offer) {
-//        popUpsSteps.clickAcceptCookiesButton();
-//        contentSteps.clickSpecialOfferButton(offer.getOfferType());
-//
-//        Assert.assertTrue(contentSteps.areDiscountsDisplayed(offer.getDiscountType()));
-//    }
 
     @TestData(jsonFile = "popProductsData", model = "PopProductsData", folder = "catalogTest")
     @Test(description = "Sort popular products by price",

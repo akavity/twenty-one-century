@@ -22,8 +22,7 @@
 * Test 18. Find the product using the search and add it to the cart.
 * Test 19. Make sure that product prices are within the specified limit.
 * Test 20. Sort popular products by price.
-* Test 21. Check that the discounts are shown on the products.
-* Test 22. Select a banner in the banner box.
+* Test 21. Select a banner in the banner box.
 
 ## Technologies:
 
