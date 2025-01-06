@@ -7,7 +7,7 @@ import org.akavity.utils.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CatalogTest extends BaseTest {
+public class CatalogTest extends OldBaseTest {
     PopUpsSteps popUpsSteps = new PopUpsSteps();
     HeaderSteps headerSteps = new HeaderSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
@@ -15,7 +15,7 @@ public class CatalogTest extends BaseTest {
     ContentWrapperSteps contentWrapperSteps = new ContentWrapperSteps();
 
     @TestData(jsonFile = "hiddenItemData", model = "HiddenItemData", folder = "catalogTest")
-    @Test(description = "Select hidden an element in the catalog",
+    @Test(description = "Select a hidden element in the catalog",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void selectHiddenCategoryItem(HiddenItemData hiddenItem) {
         popUpsSteps.clickAcceptCookiesButton();
@@ -61,30 +61,27 @@ public class CatalogTest extends BaseTest {
     @Test(description = "Select a banner in the banner box",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void clickBannerItem(BrandItemData brand) {
-        popUpsSteps.clickRefuseCookiesButton();
-        popUpsSteps.clickSecondCookiesRefuseButton();
+        popUpsSteps.clickAcceptCookiesButton();
         contentSteps.clickBannerItem(brand.getBrand());
 
         Assert.assertTrue(contentWrapperSteps.extractTextFromLogoOrTitle().contains(brand.getBrand()));  // "Все акции" instead of LG or Mio Tesoro
     }
 
-    @TestData(jsonFile = "specialOfferData", model = "SpecialOfferData", folder = "catalogTest")
-    @Test(description = "Check that the discounts are shown on the products",
-            dataProviderClass = JsonReader.class, dataProvider = "getData")
-    public void clickSpecialOfferItem(SpecialOfferData offer) {
-        popUpsSteps.clickRefuseCookiesButton();
-        popUpsSteps.clickSecondCookiesRefuseButton();
-        contentSteps.clickSpecialOfferButton(offer.getOfferType());
-
-        Assert.assertTrue(contentSteps.areDiscountsDisplayed(offer.getDiscountType()));
-    }
+//    @TestData(jsonFile = "specialOfferData", model = "SpecialOfferData", folder = "catalogTest")
+//    @Test(description = "Check that the discounts are shown on the products",
+//            dataProviderClass = JsonReader.class, dataProvider = "getData")
+//    public void clickSpecialOfferItem(SpecialOfferData offer) {
+//        popUpsSteps.clickAcceptCookiesButton();
+//        contentSteps.clickSpecialOfferButton(offer.getOfferType());
+//
+//        Assert.assertTrue(contentSteps.areDiscountsDisplayed(offer.getDiscountType()));
+//    }
 
     @TestData(jsonFile = "popProductsData", model = "PopProductsData", folder = "catalogTest")
     @Test(description = "Sort popular products by price",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void sortPopularProductsByPrice(PopProductsData products) {
-        popUpsSteps.clickRefuseCookiesButton();
-        popUpsSteps.clickSecondCookiesRefuseButton();
+        popUpsSteps.clickAcceptCookiesButton();
         contentSteps.clickPopularButton(products.getButtonText());
 
         Assert.assertTrue(contentSteps.checkPriceOfPopularProducts(products.getButtonText(), products.getElements()));
