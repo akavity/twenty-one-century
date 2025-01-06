@@ -14,7 +14,7 @@ public class FilterSteps {
 
     @Step
     public void enterPrice(String min, String max) {
-        log.info("Enter min price: {} \n Enter max price: {}", min, max);
+        log.info("Enter min price: {} , Enter max price: {}", min, max);
         SelenideElement minPrice = filterPage.getMinPriceField();
         minPrice.scrollIntoView(PARAMETER);
         minPrice.sendKeys(min);

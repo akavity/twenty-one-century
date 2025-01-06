@@ -49,7 +49,7 @@ public class ProfileContentSteps {
 
     @Step
     public boolean isAddressDisplayed(String address) {
-        utils.sleep();
+        utils.sleep(1500);
         return profileContentPage.getAddressField(address).isDisplayed();
     }
 

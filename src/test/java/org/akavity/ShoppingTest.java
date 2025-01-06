@@ -19,8 +19,7 @@ public class ShoppingTest extends BaseTest {
     @Test(description = "Headers Navigation",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void moveAroundTheHeader(CatalogData catalog) {
-        popUpsSteps.clickRefuseCookiesButton();
-        popUpsSteps.clickSecondCookiesRefuseButton();
+        popUpsSteps.clickAcceptCookiesButton();
         headerSteps.clickPromoItem(catalog.getPromoItem());
 
         Assert.assertEquals(contentWrapperSteps.extractTextFromLogoOrTitle(), catalog.getTitle());
@@ -30,8 +29,7 @@ public class ShoppingTest extends BaseTest {
     @Test(description = "Find a product using search",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void findProductUsingTheSearch(SearchData searchData) {
-        popUpsSteps.clickRefuseCookiesButton();
-        popUpsSteps.clickSecondCookiesRefuseButton();
+        popUpsSteps.clickAcceptCookiesButton();
         headerSteps.lookForProductUsingCatalogSearch(searchData.getProductName());
         popUpsSteps.closePromoCode();
 
@@ -43,8 +41,7 @@ public class ShoppingTest extends BaseTest {
     @Test(description = "Find the product using the search and add it to the cart",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void findProductUsingSearchAndAddToCart(SearchCartData search) {
-        popUpsSteps.clickRefuseCookiesButton();
-        popUpsSteps.clickSecondCookiesRefuseButton();
+        popUpsSteps.clickAcceptCookiesButton();
         headerSteps.lookForProductUsingCatalogSearch(search.getProduct());
         contentWrapperSteps.clickRandomPinkButton(search.getNumberOfElements());
         headerSteps.clickHeaderCart();
@@ -56,8 +53,7 @@ public class ShoppingTest extends BaseTest {
     @Test(description = "Make sure that product prices are within the specified limit",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void selectPhone(PhoneData phone) {
-        popUpsSteps.clickRefuseCookiesButton();
-        popUpsSteps.clickSecondCookiesRefuseButton();
+        popUpsSteps.clickAcceptCookiesButton();
         headerSteps.clickCatalogButton();
         catalogSteps.hoverTheMouseOverChapterItem(phone.getChapterItem());
         catalogSteps.clickSubsectionItem(phone.getSubsectionItem());
@@ -72,8 +68,7 @@ public class ShoppingTest extends BaseTest {
     @Test(description = "Select \"Expensive Products\" using the \"Filter\" button",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void selectExpensiveProductsUsingFilterButton(ExpensiveFilterData filter) {
-        popUpsSteps.clickRefuseCookiesButton();
-        popUpsSteps.clickSecondCookiesRefuseButton();
+        popUpsSteps.clickAcceptCookiesButton();
         headerSteps.clickCatalogButton();
         catalogSteps.hoverTheMouseOverChapterItem(filter.getTitle());
         catalogSteps.clickSubsectionItem(filter.getName());
@@ -86,8 +81,7 @@ public class ShoppingTest extends BaseTest {
     @Test(description = "Select \"Cheap Products\" using the \"Filter\" button",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
     public void selectCheapProductsUsingFilterButton(CheapFilterData filter) {
-        popUpsSteps.clickRefuseCookiesButton();
-        popUpsSteps.clickSecondCookiesRefuseButton();
+        popUpsSteps.clickAcceptCookiesButton();
         headerSteps.clickCatalogButton();
         catalogSteps.hoverTheMouseOverChapterItem(filter.getTitle());
         catalogSteps.clickSubsectionItem(filter.getName());

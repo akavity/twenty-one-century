@@ -11,6 +11,8 @@ public class HeaderPage {
     private final SelenideElement accountButton = $(By.xpath("//span[@class='userToolsText']"));
     private final SelenideElement headerCartButton = $(By.cssSelector("div[class='headerCart']"));
     private final SelenideElement catalogSearchFiled = $(By.cssSelector("#catalogSearch"));
+    private final SelenideElement lupeButton = $(By.cssSelector("button[class*='Search_s']"));
+    private final SelenideElement searchResultTitle = $(By.xpath("//h1[contains(text(),'Результаты поиска')]"));
 
     public SelenideElement getPromoItem(String title) {
         return $(By.xpath("//div[contains(@class,'promo')]//a[contains(text(),'" + title + "')]"));
@@ -38,6 +40,14 @@ public class HeaderPage {
 
     public SelenideElement getCatalogSearchFiled() {
         return catalogSearchFiled;
+    }
+
+    public SelenideElement getLupeButton() {
+        return lupeButton;
+    }
+
+    public SelenideElement getSearchResultTitle() {
+        return searchResultTitle;
     }
 
     public SelenideElement getLoginButton() {

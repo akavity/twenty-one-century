@@ -58,8 +58,8 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.enterDataIntoModalField(address.getTitleEmail(), address.getEmail());
         modalWrapperSteps.enterDataIntoModalField(address.getTitlePassword(), address.getPassword());
         modalWrapperSteps.clickSubmitEmailButton();
-        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickProfileItem(address.getItemPersonalData());
         profileContentSteps.clickAddButton(address.getAddButtonTitle());
         modalWrapperSteps.enterStreet(address.getStreet());
@@ -81,8 +81,8 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.enterDataIntoModalField(address.getTitleEmail(), address.getEmail());
         modalWrapperSteps.enterDataIntoModalField(address.getTitlePassword(), address.getPassword());
         modalWrapperSteps.clickSubmitEmailButton();
-        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickProfileItem(address.getItemPersonalData());
         profileContentSteps.editAddress();
         modalWrapperSteps.enterStreet(address.getNewStreet());
@@ -104,8 +104,8 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.enterDataIntoModalField(address.getTitleEmail(), address.getEmail());
         modalWrapperSteps.enterDataIntoModalField(address.getTitlePassword(), address.getPassword());
         modalWrapperSteps.clickSubmitEmailButton();
-        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickProfileItem(address.getItemPersonalData());
         profileContentSteps.deleteAddress();
         modalWrapperSteps.clickPinkDeleteButton();
@@ -124,8 +124,8 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.enterDataIntoModalField(phone.getTitleEmail(), phone.getEmail());
         modalWrapperSteps.enterDataIntoModalField(phone.getTitlePassword(), phone.getPassword());
         modalWrapperSteps.clickSubmitEmailButton();
-        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickProfileItem(phone.getItemPersonalData());
         profileContentSteps.clickAddButton(phone.getAddButtonTitle());
         modalWrapperSteps.enterDataIntoModalField(phone.getTitlePhone(), phone.getPhoneNumber());
@@ -144,8 +144,8 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.enterDataIntoModalField(phone.getTitleEmail(), phone.getEmail());
         modalWrapperSteps.enterDataIntoModalField(phone.getTitlePassword(), phone.getPassword());
         modalWrapperSteps.clickSubmitEmailButton();
-        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickProfileItem(phone.getItemPersonalData());
         profileContentSteps.editPhoneNumber(phone.getOldPhoneNumber());
         modalWrapperSteps.enterDataIntoModalField(phone.getTitlePhone(), phone.getNewPhoneNumber());
@@ -164,8 +164,8 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.enterDataIntoModalField(phone.getTitleEmail(), phone.getEmail());
         modalWrapperSteps.enterDataIntoModalField(phone.getTitlePassword(), phone.getPassword());
         modalWrapperSteps.clickSubmitEmailButton();
-        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickProfileItem(phone.getItemPersonalData());
         profileContentSteps.deletePhoneNumber(phone.getNewPhoneNumber());
         modalWrapperSteps.clickPinkDeleteButton();
@@ -183,8 +183,8 @@ public class PersonalDataTest extends BaseTest {
         modalWrapperSteps.enterDataIntoModalField(requisites.getTitleEmail(), requisites.getEmail());
         modalWrapperSteps.enterDataIntoModalField(requisites.getTitlePassword(), requisites.getPassword());
         modalWrapperSteps.clickSubmitEmailButton();
-        popUpsSteps.closePopUp();
         headerSteps.clickAccountButton();
+        popUpsSteps.closePopUp();
         headerSteps.clickProfileItem(requisites.getPersonalDataItem());
         profileContentSteps.clickAddButton(requisites.getAddButtonTitle());
         modalWrapperSteps.enterDataIntoModalField(requisites.getNameUnp(), requisites.getDataUnp());

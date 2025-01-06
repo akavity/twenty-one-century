@@ -64,7 +64,7 @@ public class ProfileContentPage {
     }
 
     public SelenideElement getRequisitesField(String title) {
-        return $(By.xpath("//h6[contains(text(),'" + title + "')]/../p"));
+        return $(By.xpath("//span[contains(text(),'" + title + "')]/../p"));
     }
 
     public SelenideElement getEditRequisitesButton() {

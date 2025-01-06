@@ -1,8 +1,11 @@
 package org.akavity.steps;
 
+import com.codeborne.selenide.WebElementCondition;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.PopUpsPage;
 import org.akavity.utils.Utils;
+
+import static com.codeborne.selenide.Condition.clickable;
 
 @Log4j2
 public class PopUpsSteps {
@@ -11,7 +14,7 @@ public class PopUpsSteps {
 
     public void clickRefuseCookiesButton() {
         log.info("Click refuse cookies button");
-        popUpsPage.getCookiesRefuseButton().click();
+        popUpsPage.getCookiesRefuseButton().shouldBe(clickable).click();
     }
 
     public void clickSecondCookiesRefuseButton() {
@@ -35,6 +38,8 @@ public class PopUpsSteps {
     public void closePopUp() {
         log.info("Close Pop-up");
         utils.sleep(1500);
-        popUpsPage.getCloseButton().click();
+        if(popUpsPage.getCloseButton().isDisplayed()) {
+            popUpsPage.getCloseButton().click();
+        }
     }
 }
