@@ -40,6 +40,7 @@ public class ContentWrapperSteps {
 
     @Step
     public boolean doSearchDescriptionsContainText(String text, int numberOfElements) {
+        utils.sleep(1500);
         ElementsCollection collection = contentWrapperPage.getSearchDescriptionFields();
         List<String> names = new ArrayList<>(collection.first(numberOfElements).texts());
         log.info("Search description collection size: {}", collection.size());
@@ -58,7 +59,8 @@ public class ContentWrapperSteps {
 
     @Step
     public boolean areProductPricesWithinLimit(String min, String max) {
-        log.info("Check product prices \n min price: {} \n max price: {}", min, max);
+        log.info("Check product prices within limit");
+        utils.sleep(2000);
         ElementsCollection collection = contentWrapperPage.getPriceFields();
         return utils.arePricesWithinLimit(collection, Integer.parseInt(min), Integer.parseInt(max));
     }

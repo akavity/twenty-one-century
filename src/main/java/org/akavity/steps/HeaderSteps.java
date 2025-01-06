@@ -9,6 +9,7 @@ import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Condition.clickable;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
@@ -77,8 +78,10 @@ public class HeaderSteps {
 
     public void lookForProductUsingCatalogSearch(String product) {
         log.info("Look for product using catalog search");
+        headerPage.getCatalogSearchFiled().click();
         headerPage.getCatalogSearchFiled().sendKeys(product);
-        headerPage.getCatalogSearchFiled().pressEnter();
+        headerPage.getCatalogSearchFiled().shouldBe(clickable).pressEnter();
+        headerPage.getSearchResultTitle().shouldBe(visible, Duration.ofSeconds(3));
     }
 
     public String extractEmailFromAccount() {
