@@ -18,7 +18,7 @@ public class FilterPage {
 
     public SelenideElement getCheckbox(String title, String text) {
         return $(By.xpath("//div[contains(@class,'ListingFilters') and contains(text(),'" + title + "')]" +
-                "/..//span[contains(text(),'" + text + "')]"));
+                "/..//div[contains(text(),'" + text + "')]"));
     }
 
     public SelenideElement getShowAllButton(String title) {
