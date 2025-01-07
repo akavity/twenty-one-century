@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import lombok.extern.log4j.Log4j2;
 import org.akavity.pages.FilterPage;
 import org.akavity.utils.Utils;
+import org.openqa.selenium.By;
 
 @Log4j2
 public class FilterSteps {
@@ -58,6 +59,8 @@ public class FilterSteps {
     public void selectFilter(String text) {
         log.info("Select filter: {}", text);
         filterPage.getSortButton().click();
-        filterPage.selectItem(text).click();
+        filterPage.getSortList()
+                .findElement(By.xpath(filterPage.selectListItem(text)))
+                .click();
     }
 }

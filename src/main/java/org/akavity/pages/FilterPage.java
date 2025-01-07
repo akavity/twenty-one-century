@@ -10,10 +10,11 @@ public class FilterPage {
     private final SelenideElement maxPriceField = $(By.xpath("//input[@id='maxPrice']"));
     private final SelenideElement allFiltersButton = $(By.xpath("//div[contains(text(),'Все фильтры')]"));
     private final SelenideElement applyFiltersButton = $(By.cssSelector("button[data-testid*='apply']"));
-    private final SelenideElement sortButton = $(By.cssSelector("div[data-testid=sortSelectBlock]"));
+    private final SelenideElement sortButton = $(By.cssSelector("div[data-testid=sortSelectBlock] div[class*='single']"));
+    private final SelenideElement sortList = $(By.cssSelector("#react-select-2-listbox"));
 
-    public SelenideElement selectItem(String text) {
-        return $(By.xpath("//li[contains(@class,'select') and contains(text(),'" + text + "')]"));
+    public String selectListItem(String text) {
+        return "//div[contains(text(),'" + text + "')]";
     }
 
     public SelenideElement getCheckbox(String title, String text) {
@@ -44,5 +45,9 @@ public class FilterPage {
 
     public SelenideElement getSortButton() {
         return sortButton;
+    }
+
+    public SelenideElement getSortList() {
+        return sortList;
     }
 }
