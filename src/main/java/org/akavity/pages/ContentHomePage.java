@@ -11,8 +11,8 @@ public class ContentHomePage {
     private final ElementsCollection popularItems = $$(By.cssSelector("section[class*='PopularsContainer'] div[class*='ListItem']"));
     private final ElementsCollection specialOfferItems = $$(By.cssSelector("div[aria-hidden='false'] div[class*='CardContainer']"));
     private final ElementsCollection favoritesButtons = $$(By.cssSelector("button[data-testid='card-favorites']"));
-    private final ElementsCollection popularPrice = $$(By.xpath("//header[contains(@class,'PopularsList')]" +
-            "/following-sibling::div//p[contains(@class,'currentPrice')]"));
+    private final ElementsCollection popularPrice = $$(By.xpath("//header[contains(@class,'PopularsList')]/" +
+            "following-sibling::div//span[contains(@data-testid,'card-current-price')]"));
 
     public SelenideElement getBannersItem(String text) {
         return $(By.xpath("//span[contains(@class,'Banners_title') and contains(text(),'" + text + "')]/../.."));
