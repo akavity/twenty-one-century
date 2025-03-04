@@ -12,7 +12,7 @@
 * Test 8. Add requisites to personal data.
 * Test 9. Change the requisites in personal data.
 * Test 10. Delete the requisites in personal data.
-* Test 11. Move around the catalog.
+* Test 11. Navigate through the catalog.
 * Test 12. Select a hidden element in the catalog.
 * Test 13. Select a brand in the catalog.
 * Test 14. Enter incorrect data when logging into your account.
