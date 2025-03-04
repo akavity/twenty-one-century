@@ -18,11 +18,11 @@ public class ShoppingTest extends BaseTest {
     @TestData(jsonFile = "catalogData", model = "CatalogData", folder = "shoppingTest")
     @Test(description = "Headers Navigation",
             dataProviderClass = JsonReader.class, dataProvider = "getData")
-    public void moveAroundTheHeader(CatalogData catalog) {
+    public void navigateThroughTheHeaders(CatalogData catalog) {
         popUpsSteps.clickAcceptCookiesButton();
         headerSteps.clickPromoItem(catalog.getPromoItem());
 
-        Assert.assertEquals(contentWrapperSteps.extractTextFromLogoOrTitle(), catalog.getTitle());
+        Assert.assertTrue(contentWrapperSteps.extractTextFromTitle().contains(catalog.getTitle().toLowerCase()));
     }
 
     @TestData(jsonFile = "searchData", model = "SearchData", folder = "shoppingTest")

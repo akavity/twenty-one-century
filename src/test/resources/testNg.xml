@@ -23,7 +23,7 @@
             </class>
             <class name="org.akavity.ShoppingTest">
                 <methods>
-                    <include name="moveAroundTheHeader"/>
+                    <include name="navigateThroughTheHeaders"/>
                     <include name="findProductUsingTheSearch"/>
                     <include name="findProductUsingSearchAndAddToCart"/>
                     <include name="selectPhone"/>

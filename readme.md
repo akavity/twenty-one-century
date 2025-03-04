@@ -12,13 +12,13 @@
 * Test 8. Add requisites to personal data.
 * Test 9. Change the requisites in personal data.
 * Test 10. Delete the requisites in personal data.
-* Test 11. Navigate through the catalog.
+* Test 11. Catalog navigation.
 * Test 12. Select a hidden element in the catalog.
 * Test 13. Select a brand in the catalog.
 * Test 14. Enter incorrect data when logging into your account.
 * Test 15. Log in to a registered user account.
 * Test 16. Find a product using search.
-* Test 17. Headers Navigation.
+* Test 17. Headers navigation.
 * Test 18. Find the product using the search and add it to the cart.
 * Test 19. Make sure that product prices are within the specified limit.
 * Test 20. Sort popular products by price.
