@@ -17,16 +17,10 @@ public class ContentWrapperSteps {
     Utils utils = new Utils();
 
     @Step
-    public String extractTextFromLogoOrTitle() {
+    public String extractTextFromTitle() {
         SelenideElement title = contentWrapperPage.getTitleField();
-        String text;
-        if (title.isDisplayed()) {
-            text = title.getText();
-            log.info("Title is displayed: {}", text);
-        } else {
-            text = contentWrapperPage.getBrandLogo().getText();
-            log.info("BrandLogo is displayed: {}", text);
-        }
+        String text = title.getText().toLowerCase();
+        log.info("Title contains text: {}", text);
         return text;
     }
 
