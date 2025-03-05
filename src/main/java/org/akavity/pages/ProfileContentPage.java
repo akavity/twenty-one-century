@@ -6,11 +6,11 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
 
 public class ProfileContentPage {
-    private final SelenideElement editAddressButton = $(By.xpath("//h2[contains(text(),'Адреса')]/../../following-sibling::div//div[contains(@class,'edit')]"));
-    private final SelenideElement deleteAddressButton = $(By.xpath("//h2[contains(text(),'Адреса')]/../../following-sibling::div//div[contains(@class,'delete')]"));
+    private final SelenideElement editAddressButton = $(By.xpath(" //h2[contains(text(),'Адреса')]/../../following-sibling::div//span[contains(@class,'edit')]"));
+    private final SelenideElement deleteAddressButton = $(By.xpath("//h2[contains(text(),'Адреса')]/../../following-sibling::div//span[contains(@class,'delete')]"));
     private final SelenideElement requisitesBlock = $(By.xpath("//div[contains(@class,'dataEntities')]"));
-    private final SelenideElement editRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]/../../following-sibling::div//div[contains(@class,'edit')]"));
-    private final SelenideElement deleteRequisitesButton = $(By.xpath("//div[contains(text(),'Реквизиты')]/../../following-sibling::div//div[contains(@class,'delete')]"));
+    private final SelenideElement editRequisitesButton = $(By.xpath("//h2[contains(text(),'Мои организации')]/../../following-sibling::div//span[contains(@class,'edit')]"));
+    private final SelenideElement deleteRequisitesButton = $(By.xpath("//h2[contains(text(),'Мои организации')]/../../following-sibling::div//span[contains(@class,'delete')]"));
 
     /**
      * @param text Имя, Пол, Год рождения, Почта
@@ -29,7 +29,7 @@ public class ProfileContentPage {
             case "Data" -> id = "edit" + type;
         }
 
-        return $(By.cssSelector("div[data-testid='" + id + "']"));
+        return $(By.cssSelector("svg[data-testid='" + id + "']"));
     }
 
     /**
@@ -55,16 +55,16 @@ public class ProfileContentPage {
 
     public SelenideElement getEditPhoneNumberButton(String phoneNumber) {
         return $(By.xpath("//span[contains(text(),'" + phoneNumber + "')]" +
-                "/ancestor::div[contains(@class,'PhoneItem')]//div[contains(@class,'edit')]"));
+                "/ancestor::div[contains(@class,'PhoneItem')]//span[contains(@class,'edit')]"));
     }
 
     public SelenideElement getDeletePhoneNumberButton(String phoneNumber) {
         return $(By.xpath("//span[contains(text(),'" + phoneNumber + "')]" +
-                "/ancestor::div[contains(@class,'PhoneItem')]//div[contains(@class,'delete')]"));
+                "/ancestor::div[contains(@class,'PhoneItem')]//span[contains(@class,'delete')]"));
     }
 
     public SelenideElement getRequisitesField(String title) {
-        return $(By.xpath("//span[contains(text(),'" + title + "')]/../p"));
+        return $(By.xpath("//p[contains(text(),'" + title + "')]/../p[contains(@class,'Entities')]"));
     }
 
     public SelenideElement getEditRequisitesButton() {
