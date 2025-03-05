@@ -11,9 +11,9 @@ public class ContentWrapperPage {
     private final SelenideElement titleField = $(By.xpath("//h1[contains(@class,'title') or contains(@class,'header')]"));
     private final SelenideElement brandLogo = $(By.cssSelector("h1[class*='logo']"));
     private final ElementsCollection foundProducts = $$(By.xpath("//div[contains(@class,'style_product')]"));
-    private final ElementsCollection searchDescriptionFields = $$(By.xpath("//span[@class='result__name']"));
+    private final ElementsCollection searchDescriptionFields = $$(By.cssSelector("a[data-testid='card-info-a']"));
     private final ElementsCollection catalogDescriptionField = $$(By.cssSelector("span[class*='CardInfo']"));
-    private final ElementsCollection priceFields = $$(By.cssSelector("span[data-testid='card-current-price']"));
+    private final ElementsCollection priceFields = $$(By.cssSelector("div[class*='ListingProduct'] span[data-testid='card-current-price']")); //
     private final ElementsCollection pinkButtons = $$(By.xpath("//button[@data-ga_action='add_to_cart']"));
 
     public SelenideElement getTitleField() {

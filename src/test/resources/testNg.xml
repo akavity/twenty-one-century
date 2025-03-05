@@ -9,7 +9,7 @@
             <class name="org.akavity.CatalogTest">
                 <methods>
                     <include name="selectHiddenCategoryItem"/>
-                    <include name="moveAroundTheCatalog"/>
+                    <include name="navigateThroughCatalog"/>
                     <include name="selectBrand"/>
                     <include name="clickBannerItem"/>
                     <include name="sortPopularProductsByPrice"/>
@@ -23,7 +23,7 @@
             </class>
             <class name="org.akavity.ShoppingTest">
                 <methods>
-                    <include name="moveAroundTheHeader"/>
+                    <include name="navigateThroughTheHeaders"/>
                     <include name="findProductUsingTheSearch"/>
                     <include name="findProductUsingSearchAndAddToCart"/>
                     <include name="selectPhone"/>

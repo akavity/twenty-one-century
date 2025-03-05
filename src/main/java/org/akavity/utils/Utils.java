@@ -78,25 +78,25 @@ public class Utils {
     public boolean arePricesLowerThanPrice(ElementsCollection prices, int price) {
         sleep(1500);
         log.info("Check that the price of products is lower than a specific price");
-        Predicate<? super Double> predicate = p -> (p <= price);
+        Predicate<Double> predicate = p -> (p <= price);
         return relationalMethod(prices, predicate);
     }
 
     public boolean arePricesHigherThanPrice(ElementsCollection prices, int price) {
         sleep(1500);
         log.info("Check that the price of products is higher than a specific price");
-        Predicate<? super Double> predicate = p -> (p >= price);
+        Predicate<Double> predicate = p -> (p >= price);
         return relationalMethod(prices, predicate);
     }
 
     public boolean arePricesWithinLimit(ElementsCollection prices, int min, int max) {
         sleep(1500);
         log.info("Check that the price of the product is within acceptable limit");
-        Predicate<? super Double> predicate = p -> (p >= min && p <= max);
+        Predicate<Double> predicate = p -> (p >= min && p <= max);
         return relationalMethod(prices, predicate);
     }
 
-    private boolean relationalMethod(ElementsCollection col, Predicate<? super Double> predicate) {
+    private boolean relationalMethod(ElementsCollection col, Predicate<Double> predicate) {
         boolean result;
         if (col.isEmpty()) {
             log.info("Collection is empty");
