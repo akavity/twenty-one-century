@@ -39,7 +39,7 @@ public class CatalogTest extends BaseTest {
         catalogSteps.clickSubsectionItem(catalog.getCategoryItem());
 
         String actualTitle = contentWrapperSteps.extractTextFromTitle();
-        String expectedTitle = catalog.getExpectedTitle();
+        String expectedTitle = catalog.getExpectedTitle().toLowerCase();
         Assert.assertEquals(actualTitle, expectedTitle);
     }
 
