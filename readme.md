@@ -27,11 +27,10 @@
 ## Technologies:
 
 * Java 17
-* Apache Maven 3.9.0
-* TestNG 7.8.0
-* Selenide 7.0.4
-* Allure 2.25.0
-* Apache Log4j 2.22.0
-* Gson 2.10
-* Project Lombok 1.18.30
+* TestNG 7.10.2
+* Selenide 7.7.1
+* Allure 2.29.1
+* Apache Log4j 2.24.3
+* Gson 2.12.0
+* Project Lombok 1.18.36
 * Java Faker 1.0.2
