@@ -7,7 +7,7 @@ import org.akavity.utils.JsonReader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class CatalogTest extends BaseTest {
+public class CatalogTest extends OldBaseTest {
     PopUpsSteps popUpsSteps = new PopUpsSteps();
     HeaderSteps headerSteps = new HeaderSteps();
     CatalogSteps catalogSteps = new CatalogSteps();
@@ -53,7 +53,7 @@ public class CatalogTest extends BaseTest {
         catalogSteps.clickBrandButton(brand.getBrand());
 
         String actualTitle = contentWrapperSteps.extractTextFromTitle();
-        String expectedTitle = brand.getExpectedTitle();
+        String expectedTitle = brand.getExpectedTitle().toLowerCase();
         Assert.assertTrue(actualTitle.contains(expectedTitle));
     }
 
